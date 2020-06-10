@@ -36,7 +36,9 @@ export class Service {
 
         writer.write(") {");
 
-        writer.writeLine(func.call(matchInstance));
+        writer.indentUp();
+        writer.writeLine(func.call(matchInstance).execute(matchInstance));
+        writer.indentDown();
 
         writer.writeLine("}");
     }

@@ -1,32 +1,30 @@
-import {InternalMatchTypeConstructor} from "../internal";
-import {RulesType} from "./RulesType";
 import "reflect-metadata";
+import {InternalMatchTypeConstructor} from "../internal";
 
-export function func(...argName: string[]) {
+export function func() {
 
     return function (targetClass: any, functionName: string, descriptor: PropertyDescriptor) {
 
         const classConstructor: InternalMatchTypeConstructor = targetClass.constructor;
         const originalFunction: Function = descriptor.value;
 
-        const newFunction = function() {
-            for (const arg of arguments) {
-                if (arg instanceof RulesType) {
-                    arg["__rules_context"] = undefined;
-                }
+        const argsTypes: any[] = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
+        const args = argsTypes.map(arg => new arg());
+        const argsNames = originalFunction.toString()
+            .match(/\(\s*([^)]+?)\s*\)/)
+            .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
+            .find((value, index) => index == 1) as string[];
+
+        const newFunction = function () {
+            for (let i = 0; i < arguments.length; i++) {
+                // if (argName.length > i && arguments[i] instanceof RulesType) {
+                // }
             }
 
-            return originalFunction(...arguments);
+            return originalFunction.call(this, ...arguments);
         }
 
         descriptor.value = newFunction;
-
-        const argsTypes = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
-        const args = [];
-
-        for (const arg of argsTypes) {
-            args.push(new arg());
-        }
 
         if (!classConstructor.__rulesMatchFunctions) {
             classConstructor.__rulesMatchFunctions = [];
@@ -34,8 +32,8 @@ export function func(...argName: string[]) {
 
         classConstructor.__rulesMatchFunctions.push({
             name: functionName,
-            args: argName,
-            call: (thiz) => newFunction.call(thiz, ...args)
+            args: argsNames,
+            call: (thiz) => newFunction.apply(thiz, args)
         });
     }
 }

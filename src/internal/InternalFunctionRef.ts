@@ -1,5 +1,7 @@
+import {Expression} from "../shared/Expression";
+
 export interface InternalFunctionRef {
     name: string;
     args: string[];
-    call: (thiz: any) => any;
+    call: (thiz: any) => Expression;
 }

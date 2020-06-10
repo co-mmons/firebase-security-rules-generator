@@ -1,4 +1,4 @@
-import {allow, equals, Expression, func, match, request, RulesString} from "@co.mmons/firestore-security-rules";
+import {allow, equals, Expression, func, match, or, request, RulesString} from "@co.mmons/firestore-security-rules";
 import {User} from "./User";
 
 @match("admins/{$id}")
@@ -8,9 +8,12 @@ export class Admin {
 
     customerId = new RulesString;
 
-    @func("user")
-    checkUserAlive(user: User): Expression {
-        return equals(user.id, "eventtravelapps-admin");
+    @func()
+    checkUserAlive(user: User, commit?: boolean): Expression {
+        return or(
+            equals(user.id, "eventtravelapps-admin"),
+            equals(this.user.id, "blah")
+        )
         // return user.id ==
     }
 

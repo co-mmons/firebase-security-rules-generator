@@ -1,4 +1,6 @@
 import {StringWriter} from "@co.mmons/firebase-security-rules/utils";
+import exp from "constants";
+import {RulesType} from "./RulesType";
 
 export class Expression {
 
@@ -8,24 +10,55 @@ export class Expression {
 
     private expression: any[];
 
-    private asString(v: any) {
-        if (v === null) {
+    protected asString(context: string | RulesType, exp: any) {
+
+        if (exp === null) {
             return "null";
-        } else if (v === undefined) {
+
+        } else if (exp === undefined) {
             return "null";
+
+        } else if (Array.isArray(exp)) {
+            return exp.map(e => this.asString(context, e)).join("");
+
+        } else if (exp instanceof Expression) {
+            return exp.execute(context);
+
+        } else if (exp instanceof RulesType) {
+            return exp.toExpression(context);
+
+        } else if (typeof exp === "string") {
+            return `"${exp}"`;
+
         } else {
-            return v.toString();
+            return exp.toString();
         }
     }
 
-    toString() {
+    execute(context: string | RulesType) {
         const writer = new StringWriter();
 
-        for (const expr of this.expression || []) {
-            writer.write(this.asString(expr));
+        for (const e of this.expression || []) {
+            writer.write(this.asString(context, e));
         }
 
         return writer.toString();
+    }
+
+}
+
+export namespace Expression {
+
+    export function l(strings: TemplateStringsArray, ...expr: string[]): Expression {
+        return new class extends Expression {
+            execute(context: string | RulesType): string {
+                let str = "";
+                for (let i = 0; i < strings.length; i++) {
+                    str += strings[i] + (expr[i] || "");
+                }
+                return str;
+            }
+        }
     }
 
 }

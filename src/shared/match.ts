@@ -30,7 +30,6 @@ export function match<C extends {new(...args:any[]): {}}>(path: string) {
 
                     if (propertyValue instanceof RulesType) {
                         (propertyValue as any as InternalRulesType).__rulesAccessorName = propertyName;
-                        (propertyValue as any as InternalRulesType).__rulesAccessorContext = "resource.data";
                     }
 
                 }

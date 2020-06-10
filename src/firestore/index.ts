@@ -10,4 +10,4 @@ export {match} from "../shared/match";
 export {allow} from "../shared/allow";
 export {func} from "../shared/func";
 export {Expression} from "../shared/Expression";
-
+export {or} from "../shared/or";
