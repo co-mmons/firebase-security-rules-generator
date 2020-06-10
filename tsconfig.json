@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["dom", "es2015", "ES7"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2015",
+        "outDir": "dist",
+        "rootDir": "./",
+        "baseUrl": "./",
+        "paths": {
+            "@co.mmons/firebase-security-rules": ["src"],
+            "@co.mmons/firebase-security-rules/*": ["src/*"],
+            "@co.mmons/firestore-security-rules": ["src/firestore"],
+            "@co.mmons/firestore-security-rules/*": ["src/firestore/*"]
+        },
+        "sourceMap": true,
+        "importHelpers": true
+    },
+
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}
