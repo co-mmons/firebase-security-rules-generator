@@ -1,4 +1,6 @@
 export {allow} from "../core/allow";
+export {and} from "../core/and";
+export {auth} from "./RulesRequestAuth";
 export {equals} from "../core/equals";
 export {firestore} from "./firestore";
 export {func} from "../core/func";

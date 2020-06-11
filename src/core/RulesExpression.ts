@@ -1,5 +1,5 @@
+import {InternalRulesValue} from "firebase-security-rules-generator/internal";
 import {StringWriter} from "../utils";
-import {RulesValue} from "./RulesValue";
 
 export class RulesExpression {
 
@@ -23,8 +23,8 @@ export class RulesExpression {
         } else if (expression instanceof RulesExpression) {
             return expression.write(writer);
 
-        } else if (expression instanceof RulesValue) {
-            return writer.write(expression.toString());
+        } else if ((expression as any as InternalRulesValue).__rulesValue ) {
+            return this.writeImpl(writer, (expression as any as InternalRulesValue).__rulesValueAsExpression());
 
         } else if (typeof expression === "string") {
             return writer.write(`"${expression}"`);

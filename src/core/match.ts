@@ -23,12 +23,12 @@ export function match<C extends {new(...args:any[]): {}}>(path: string) {
                     }
 
                     if ((propertyValue as InternalRulesPathVar).__rulesPathVar) {
-                        if (!(propertyValue as InternalRulesPathVar).__rulesPathVarName) {
-                            (thiz[propertyName] as InternalRulesPathVar).__rulesPathVarName = propertyName;
-                        }
-                    }
 
-                    if (propertyValue instanceof RulesValue) {
+                        if (!(propertyValue as InternalRulesValue).__rulesAccessorName) {
+                            (thiz[propertyName] as InternalRulesValue).__rulesAccessorName = propertyName;
+                        }
+
+                    } else if (propertyValue instanceof RulesValue) {
                         (propertyValue as any as InternalRulesValue).__rulesAccessorName = propertyName;
                         (propertyValue as any as InternalRulesValue).__rulesAccessorContext = "resource.data";
                     }

@@ -1,3 +1,4 @@
+import {RulesExpression} from "firebase-security-rules-generator/core/RulesExpression";
 import {RulesRequest as $Request} from "../core/RulesRequest";
 import {RulesValue} from "../core/RulesValue";
 import {InternalRulesValue} from "../internal";
@@ -22,7 +23,7 @@ export class RulesRequest<D extends RulesMap<D>> extends RulesValue implements $
         this.auth = new RulesRequestAuth();
 
         (this as any as InternalRulesValue).__rulesInitProperties();
-        this.toString = () => "request";
+        (this as any as InternalRulesValue).__rulesExpression = RulesExpression.l`request`;
     }
 
     readonly resource: RulesResource<D>;
