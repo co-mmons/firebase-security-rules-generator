@@ -4,6 +4,7 @@
         "declaration": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "pretty": true,
         "lib": ["dom", "es2015", "ES7"],
         "module": "commonjs",
         "moduleResolution": "node",
@@ -11,16 +12,13 @@
         "outDir": "dist",
         "rootDir": "./",
         "baseUrl": "./",
-        "paths": {
-            "firebase-security-rules-generator": ["src"],
-            "firebase-security-rules-generator/*": ["src/*"]
-        },
         "sourceMap": true,
         "importHelpers": true
     },
 
     "exclude": [
         "dist",
-        "node_modules"
+        "node_modules",
+        "test"
     ]
 }

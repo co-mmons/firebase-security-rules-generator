@@ -2,7 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesString = void 0;
 const RulesString_1 = require("../core/RulesString");
-class RulesString extends RulesString_1.RulesString {
+const RulesValue_1 = require("./RulesValue");
+class RulesString extends RulesValue_1.RulesValue {
+    concat(otherString) {
+        return new RulesString(RulesString_1.concatExpression(this, otherString));
+    }
+    substring(start, end) {
+        return new RulesString(RulesString_1.substringExpression(this, start, end));
+    }
 }
 exports.RulesString = RulesString;
 //# sourceMappingURL=RulesString.js.map

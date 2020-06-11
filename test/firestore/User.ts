@@ -15,7 +15,7 @@ export class User extends RulesMap<User> {
     @allow("read", "write")
     allowUser() {
         return and(
-            equals(this.$id, auth().uid),
+            this.$id.equals(auth().uid),
             this.testIfSuperuser(this.id.concat("argh"))
         )
     }

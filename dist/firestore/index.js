@@ -2,7 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var allow_1 = require("../core/allow");
 Object.defineProperty(exports, "allow", { enumerable: true, get: function () { return allow_1.allow; } });
-var equals_1 = require("../core/equals");
+var and_1 = require("../core/and");
+Object.defineProperty(exports, "and", { enumerable: true, get: function () { return and_1.and; } });
+var RulesRequestAuth_1 = require("./RulesRequestAuth");
+Object.defineProperty(exports, "auth", { enumerable: true, get: function () { return RulesRequestAuth_1.auth; } });
+var equals_1 = require("./equals");
 Object.defineProperty(exports, "equals", { enumerable: true, get: function () { return equals_1.equals; } });
 var firestore_1 = require("./firestore");
 Object.defineProperty(exports, "firestore", { enumerable: true, get: function () { return firestore_1.firestore; } });
@@ -22,4 +26,6 @@ var RulesResource_1 = require("./RulesResource");
 Object.defineProperty(exports, "RulesResource", { enumerable: true, get: function () { return RulesResource_1.RulesResource; } });
 var RulesString_1 = require("./RulesString");
 Object.defineProperty(exports, "RulesString", { enumerable: true, get: function () { return RulesString_1.RulesString; } });
+var RulesBoolean_1 = require("./RulesBoolean");
+Object.defineProperty(exports, "RulesBoolean", { enumerable: true, get: function () { return RulesBoolean_1.RulesBoolean; } });
 //# sourceMappingURL=index.js.map

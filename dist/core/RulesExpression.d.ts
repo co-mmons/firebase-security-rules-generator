@@ -2,7 +2,7 @@ import { StringWriter } from "../utils";
 export declare class RulesExpression {
     constructor(...expression: any[]);
     protected expression: any[];
-    protected writeImpl(writer: StringWriter, expression: any): void | StringWriter;
+    protected writeImpl(writer: StringWriter, expression: any): any;
     write(writer: StringWriter): void;
 }
 export declare namespace RulesExpression {

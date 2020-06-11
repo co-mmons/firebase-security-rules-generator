@@ -1,3 +1,4 @@
+import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "../core/RulesValue";
 import { RulesRequestAuth } from "./RulesRequestAuth";
 import { RulesResource } from "./RulesResource";
@@ -13,7 +14,7 @@ export class RulesRequest extends RulesValue {
         // @ts-ignore
         this.auth = new RulesRequestAuth();
         this.__rulesInitProperties();
-        this.toString = () => "request";
+        this.__rulesExpression = RulesExpression.l `request`;
     }
 }
 //# sourceMappingURL=RulesRequest.js.map

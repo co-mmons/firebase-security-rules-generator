@@ -1,5 +1,7 @@
 export { allow } from "../core/allow";
-export { equals } from "../core/equals";
+export { and } from "../core/and";
+export { auth } from "./RulesRequestAuth";
+export { equals } from "./equals";
 export { firestore } from "./firestore";
 export { func } from "../core/func";
 export { match } from "../core/match";
@@ -9,3 +11,4 @@ export { RulesMap } from "./RulesMap";
 export { RulesPathVar } from "./RulesPathVar";
 export { RulesResource } from "./RulesResource";
 export { RulesString } from "./RulesString";
+export { RulesBoolean } from "./RulesBoolean";

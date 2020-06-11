@@ -1,0 +1,1 @@
+{"version":3,"file":"equals.js","sourceRoot":"","sources":["../../../src/firestore/equals.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,YAAY,EAAC,MAAM,gBAAgB,CAAC;AAC5C,OAAO,EAAC,MAAM,IAAI,OAAO,EAAC,MAAM,gBAAgB,CAAC;AAEjD,MAAM,UAAU,MAAM,CAAC,IAAS,EAAE,KAAU;IACxC,OAAO,IAAI,YAAY,CAAC,OAAO,CAAC,IAAI,EAAE,KAAK,CAAC,CAAC,CAAC;AAClD,CAAC"}

@@ -1,4 +1,4 @@
-import {RulesExpression} from "firebase-security-rules-generator/core/RulesExpression";
+import {RulesExpression} from "../core/RulesExpression";
 import {RulesRequest as $Request} from "../core/RulesRequest";
 import {RulesValue} from "../core/RulesValue";
 import {InternalRulesValue} from "../internal";

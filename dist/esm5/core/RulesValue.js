@@ -1,17 +1,24 @@
+import { __makeTemplateObject } from "tslib";
+import { RulesExpression } from "./RulesExpression";
 var RulesValue = /** @class */ (function () {
-    function RulesValue() {
-        var _this = this;
-        this.toString = function () { return "" + _this.__rulesAccessContextAsString() + _this.__rulesAccessorName; };
+    function RulesValue(expression) {
+        this.__rulesValue = true;
+        if (expression) {
+            this.__rulesExpression = expression;
+        }
     }
-    RulesValue.prototype.__rulesAccessContextAsString = function () {
-        if (typeof this.__rulesAccessorContext === "string") {
-            return this.__rulesAccessorContext + ".";
+    RulesValue.prototype.__rulesValueAsExpression = function () {
+        if (this.__rulesExpression) {
+            return this.__rulesExpression;
+        }
+        else if (typeof this.__rulesAccessorContext === "string") {
+            return RulesExpression.l(templateObject_1 || (templateObject_1 = __makeTemplateObject(["", ".", ""], ["", ".", ""])), this.__rulesAccessorContext, this.__rulesAccessorName);
         }
         else if (this.__rulesAccessorContext) {
-            return this.__rulesAccessorContext.toString() + ".";
+            return new RulesExpression(this.__rulesAccessorContext, RulesExpression.l(templateObject_2 || (templateObject_2 = __makeTemplateObject([".", ""], [".", ""])), this.__rulesAccessorName));
         }
         else {
-            return "";
+            return new RulesExpression(RulesExpression.l(templateObject_3 || (templateObject_3 = __makeTemplateObject(["", ""], ["", ""])), this.__rulesAccessorName));
         }
     };
     RulesValue.prototype.__rulesInitProperties = function () {
@@ -32,4 +39,5 @@ var RulesValue = /** @class */ (function () {
     return RulesValue;
 }());
 export { RulesValue };
+var templateObject_1, templateObject_2, templateObject_3;
 //# sourceMappingURL=RulesValue.js.map

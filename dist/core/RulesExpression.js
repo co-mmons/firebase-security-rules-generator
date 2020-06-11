@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesExpression = void 0;
 var tslib_1 = require("tslib");
-var RulesValue_1 = require("./RulesValue");
 var RulesExpression = /** @class */ (function () {
     function RulesExpression() {
         var expression = [];
@@ -24,8 +23,8 @@ var RulesExpression = /** @class */ (function () {
         else if (expression instanceof RulesExpression) {
             return expression.write(writer);
         }
-        else if (expression instanceof RulesValue_1.RulesValue) {
-            return writer.write(expression.toString());
+        else if (expression.__rulesValue) {
+            return this.writeImpl(writer, expression.__rulesValueAsExpression());
         }
         else if (typeof expression === "string") {
             return writer.write("\"" + expression + "\"");

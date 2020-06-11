@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesRequest = exports.request = void 0;
+const RulesExpression_1 = require("../core/RulesExpression");
 const RulesValue_1 = require("../core/RulesValue");
 const RulesRequestAuth_1 = require("./RulesRequestAuth");
 const RulesResource_1 = require("./RulesResource");
@@ -17,7 +18,7 @@ class RulesRequest extends RulesValue_1.RulesValue {
         // @ts-ignore
         this.auth = new RulesRequestAuth_1.RulesRequestAuth();
         this.__rulesInitProperties();
-        this.toString = () => "request";
+        this.__rulesExpression = RulesExpression_1.RulesExpression.l `request`;
     }
 }
 exports.RulesRequest = RulesRequest;

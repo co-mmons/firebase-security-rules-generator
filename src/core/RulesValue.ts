@@ -1,3 +1,4 @@
+import {equals} from "../core/equals";
 import {InternalRulesValue} from "../internal";
 import {RulesExpression} from "./RulesExpression";
 

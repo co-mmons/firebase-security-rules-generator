@@ -1,4 +1,4 @@
-import {InternalRulesValue} from "firebase-security-rules-generator/internal";
+import {InternalRulesValue} from "../internal";
 import {StringWriter} from "../utils";
 
 export class RulesExpression {

@@ -1,16 +1,23 @@
+import { RulesExpression } from "./RulesExpression";
 export class RulesValue {
-    constructor() {
-        this.toString = () => `${this.__rulesAccessContextAsString()}${this.__rulesAccessorName}`;
+    constructor(expression) {
+        this.__rulesValue = true;
+        if (expression) {
+            this.__rulesExpression = expression;
+        }
     }
-    __rulesAccessContextAsString() {
-        if (typeof this.__rulesAccessorContext === "string") {
-            return this.__rulesAccessorContext + ".";
+    __rulesValueAsExpression() {
+        if (this.__rulesExpression) {
+            return this.__rulesExpression;
+        }
+        else if (typeof this.__rulesAccessorContext === "string") {
+            return RulesExpression.l `${this.__rulesAccessorContext}.${this.__rulesAccessorName}`;
         }
         else if (this.__rulesAccessorContext) {
-            return this.__rulesAccessorContext.toString() + ".";
+            return new RulesExpression(this.__rulesAccessorContext, RulesExpression.l `.${this.__rulesAccessorName}`);
         }
         else {
-            return "";
+            return new RulesExpression(RulesExpression.l `${this.__rulesAccessorName}`);
         }
     }
     __rulesInitProperties() {

@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesExpression = void 0;
-const RulesValue_1 = require("./RulesValue");
 class RulesExpression {
     constructor(...expression) {
         this.expression = expression;
@@ -18,8 +17,8 @@ class RulesExpression {
         else if (expression instanceof RulesExpression) {
             return expression.write(writer);
         }
-        else if (expression instanceof RulesValue_1.RulesValue) {
-            return writer.write(expression.toString());
+        else if (expression.__rulesValue) {
+            return this.writeImpl(writer, expression.__rulesValueAsExpression());
         }
         else if (typeof expression === "string") {
             return writer.write(`"${expression}"`);

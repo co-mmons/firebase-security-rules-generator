@@ -2,14 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.func = void 0;
 require("reflect-metadata");
-const RulesValue_1 = require("./RulesValue");
 const RulesExpression_1 = require("./RulesExpression");
+const RulesValue_1 = require("./RulesValue");
 function func() {
     return function (targetClass, functionName, descriptor) {
         const classConstructor = targetClass.constructor;
         const originalFunction = descriptor.value;
         const argsTypes = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
-        const args = argsTypes.map(arg => new arg());
         const argsNames = originalFunction.toString()
             .match(/\(\s*([^)]+?)\s*\)/)
             .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
@@ -21,7 +20,10 @@ function func() {
                     expression.push(RulesExpression_1.RulesExpression.l `, `);
                 }
                 if (arguments[i] instanceof RulesValue_1.RulesValue) {
-                    expression.push(RulesExpression_1.RulesExpression.l `${arguments[i]}`);
+                    expression.push(arguments[i].__rulesValueAsExpression());
+                }
+                else if (arguments[i] instanceof RulesExpression_1.RulesExpression) {
+                    expression.push(arguments[i]);
                 }
                 else if (arguments[i] === null || arguments[i] === undefined) {
                     expression.push(RulesExpression_1.RulesExpression.l `null`);
@@ -32,6 +34,7 @@ function func() {
             }
             return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${functionName}(`, expression, RulesExpression_1.RulesExpression.l `)`);
         };
+        const bodyArgs = argsTypes.map(arg => new arg());
         function body() {
             const args = [];
             for (let i = 0; i < arguments.length; i++) {
@@ -53,7 +56,7 @@ function func() {
         classConstructor.__rulesMatchFunctions.push({
             name: functionName,
             args: argsNames,
-            body: (thiz) => new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `return `, body.apply(thiz, args))
+            body: (thiz) => new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `return `, body.apply(thiz, bodyArgs))
         });
     };
 }

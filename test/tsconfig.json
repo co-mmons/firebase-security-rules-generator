@@ -1,0 +1,15 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "firebase-security-rules-generator": ["src"],
+            "firebase-security-rules-generator/*": ["src/*"]
+        },
+        "sourceMap": true,
+        "importHelpers": true
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}

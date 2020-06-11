@@ -1,5 +1,4 @@
 import { __extends } from "tslib";
-import { RulesValue } from "./RulesValue";
 var RulesExpression = /** @class */ (function () {
     function RulesExpression() {
         var expression = [];
@@ -21,8 +20,8 @@ var RulesExpression = /** @class */ (function () {
         else if (expression instanceof RulesExpression) {
             return expression.write(writer);
         }
-        else if (expression instanceof RulesValue) {
-            return writer.write(expression.toString());
+        else if (expression.__rulesValue) {
+            return this.writeImpl(writer, expression.__rulesValueAsExpression());
         }
         else if (typeof expression === "string") {
             return writer.write("\"" + expression + "\"");

@@ -1,4 +1,5 @@
 import { RulesMap as $Map } from "../core/RulesMap";
-export declare class RulesMap<D> extends $Map {
-    constructor(value?: D);
+export declare class RulesMap<D = {
+    [key: string]: any;
+}> extends $Map {
 }

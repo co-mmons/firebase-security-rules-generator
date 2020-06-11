@@ -1,5 +1,3 @@
-require("tsconfig-paths/register");
-
 import {firestore} from "firebase-security-rules-generator/firestore";
 import {Admin} from "./Admin";
 import {User} from "./User";

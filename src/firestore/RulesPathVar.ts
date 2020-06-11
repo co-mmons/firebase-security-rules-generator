@@ -1,3 +1,4 @@
+import {RulesExpression} from "../core/RulesExpression";
 import {InternalRulesPathVar, InternalRulesValue} from "../internal";
 import {RulesString} from "./RulesString";
 
@@ -12,7 +13,7 @@ export class RulesPathVar extends RulesString {
             (this as any as InternalRulesValue).__rulesAccessorName = varName;
         }
 
-        this.toString = () => (this as any as InternalRulesValue).__rulesAccessorName;
+        (this as any as InternalRulesValue).__rulesValueAsExpression = () => RulesExpression.l`${(this as any as InternalRulesValue).__rulesAccessorName}`;
     }
 
 }

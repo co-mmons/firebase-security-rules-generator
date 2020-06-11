@@ -1,19 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesValue = void 0;
+const RulesExpression_1 = require("./RulesExpression");
 class RulesValue {
-    constructor() {
-        this.toString = () => `${this.__rulesAccessContextAsString()}${this.__rulesAccessorName}`;
+    constructor(expression) {
+        this.__rulesValue = true;
+        if (expression) {
+            this.__rulesExpression = expression;
+        }
     }
-    __rulesAccessContextAsString() {
-        if (typeof this.__rulesAccessorContext === "string") {
-            return this.__rulesAccessorContext + ".";
+    __rulesValueAsExpression() {
+        if (this.__rulesExpression) {
+            return this.__rulesExpression;
+        }
+        else if (typeof this.__rulesAccessorContext === "string") {
+            return RulesExpression_1.RulesExpression.l `${this.__rulesAccessorContext}.${this.__rulesAccessorName}`;
         }
         else if (this.__rulesAccessorContext) {
-            return this.__rulesAccessorContext.toString() + ".";
+            return new RulesExpression_1.RulesExpression(this.__rulesAccessorContext, RulesExpression_1.RulesExpression.l `.${this.__rulesAccessorName}`);
         }
         else {
-            return "";
+            return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${this.__rulesAccessorName}`);
         }
     }
     __rulesInitProperties() {

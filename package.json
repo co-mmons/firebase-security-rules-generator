@@ -9,7 +9,8 @@
     "build:esm5": "tsc -p tsconfig.build.json -d false -m es2015 -t es5 --outDir dist/esm5",
     "build:es2015": "tsc -p tsconfig.build.json -d false -m commonjs -t es2015 --outDir dist/es2015",
     "build:esm2015": "tsc -p tsconfig.build.json -d false -m es2015 -t es2015 --outDir dist/esm2015",
-    "test:firestore": "npx ts-node test/firestore/test.ts"
+    "test:firestore": "ts-node -P test/tsconfig.json -r tsconfig-paths/register test/firestore/test.ts",
+    "test": "npm run test:firestore"
   },
   "peerDependencies": {
     "tslib": "^2.0.0"

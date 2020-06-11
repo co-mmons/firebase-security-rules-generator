@@ -1,4 +1,4 @@
-import { RulesString } from "./RulesString";
+import { RulesString } from "./RulesString/RulesString";
 export interface RulesRequestAuth {
     readonly uid: RulesString;
 }

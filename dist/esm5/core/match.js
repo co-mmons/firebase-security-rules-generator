@@ -19,11 +19,11 @@ export function match(path) {
                         continue;
                     }
                     if (propertyValue.__rulesPathVar) {
-                        if (!propertyValue.__rulesPathVarName) {
-                            thiz[propertyName].__rulesPathVarName = propertyName;
+                        if (!propertyValue.__rulesAccessorName) {
+                            thiz[propertyName].__rulesAccessorName = propertyName;
                         }
                     }
-                    if (propertyValue instanceof RulesValue) {
+                    else if (propertyValue instanceof RulesValue) {
                         propertyValue.__rulesAccessorName = propertyName;
                         propertyValue.__rulesAccessorContext = "resource.data";
                     }

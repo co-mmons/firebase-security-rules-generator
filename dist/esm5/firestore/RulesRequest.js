@@ -1,4 +1,5 @@
-import { __extends } from "tslib";
+import { __extends, __makeTemplateObject } from "tslib";
+import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "../core/RulesValue";
 import { RulesRequestAuth } from "./RulesRequestAuth";
 import { RulesResource } from "./RulesResource";
@@ -15,10 +16,11 @@ var RulesRequest = /** @class */ (function (_super) {
         // @ts-ignore
         _this.auth = new RulesRequestAuth();
         _this.__rulesInitProperties();
-        _this.toString = function () { return "request"; };
+        _this.__rulesExpression = RulesExpression.l(templateObject_1 || (templateObject_1 = __makeTemplateObject(["request"], ["request"])));
         return _this;
     }
     return RulesRequest;
 }(RulesValue));
 export { RulesRequest };
+var templateObject_1;
 //# sourceMappingURL=RulesRequest.js.map
