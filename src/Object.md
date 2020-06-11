@@ -1,2 +1,0 @@
-- Obiekt to reprezentuje zasób
-- Obiekt moze byc inicjowany do kontroli dostępu ale również jako RulesMap

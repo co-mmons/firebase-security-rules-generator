@@ -1,6 +1,6 @@
-import {RulesMap as $RulesMap} from "../shared/RulesMap";
+import {RulesMap as $Map} from "../core/RulesMap";
 
-export class RulesMap<D> extends $RulesMap {
+export class RulesMap<D> extends $Map {
 
     constructor(value?: D) {
         super();

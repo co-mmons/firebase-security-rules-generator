@@ -1,5 +1,5 @@
-import {RulesString as $RulesString} from "../shared/RulesString";
+import {RulesString as $Str} from "../core/RulesString";
 
-export class RulesString extends $RulesString {
+export class RulesString extends $Str {
 
 }

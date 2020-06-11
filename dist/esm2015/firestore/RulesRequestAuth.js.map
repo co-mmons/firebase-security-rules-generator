@@ -1,0 +1,1 @@
+{"version":3,"file":"RulesRequestAuth.js","sourceRoot":"","sources":["../../../src/firestore/RulesRequestAuth.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,UAAU,EAAC,MAAM,oBAAoB,CAAC;AAC9C,OAAO,EAAC,WAAW,EAAC,MAAM,eAAe,CAAC;AAE1C,MAAM,OAAO,gBAAiB,SAAQ,UAAU;IAE5C;QACI,KAAK,EAAE,CAAC;QAIZ,QAAG,GAAG,IAAI,WAAW,CAAC;QAHlB,IAAI,CAAC,QAAQ,GAAG,GAAG,EAAE,CAAC,cAAc,CAAC;IACzC,CAAC;CAGJ"}

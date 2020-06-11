@@ -1,0 +1,1 @@
+{"version":3,"file":"RulesResource.js","sourceRoot":"","sources":["../../../src/firestore/RulesResource.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,UAAU,EAAC,MAAM,oBAAoB,CAAC;AAG9C,MAAM,OAAO,aAAqC,SAAQ,UAAU;IAEhE,YAAoC,IAAO;QACvC,KAAK,EAAE,CAAC;QADwB,SAAI,GAAJ,IAAI,CAAG;IAE3C,CAAC;CACJ"}

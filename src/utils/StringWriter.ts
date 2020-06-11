@@ -10,7 +10,13 @@ export class StringWriter {
     write(...values: string[]): this {
 
         for (const value of values) {
-            this.content += (value ? value : "");
+            const lines = (value ? value : "").split("\n");
+            for (let i = 0; i < lines.length; i++) {
+                if (i > 0) {
+                    this.line();
+                }
+                this.content += lines[i] || "";
+            }
         }
 
         return this;
@@ -18,7 +24,7 @@ export class StringWriter {
 
     line(lineCount: number = 1): this {
         for (let i = 1; i <= lineCount; i++) {
-            this.write("\n");
+            this.content += "\n";
         }
 
         for (let i = 1; i <= this.indentLevel; i++) {

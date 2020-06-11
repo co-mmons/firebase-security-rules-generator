@@ -12,10 +12,8 @@
         "rootDir": "./",
         "baseUrl": "./",
         "paths": {
-            "@co.mmons/firebase-security-rules": ["src"],
-            "@co.mmons/firebase-security-rules/*": ["src/*"],
-            "@co.mmons/firestore-security-rules": ["src/firestore"],
-            "@co.mmons/firestore-security-rules/*": ["src/firestore/*"]
+            "firebase-security-rules-generator": ["src"],
+            "firebase-security-rules-generator/*": ["src/*"]
         },
         "sourceMap": true,
         "importHelpers": true
