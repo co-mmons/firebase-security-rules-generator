@@ -11,4 +11,4 @@ console.log(firestore(
     Admin
 ).toString());
 
-console.log("\x1b[32mFinished in ", `${Date.now() - start}ms`);
+console.log("\x1b[32mFinished in", `${Date.now() - start}ms`);

@@ -4,12 +4,12 @@
   "author": "co.mmons",
   "private": false,
   "scripts": {
-    "build": "node-utils-file-system-glob-delete \"dist/**/*\" && npm run build:es5 && npm run build:esm5 && npm run build:es2015 && npm run build:esm2015 && node-utils-file-system-glob-copy src dist \"**/package.json\"",
+    "build": "node-utils-file-system-glob-delete \"dist/**/*\" && npm run build:es5 && npm run build:esm5 && npm run build:es2015 && npm run build:esm2015",
     "build:es5": "tsc -p tsconfig.build.json -m commonjs -t es5 --outDir dist",
     "build:esm5": "tsc -p tsconfig.build.json -d false -m es2015 -t es5 --outDir dist/esm5",
     "build:es2015": "tsc -p tsconfig.build.json -d false -m commonjs -t es2015 --outDir dist/es2015",
     "build:esm2015": "tsc -p tsconfig.build.json -d false -m es2015 -t es2015 --outDir dist/esm2015",
-    "test:firestore": "ts-node -p test/tsconfig.json test/firestore/test.ts"
+    "test:firestore": "npx ts-node test/firestore/test.ts"
   },
   "peerDependencies": {
     "tslib": "^2.0.0"
