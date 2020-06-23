@@ -5,6 +5,8 @@ import {InternalRulesValue} from "../internal";
 import {RulesMap} from "./RulesMap";
 import {RulesRequestAuth} from "./RulesRequestAuth";
 import {RulesResource} from "./RulesResource";
+import {RulesString} from "./RulesString";
+import {RulesTimestamp} from "./RulesTimestamp";
 
 export function request<D extends RulesMap>(resourceData?: D): RulesRequest & {resource: {data: D}} {
     // @ts-ignore
@@ -13,6 +15,8 @@ export function request<D extends RulesMap>(resourceData?: D): RulesRequest & {r
 
 export interface RulesRequest extends $Request {
     readonly resource: RulesResource;
+    readonly method: RulesString;
+    readonly time: RulesTimestamp;
 }
 
 class RulesRequestImpl extends RulesValue implements RulesRequest {
@@ -22,15 +26,27 @@ class RulesRequestImpl extends RulesValue implements RulesRequest {
 
         this.resource = new RulesResource(data);
 
-        // @ts-ignore
-        this.auth = new RulesRequestAuth();
-
         (this as any as InternalRulesValue).__rulesInitProperties();
         (this as any as InternalRulesValue).__rulesExpression = RulesExpression.l`request`;
     }
 
     readonly resource: RulesResource;
 
-    readonly auth: RulesRequestAuth;
+    // @ts-ignore
+    readonly auth = new RulesRequestAuth;
+
+    readonly time = new RulesTimestamp;
+
+    /**
+     * The request method. One of:
+     * - get
+     * - list
+     * - create
+     * - update
+     * - delete
+     *
+     * @see https://firebase.google.com/docs/reference/rules/rules.firestore.Request#method
+     */
+    readonly method = new RulesString;
 
 }

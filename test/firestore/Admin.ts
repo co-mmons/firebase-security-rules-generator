@@ -1,4 +1,4 @@
-import {allow, equals, func, getData, match, or, request, RulesMap, RulesString} from "firebase-security-rules-generator/firestore";
+import {allow, equals, func, get, getData, match, or, request, RulesMap, RulesResource, RulesString} from "firebase-security-rules-generator/firestore";
 import {User} from "./User";
 
 @match("admins/{$id}")
@@ -8,13 +8,28 @@ export class Admin extends RulesMap {
     customerId = new RulesString;
 
     @func()
-    passResource(user: User) {
-        return user.isNotNull();
+    passResource(user: RulesResource) {
+        return user.dataAs(User).id;
     }
 
     @func()
     getResource() {
-        return this.passResource(getData("users", User));
+        return this.passResource(get("users"));
+    }
+
+    @func()
+    passResourceData(user: User) {
+        return user.get("test");
+    }
+
+    @func()
+    getResourceData() {
+        return this.passResourceData(getData("users", User));
+    }
+
+    @func()
+    getResourceTimestamp() {
+        return request(this).time.date();
     }
 
     @func()

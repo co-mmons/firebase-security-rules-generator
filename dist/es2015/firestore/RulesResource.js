@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesResource = void 0;
+const RulesExpression_1 = require("../core/RulesExpression");
 const RulesValue_1 = require("../core/RulesValue");
 const RulesMap_1 = require("./RulesMap");
 const RulesPath_1 = require("./RulesPath");
@@ -11,6 +12,11 @@ class RulesResource extends RulesValue_1.RulesValue {
         this.data = data;
         this.id = new RulesString_1.RulesString;
         this.__name__ = new RulesPath_1.RulesPath;
+    }
+    dataAs(dataType) {
+        const data = new dataType();
+        data.__rulesExpression = new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l `.data`);
+        return data;
     }
 }
 exports.RulesResource = RulesResource;

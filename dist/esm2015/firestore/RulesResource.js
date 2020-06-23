@@ -1,3 +1,4 @@
+import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "../core/RulesValue";
 import { RulesMap } from "./RulesMap";
 import { RulesPath } from "./RulesPath";
@@ -8,6 +9,11 @@ export class RulesResource extends RulesValue {
         this.data = data;
         this.id = new RulesString;
         this.__name__ = new RulesPath;
+    }
+    dataAs(dataType) {
+        const data = new dataType();
+        data.__rulesExpression = new RulesExpression(this, RulesExpression.l `.data`);
+        return data;
     }
 }
 //# sourceMappingURL=RulesResource.js.map

@@ -1,4 +1,5 @@
-import { __extends } from "tslib";
+import { __extends, __makeTemplateObject } from "tslib";
+import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "../core/RulesValue";
 import { RulesMap } from "./RulesMap";
 import { RulesPath } from "./RulesPath";
@@ -13,7 +14,13 @@ var RulesResource = /** @class */ (function (_super) {
         _this.__name__ = new RulesPath;
         return _this;
     }
+    RulesResource.prototype.dataAs = function (dataType) {
+        var data = new dataType();
+        data.__rulesExpression = new RulesExpression(this, RulesExpression.l(templateObject_1 || (templateObject_1 = __makeTemplateObject([".data"], [".data"]))));
+        return data;
+    };
     return RulesResource;
 }(RulesValue));
 export { RulesResource };
+var templateObject_1;
 //# sourceMappingURL=RulesResource.js.map

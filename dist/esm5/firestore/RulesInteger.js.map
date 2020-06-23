@@ -1,1 +1,1 @@
-{"version":3,"file":"RulesInteger.js","sourceRoot":"","sources":["../../../src/firestore/RulesInteger.ts"],"names":[],"mappings":";AAAA,OAAO,EAAC,UAAU,EAAC,MAAM,cAAc,CAAC;AAExC;IAAkC,gCAAU;IAA5C;;IAEA,CAAC;IAAD,mBAAC;AAAD,CAAC,AAFD,CAAkC,UAAU,GAE3C"}
+{"version":3,"file":"RulesInteger.js","sourceRoot":"","sources":["../../../src/firestore/RulesInteger.ts"],"names":[],"mappings":";AAAA,OAAO,EAAC,UAAU,EAAC,MAAM,cAAc,CAAC;AAGxC;IAAkC,gCAAU;IAA5C;;IAEA,CAAC;IAAD,mBAAC;AAAD,CAAC,AAFD,CAAkC,UAAU,GAE3C"}
