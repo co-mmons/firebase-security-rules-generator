@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesService = void 0;
 const utils_1 = require("../utils");
+const RulesExpression_1 = require("./RulesExpression");
 class RulesService {
     constructor(name, version, blocksAndDeclarations) {
         this.name = name;
@@ -24,7 +25,7 @@ class RulesService {
     }
     writeAllow(writer, allow, matchConstructor, matchInstance) {
         writer.writeLine("allow ", allow.operations.join(", "), ": if ");
-        allow.body(matchInstance).write(writer);
+        this.toExpression(allow.body(matchInstance)).write(writer);
         writer.write(";");
         writer.writeLine();
     }
@@ -39,14 +40,28 @@ class RulesService {
         writer.write(") {");
         writer.indentUp();
         writer.line();
-        func.body(matchInstance).write(writer);
+        this.toExpression(func.body(matchInstance)).write(writer);
         writer.indentDown();
         writer.writeLine("}");
         writer.writeLine();
     }
+    toExpression(value) {
+        if (value instanceof RulesExpression_1.RulesExpression) {
+            return value;
+        }
+        else {
+            return new RulesExpression_1.RulesExpression(value);
+        }
+    }
+    writeServiceStart(writer) {
+    }
+    writeServiceEnd(writer) {
+    }
     toString() {
         const writer = new utils_1.StringWriter();
+        writer.write("rules_version = '2';").line();
         writer.write(`service ${this.name} {`);
+        this.writeServiceStart(writer);
         for (const blockOrDeclaration of this.blocksAndDeclarations || []) {
             if (blockOrDeclaration.__rulesMatchPath && typeof blockOrDeclaration === "function") {
                 writer.line();
@@ -54,7 +69,14 @@ class RulesService {
                 this.writeMatch(writer, blockOrDeclaration);
                 writer.indentDown();
             }
+            else if (blockOrDeclaration instanceof RulesExpression_1.RulesExpression) {
+                writer.indentUp();
+                writer.line();
+                blockOrDeclaration.write(writer);
+                writer.indentDown();
+            }
         }
+        this.writeServiceEnd(writer);
         writer.writeLine("}");
         return writer.toString();
     }

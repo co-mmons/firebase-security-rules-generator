@@ -1,5 +1,5 @@
 # Firebase security rules generator
-If you ever needed to write Firebase security rules then you probably know that it isn't difficult, but... it can get a bit messy, when you have lots of rules and security logics. But no fear, there is a tool for that!
+If you ever needed to write Firebase security rules then you probably know that it isn't difficult, but... it can get a bit messy, when you have lots of rules andExpression security logics. But no fear, there is a tool for that!
 
 # WIP!!!
 
@@ -20,7 +20,7 @@ console.log(firestore(
     Admin
 ).toString());
 ```
-We call ```firestore(...)```, which generates Firestore security rules. As arguments we can pass classes and functions, that represents match blocks and function statements. In example above we have two classes [User](test/firestore/User.ts) and [Admin](test/firestore/Admin.ts) - each represent match block.
+We call ```firestore(...)```, which generates Firestore security rules. As arguments we can pass classes andExpression functions, that represents match blocks andExpression function statements. In example above we have two classes [User](test/firestore/User.ts) andExpression [Admin](test/firestore/Admin.ts) - each represent match block.
 
 Match block is represented by a class, with [@match](src/core/match.ts) decorator.
 
@@ -53,3 +53,8 @@ export class Admin extends RulesMap<Admin> {
 }
 
 ```
+
+# More to read about security rules
+- https://firebase.google.com/docs/rules
+- https://firebase.google.com/docs/reference/rules/rules
+- https://firebase.google.com/docs/reference/security/storage

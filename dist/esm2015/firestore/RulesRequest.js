@@ -4,12 +4,11 @@ import { RulesRequestAuth } from "./RulesRequestAuth";
 import { RulesResource } from "./RulesResource";
 export function request(resourceData) {
     // @ts-ignore
-    return new RulesRequest(resourceData.__rulesClone());
+    return new RulesRequestImpl(resourceData.__rulesClone());
 }
-export class RulesRequest extends RulesValue {
+class RulesRequestImpl extends RulesValue {
     constructor(data) {
         super();
-        // @ts-ignore
         this.resource = new RulesResource(data);
         // @ts-ignore
         this.auth = new RulesRequestAuth();

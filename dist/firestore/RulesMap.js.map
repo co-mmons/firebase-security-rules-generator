@@ -1,1 +1,1 @@
-{"version":3,"file":"RulesMap.js","sourceRoot":"","sources":["../../src/firestore/RulesMap.ts"],"names":[],"mappings":";;;;AAAA,6CAAkD;AAElD;IAAwD,oCAAI;IAA5D;;IACA,CAAC;IAAD,eAAC;AAAD,CAAC,AADD,CAAwD,mBAAI,GAC3D;AADY,4BAAQ"}
+{"version":3,"file":"RulesMap.js","sourceRoot":"","sources":["../../src/firestore/RulesMap.ts"],"names":[],"mappings":";;;;AAEA,2CAAwC;AAExC;;;;GAIG;AACH;IAA8B,oCAAU;IAAxC;;IAMA,CAAC;IAJG,sBAAG,GAAH,UAAI,GAAyB,EAAE,YAAqD;IAEpF,CAAC;IAEL,eAAC;AAAD,CAAC,AAND,CAA8B,uBAAU,GAMvC;AANY,4BAAQ"}

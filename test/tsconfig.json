@@ -1,6 +1,7 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
+        "outDir": "dist-test",
         "paths": {
             "firebase-security-rules-generator": ["src"],
             "firebase-security-rules-generator/*": ["src/*"]

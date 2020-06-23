@@ -10,8 +10,7 @@ function func() {
         var classConstructor = targetClass.constructor;
         var originalFunction = descriptor.value;
         var argsTypes = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
-        var argsNames = originalFunction.toString()
-            .match(/\(\s*([^)]+?)\s*\)/)
+        var argsNames = (originalFunction.toString().match("^" + functionName + "\\(\\s*([^)]+?)\\s*\\)") || [])
             .map(function (v, i) { return i === 1 ? v.split(",").map(function (v) { return v.trim(); }) : v; })
             .find(function (value, index) { return index === 1; });
         var newFunction = function () {

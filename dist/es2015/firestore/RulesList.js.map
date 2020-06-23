@@ -1,0 +1,1 @@
+{"version":3,"file":"RulesList.js","sourceRoot":"","sources":["../../../src/firestore/RulesList.ts"],"names":[],"mappings":";;;AAAA,6DAAwD;AACxD,iDAA4C;AAC5C,6CAAwC;AAExC;;GAEG;AACH,MAAa,SAAmB,SAAQ,uBAAU;IAE9C;;;;OAIG;IACH,IAAI;QACA,OAAO,IAAI,2BAAY,CAAC,IAAI,iCAAe,CAAC,IAAI,EAAE,iCAAe,CAAC,CAAC,CAAA,SAAS,CAAC,CAAC,CAAC;IACnF,CAAC;CAEJ;AAXD,8BAWC"}

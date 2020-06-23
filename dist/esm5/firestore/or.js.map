@@ -1,0 +1,1 @@
+{"version":3,"file":"or.js","sourceRoot":"","sources":["../../../src/firestore/or.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,YAAY,EAAC,MAAM,sBAAsB,CAAC;AAGlD,OAAO,EAAC,YAAY,EAAC,MAAM,gBAAgB,CAAC;AAE5C,MAAM,UAAU,EAAE;IAAC,eAAuD;SAAvD,UAAuD,EAAvD,qBAAuD,EAAvD,IAAuD;QAAvD,0BAAuD;;IACtE,OAAO,IAAI,YAAY,CAAC,YAAY,eAAI,KAAK,EAAE,CAAC;AACpD,CAAC"}

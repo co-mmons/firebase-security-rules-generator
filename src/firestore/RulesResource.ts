@@ -1,9 +1,16 @@
 import {RulesValue} from "../core/RulesValue";
 import {RulesMap} from "./RulesMap";
+import {RulesPath} from "./RulesPath";
+import {RulesString} from "./RulesString";
 
-export class RulesResource<D extends RulesMap<D>> extends RulesValue {
+export class RulesResource extends RulesValue implements RulesResource {
 
-    private constructor(public readonly data: D) {
-        super();
+    constructor(public readonly data = new RulesMap) {
+        super()
     }
+
+    readonly id = new RulesString;
+
+    readonly __name__ = new RulesPath;
+
 }

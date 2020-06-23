@@ -5,13 +5,12 @@ import { RulesRequestAuth } from "./RulesRequestAuth";
 import { RulesResource } from "./RulesResource";
 export function request(resourceData) {
     // @ts-ignore
-    return new RulesRequest(resourceData.__rulesClone());
+    return new RulesRequestImpl(resourceData.__rulesClone());
 }
-var RulesRequest = /** @class */ (function (_super) {
-    __extends(RulesRequest, _super);
-    function RulesRequest(data) {
+var RulesRequestImpl = /** @class */ (function (_super) {
+    __extends(RulesRequestImpl, _super);
+    function RulesRequestImpl(data) {
         var _this = _super.call(this) || this;
-        // @ts-ignore
         _this.resource = new RulesResource(data);
         // @ts-ignore
         _this.auth = new RulesRequestAuth();
@@ -19,8 +18,7 @@ var RulesRequest = /** @class */ (function (_super) {
         _this.__rulesExpression = RulesExpression.l(templateObject_1 || (templateObject_1 = __makeTemplateObject(["request"], ["request"])));
         return _this;
     }
-    return RulesRequest;
+    return RulesRequestImpl;
 }(RulesValue));
-export { RulesRequest };
 var templateObject_1;
 //# sourceMappingURL=RulesRequest.js.map

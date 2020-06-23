@@ -1,4 +1,5 @@
 import { StringWriter } from "../utils";
+import { RulesExpression } from "./RulesExpression";
 var RulesService = /** @class */ (function () {
     function RulesService(name, version, blocksAndDeclarations) {
         this.name = name;
@@ -23,7 +24,7 @@ var RulesService = /** @class */ (function () {
     };
     RulesService.prototype.writeAllow = function (writer, allow, matchConstructor, matchInstance) {
         writer.writeLine("allow ", allow.operations.join(", "), ": if ");
-        allow.body(matchInstance).write(writer);
+        this.toExpression(allow.body(matchInstance)).write(writer);
         writer.write(";");
         writer.writeLine();
     };
@@ -38,14 +39,28 @@ var RulesService = /** @class */ (function () {
         writer.write(") {");
         writer.indentUp();
         writer.line();
-        func.body(matchInstance).write(writer);
+        this.toExpression(func.body(matchInstance)).write(writer);
         writer.indentDown();
         writer.writeLine("}");
         writer.writeLine();
     };
+    RulesService.prototype.toExpression = function (value) {
+        if (value instanceof RulesExpression) {
+            return value;
+        }
+        else {
+            return new RulesExpression(value);
+        }
+    };
+    RulesService.prototype.writeServiceStart = function (writer) {
+    };
+    RulesService.prototype.writeServiceEnd = function (writer) {
+    };
     RulesService.prototype.toString = function () {
         var writer = new StringWriter();
+        writer.write("rules_version = '2';").line();
         writer.write("service " + this.name + " {");
+        this.writeServiceStart(writer);
         for (var _i = 0, _a = this.blocksAndDeclarations || []; _i < _a.length; _i++) {
             var blockOrDeclaration = _a[_i];
             if (blockOrDeclaration.__rulesMatchPath && typeof blockOrDeclaration === "function") {
@@ -54,7 +69,14 @@ var RulesService = /** @class */ (function () {
                 this.writeMatch(writer, blockOrDeclaration);
                 writer.indentDown();
             }
+            else if (blockOrDeclaration instanceof RulesExpression) {
+                writer.indentUp();
+                writer.line();
+                blockOrDeclaration.write(writer);
+                writer.indentDown();
+            }
         }
+        this.writeServiceEnd(writer);
         writer.writeLine("}");
         return writer.toString();
     };

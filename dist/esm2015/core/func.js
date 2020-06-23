@@ -6,8 +6,7 @@ export function func() {
         const classConstructor = targetClass.constructor;
         const originalFunction = descriptor.value;
         const argsTypes = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
-        const argsNames = originalFunction.toString()
-            .match(/\(\s*([^)]+?)\s*\)/)
+        const argsNames = (originalFunction.toString().match(`^${functionName}\\(\\s*([^)]+?)\\s*\\)`) || [])
             .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
             .find((value, index) => index === 1);
         const newFunction = function () {

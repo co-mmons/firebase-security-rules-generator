@@ -1,3 +1,4 @@
+import { RulesExpression } from "../core/RulesExpression";
 import { RulesService } from "../core/RulesService";
 import { Type } from "../utils";
-export declare function firestore(...resourceOrFunction: Array<Type<any>>): RulesService;
+export declare function firestore(...declarations: Array<Type<any> | RulesExpression>): RulesService;
