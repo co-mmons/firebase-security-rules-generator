@@ -1,7 +1,7 @@
 import {InternalRulesValue} from "../internal";
 import {RulesExpression} from "../core/RulesExpression";
 import {RulesRequestAuth as $RequestAuth} from "../core/RulesRequestAuth";
-import {RulesValue} from "../core/RulesValue";
+import {RulesValue} from "./RulesValue";
 import {RulesString} from "./RulesString";
 
 export function auth() {

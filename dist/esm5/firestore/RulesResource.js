@@ -1,6 +1,6 @@
 import { __extends, __makeTemplateObject } from "tslib";
 import { RulesExpression } from "../core/RulesExpression";
-import { RulesValue } from "../core/RulesValue";
+import { RulesValue } from "./RulesValue";
 import { RulesMap } from "./RulesMap";
 import { RulesPath } from "./RulesPath";
 import { RulesString } from "./RulesString";

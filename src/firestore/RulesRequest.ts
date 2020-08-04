@@ -1,6 +1,6 @@
 import {RulesExpression} from "../core/RulesExpression";
 import {RulesRequest as $Request} from "../core/RulesRequest";
-import {RulesValue} from "../core/RulesValue";
+import {RulesValue} from "./RulesValue";
 import {InternalRulesValue} from "../internal";
 import {RulesMap} from "./RulesMap";
 import {RulesRequestAuth} from "./RulesRequestAuth";

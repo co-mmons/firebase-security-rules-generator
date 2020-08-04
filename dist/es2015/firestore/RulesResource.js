@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesResource = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
-const RulesValue_1 = require("../core/RulesValue");
+const RulesValue_1 = require("./RulesValue");
 const RulesMap_1 = require("./RulesMap");
 const RulesPath_1 = require("./RulesPath");
 const RulesString_1 = require("./RulesString");

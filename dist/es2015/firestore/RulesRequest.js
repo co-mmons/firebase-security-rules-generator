@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.request = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
-const RulesValue_1 = require("../core/RulesValue");
+const RulesValue_1 = require("./RulesValue");
 const RulesRequestAuth_1 = require("./RulesRequestAuth");
 const RulesResource_1 = require("./RulesResource");
 const RulesString_1 = require("./RulesString");

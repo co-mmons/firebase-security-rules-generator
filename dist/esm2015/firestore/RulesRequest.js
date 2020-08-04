@@ -1,5 +1,5 @@
 import { RulesExpression } from "../core/RulesExpression";
-import { RulesValue } from "../core/RulesValue";
+import { RulesValue } from "./RulesValue";
 import { RulesRequestAuth } from "./RulesRequestAuth";
 import { RulesResource } from "./RulesResource";
 import { RulesString } from "./RulesString";

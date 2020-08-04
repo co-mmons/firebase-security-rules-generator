@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesRequestAuth = exports.auth = void 0;
 var tslib_1 = require("tslib");
 var RulesExpression_1 = require("../core/RulesExpression");
-var RulesValue_1 = require("../core/RulesValue");
+var RulesValue_1 = require("./RulesValue");
 var RulesString_1 = require("./RulesString");
 function auth() {
     // @ts-ignore

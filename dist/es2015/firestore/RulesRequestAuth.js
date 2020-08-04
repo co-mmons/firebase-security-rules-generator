@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesRequestAuth = exports.auth = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
-const RulesValue_1 = require("../core/RulesValue");
+const RulesValue_1 = require("./RulesValue");
 const RulesString_1 = require("./RulesString");
 function auth() {
     // @ts-ignore

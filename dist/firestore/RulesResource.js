@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesResource = void 0;
 var tslib_1 = require("tslib");
 var RulesExpression_1 = require("../core/RulesExpression");
-var RulesValue_1 = require("../core/RulesValue");
+var RulesValue_1 = require("./RulesValue");
 var RulesMap_1 = require("./RulesMap");
 var RulesPath_1 = require("./RulesPath");
 var RulesString_1 = require("./RulesString");

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.request = void 0;
 var tslib_1 = require("tslib");
 var RulesExpression_1 = require("../core/RulesExpression");
-var RulesValue_1 = require("../core/RulesValue");
+var RulesValue_1 = require("./RulesValue");
 var RulesRequestAuth_1 = require("./RulesRequestAuth");
 var RulesResource_1 = require("./RulesResource");
 var RulesString_1 = require("./RulesString");

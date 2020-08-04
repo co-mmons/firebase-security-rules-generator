@@ -1,4 +1,4 @@
-import { RulesValue } from "../core/RulesValue";
+import { RulesValue } from "./RulesValue";
 import { AssignableType } from "../utils/Type";
 import { RulesMap } from "./RulesMap";
 import { RulesPath } from "./RulesPath";

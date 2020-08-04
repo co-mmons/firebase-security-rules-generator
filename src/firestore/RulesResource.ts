@@ -1,5 +1,5 @@
 import {RulesExpression} from "../core/RulesExpression";
-import {RulesValue} from "../core/RulesValue";
+import {RulesValue} from "./RulesValue";
 import {InternalRulesValue} from "../internal";
 import {AssignableType} from "../utils/Type";
 import {RulesMap} from "./RulesMap";
