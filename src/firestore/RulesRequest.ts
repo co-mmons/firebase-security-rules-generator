@@ -17,6 +17,7 @@ export interface RulesRequest extends $Request {
     readonly resource: RulesResource;
     readonly method: RulesString;
     readonly time: RulesTimestamp;
+    readonly auth: RulesRequestAuth;
 }
 
 class RulesRequestImpl extends RulesValue implements RulesRequest {

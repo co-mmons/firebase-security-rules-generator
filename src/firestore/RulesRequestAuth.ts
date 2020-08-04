@@ -19,5 +19,5 @@ export class RulesRequestAuth extends RulesValue implements $RequestAuth {
         (this as any as InternalRulesValue).__rulesExpression = RulesExpression.l`request.auth`;
     }
 
-    uid = new RulesString;
+    readonly uid = new RulesString;
 }

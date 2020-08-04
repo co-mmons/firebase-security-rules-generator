@@ -4,5 +4,5 @@ import { RulesString } from "./RulesString";
 export declare function auth(): any;
 export declare class RulesRequestAuth extends RulesValue implements $RequestAuth {
     private constructor();
-    uid: RulesString;
+    readonly uid: RulesString;
 }
