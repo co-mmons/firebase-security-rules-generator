@@ -4,11 +4,15 @@ exports.request = void 0;
 var tslib_1 = require("tslib");
 var RulesExpression_1 = require("../core/RulesExpression");
 var RulesValue_1 = require("./RulesValue");
+var RulesMap_1 = require("./RulesMap");
 var RulesRequestAuth_1 = require("./RulesRequestAuth");
 var RulesResource_1 = require("./RulesResource");
 var RulesString_1 = require("./RulesString");
 var RulesTimestamp_1 = require("./RulesTimestamp");
 function request(resourceData) {
+    if (!resourceData) {
+        resourceData = new RulesMap_1.RulesMap();
+    }
     // @ts-ignore
     return new RulesRequestImpl(resourceData.__rulesClone());
 }

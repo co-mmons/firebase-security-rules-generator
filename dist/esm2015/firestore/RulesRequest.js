@@ -1,10 +1,14 @@
 import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "./RulesValue";
+import { RulesMap } from "./RulesMap";
 import { RulesRequestAuth } from "./RulesRequestAuth";
 import { RulesResource } from "./RulesResource";
 import { RulesString } from "./RulesString";
 import { RulesTimestamp } from "./RulesTimestamp";
 export function request(resourceData) {
+    if (!resourceData) {
+        resourceData = new RulesMap();
+    }
     // @ts-ignore
     return new RulesRequestImpl(resourceData.__rulesClone());
 }

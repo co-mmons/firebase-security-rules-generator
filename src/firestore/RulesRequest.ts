@@ -9,6 +9,11 @@ import {RulesString} from "./RulesString";
 import {RulesTimestamp} from "./RulesTimestamp";
 
 export function request<D extends RulesMap>(resourceData?: D): RulesRequest & {resource: {data: D}} {
+
+    if (!resourceData) {
+        resourceData = new RulesMap() as any;
+    }
+
     // @ts-ignore
     return new RulesRequestImpl((resourceData as any as InternalRulesValue).__rulesClone() as any);
 }
