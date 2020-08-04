@@ -28,7 +28,17 @@ export class RulesService {
 
     protected writeAllow(writer: StringWriter, allow: InternalAllowDescriptor, matchConstructor?: InternalMatchConstructor, matchInstance?: any) {
         writer.writeLine("allow ", allow.operations.join(", "), ": if ");
+
+        if (allow.negate) {
+            writer.write("!(");
+        }
+
         this.toExpression(allow.body(matchInstance)).write(writer);
+
+        if (allow.negate) {
+            writer.write(")");
+        }
+
         writer.write(";");
         writer.writeLine();
     }

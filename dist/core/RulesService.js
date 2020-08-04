@@ -27,7 +27,13 @@ var RulesService = /** @class */ (function () {
     };
     RulesService.prototype.writeAllow = function (writer, allow, matchConstructor, matchInstance) {
         writer.writeLine("allow ", allow.operations.join(", "), ": if ");
+        if (allow.negate) {
+            writer.write("!(");
+        }
         this.toExpression(allow.body(matchInstance)).write(writer);
+        if (allow.negate) {
+            writer.write(")");
+        }
         writer.write(";");
         writer.writeLine();
     };
