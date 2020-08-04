@@ -4,16 +4,21 @@ import { RulesMap } from "./RulesMap";
 import { RulesPath } from "./RulesPath";
 import { RulesString } from "./RulesString";
 export class RulesResource extends RulesValue {
-    constructor(data = new RulesMap) {
+    constructor($data = new RulesMap) {
         super();
-        this.data = data;
+        this.$data = $data;
         this.id = new RulesString;
         this.__name__ = new RulesPath;
     }
-    dataAs(dataType) {
-        const data = new dataType();
-        data.__rulesExpression = new RulesExpression(this, RulesExpression.l `.data`);
-        return data;
+    data(dataType) {
+        if (dataType) {
+            return this.$data;
+        }
+        else {
+            const data = new dataType();
+            data.__rulesExpression = new RulesExpression(this, RulesExpression.l `.data`);
+            return data;
+        }
     }
 }
 //# sourceMappingURL=RulesResource.js.map

@@ -9,7 +9,7 @@ export class Admin extends RulesMap {
 
     @func()
     passResource(user: RulesResource) {
-        return user.dataAs(User).id;
+        return user.data(User).id;
     }
 
     @func()
