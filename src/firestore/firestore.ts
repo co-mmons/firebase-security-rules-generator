@@ -4,7 +4,7 @@ import {StringWriter, Type} from "../utils";
 import {getResourceDataNative} from "./getResourceDataNative";
 
 export function firestore(...declarations: Array<Type<any> | RulesExpression>): RulesService {
-    return new class extends RulesService{
+    return new class extends RulesService {
         constructor() {
             super("cloud.firestore", 2, [getResourceDataNative, ...declarations]);
         }

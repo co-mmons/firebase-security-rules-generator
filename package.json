@@ -4,6 +4,7 @@
   "author": "co.mmons",
   "private": false,
   "scripts": {
+    "install": "node-utils-npm-install-dist",
     "build": "node-utils-file-system-glob-delete \"dist/**/*\" && npm run build:es5 && npm run build:esm5 && npm run build:es2015 && npm run build:esm2015 && node-utils-file-system-glob-copy src dist \"**/package.json\"",
     "build:es5": "tsc -p tsconfig.build.json -m commonjs -t es5 --outDir dist",
     "build:esm5": "tsc -p tsconfig.build.json -d false -m es2015 -t es5 --outDir dist/esm5",
@@ -11,6 +12,9 @@
     "build:esm2015": "tsc -p tsconfig.build.json -d false -m es2015 -t es2015 --outDir dist/esm2015",
     "test:firestore": "ts-node -P test/tsconfig.json -r tsconfig-paths/register test/firestore/test.ts",
     "test": "npm run test:firestore"
+  },
+  "dependencies": {
+    "@co.mmons/node-utils": "git+https://github.com/co-mmons/node-utils.git"
   },
   "peerDependencies": {
     "tslib": "^2.0.0"
@@ -23,11 +27,5 @@
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"
   },
-  "main": "dist/index.js",
-  "module": "dist/esm5/index.js",
-  "es5": "dist/index.js",
-  "esm5": "dist/esm5/index.js",
-  "es2015": "dist/es2015/index.js",
-  "esm2015": "dist/esm2015/index.js",
   "sideEffects": false
 }
