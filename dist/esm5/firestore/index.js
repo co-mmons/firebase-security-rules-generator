@@ -1,4 +1,4 @@
-export { allow } from "../core/allow";
+export { allow, deny } from "../core/allowDeny";
 export { and } from "./and";
 export { auth } from "./RulesRequestAuth";
 export { equals } from "./equals";
@@ -11,6 +11,7 @@ export { match } from "../core/match";
 export { or } from "./or";
 export { request } from "./RulesRequest";
 export { RulesBoolean } from "./RulesBoolean";
+export { RulesExpression } from "../core/RulesExpression";
 export { RulesInteger } from "./RulesInteger";
 export { RulesList } from "./RulesList";
 export { RulesMap } from "./RulesMap";

@@ -95,7 +95,6 @@ export class RulesService {
                 blockOrDeclaration.write(writer);
                 writer.indentDown();
             }
-
         }
 
         this.writeServiceEnd(writer);
