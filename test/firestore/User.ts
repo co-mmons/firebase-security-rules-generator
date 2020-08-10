@@ -20,7 +20,7 @@ export class User extends RulesMap {
     private readonly $id = new RulesPathVar;
 
     @func()
-    testIfSuperuser(id: RulesString, aa?: string) {
+    testIfSuperuser(id: RulesString, aa?: number) {
         return get(RulesPath.l`/customersAdmins/${id}:${aa}`);
         // return equals(id.substring(0, 4).substring(0, 1), "admin");
     }
@@ -29,7 +29,7 @@ export class User extends RulesMap {
     allowUser() {
         return and(
             this.$id.equals(auth().uid),
-            this.testIfSuperuser(this.id.concat("argh"))
+            this.testIfSuperuser(this.id.concat("argh"), 112)
         )
     }
 

@@ -34,7 +34,7 @@ export function func(options?: {exportedName?: string}) {
                 } else if (arguments[i] === null || arguments[i] === undefined) {
                     expression.push(RulesExpression.l`null`);
                 } else {
-                    expression.push(RulesExpression.l`${arguments[i].toString()}`);
+                    expression.push(arguments[i]);
                 }
             }
 

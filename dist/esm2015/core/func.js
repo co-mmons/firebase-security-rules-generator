@@ -26,7 +26,7 @@ export function func(options) {
                     expression.push(RulesExpression.l `null`);
                 }
                 else {
-                    expression.push(RulesExpression.l `${arguments[i].toString()}`);
+                    expression.push(arguments[i]);
                 }
             }
             return new RulesExpression(RulesExpression.l `${exportedName}(`, expression, RulesExpression.l `)`);

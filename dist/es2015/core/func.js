@@ -29,7 +29,7 @@ function func(options) {
                     expression.push(RulesExpression_1.RulesExpression.l `null`);
                 }
                 else {
-                    expression.push(RulesExpression_1.RulesExpression.l `${arguments[i].toString()}`);
+                    expression.push(arguments[i]);
                 }
             }
             return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${exportedName}(`, expression, RulesExpression_1.RulesExpression.l `)`);

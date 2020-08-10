@@ -30,10 +30,10 @@ function func(options) {
                     expression.push(RulesExpression_1.RulesExpression.l(templateObject_2 || (templateObject_2 = tslib_1.__makeTemplateObject(["null"], ["null"]))));
                 }
                 else {
-                    expression.push(RulesExpression_1.RulesExpression.l(templateObject_3 || (templateObject_3 = tslib_1.__makeTemplateObject(["", ""], ["", ""])), arguments[i].toString()));
+                    expression.push(arguments[i]);
                 }
             }
-            return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l(templateObject_4 || (templateObject_4 = tslib_1.__makeTemplateObject(["", "("], ["", "("])), exportedName), expression, RulesExpression_1.RulesExpression.l(templateObject_5 || (templateObject_5 = tslib_1.__makeTemplateObject([")"], [")"]))));
+            return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l(templateObject_3 || (templateObject_3 = tslib_1.__makeTemplateObject(["", "("], ["", "("])), exportedName), expression, RulesExpression_1.RulesExpression.l(templateObject_4 || (templateObject_4 = tslib_1.__makeTemplateObject([")"], [")"]))));
         };
         var bodyArgs = argsTypes.map(function (arg) { return new arg(); });
         function body() {
@@ -45,7 +45,7 @@ function func(options) {
                     args.push(clone);
                 }
                 else {
-                    args.push(RulesExpression_1.RulesExpression.l(templateObject_6 || (templateObject_6 = tslib_1.__makeTemplateObject(["", ""], ["", ""])), argsNames[i]));
+                    args.push(RulesExpression_1.RulesExpression.l(templateObject_5 || (templateObject_5 = tslib_1.__makeTemplateObject(["", ""], ["", ""])), argsNames[i]));
                 }
             }
             return originalFunction.call.apply(originalFunction, tslib_1.__spreadArrays([this], args));
@@ -58,10 +58,10 @@ function func(options) {
             name: exportedName,
             args: argsNames,
             global: !!targetClass.prototype,
-            body: function (thiz) { return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l(templateObject_7 || (templateObject_7 = tslib_1.__makeTemplateObject(["return "], ["return "]))), body.apply(thiz, bodyArgs)); }
+            body: function (thiz) { return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l(templateObject_6 || (templateObject_6 = tslib_1.__makeTemplateObject(["return "], ["return "]))), body.apply(thiz, bodyArgs)); }
         });
     };
 }
 exports.func = func;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
 //# sourceMappingURL=func.js.map
