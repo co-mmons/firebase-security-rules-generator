@@ -1,8 +1,25 @@
-import {allow, equals, func, get, getData, match, or, request, RulesMap, RulesResource, RulesString} from "firebase-security-rules-generator/firestore";
+import {
+    allow,
+    equals,
+    func,
+    get,
+    getData,
+    match,
+    or,
+    request,
+    RulesMap,
+    RulesResource,
+    RulesString
+} from "firebase-security-rules-generator/firestore";
 import {User} from "./User";
 
 @match("admins/{$id}")
 export class Admin extends RulesMap {
+
+    @func()
+    static isAdmin(test: number) {
+        return new Admin().customerId;
+    }
 
     user = new User;
     customerId = new RulesString;
@@ -43,7 +60,7 @@ export class Admin extends RulesMap {
     @allow("read")
     private readByUser() {
         return or(
-            equals(this.user.id, request(this).auth.uid),
+            equals(this.user.id, Admin.isAdmin(123)),
             equals(request(this).resource.data.customerId, this.customerId),
             this.checkUserAlive(this.user, false)
         );

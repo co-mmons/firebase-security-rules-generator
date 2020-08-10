@@ -10,12 +10,19 @@ class RulesService {
         this.blocksAndDeclarations = blocksAndDeclarations;
     }
     writeMatch(writer, matchConstructor) {
+        for (const func of matchConstructor.__rulesMatchFunctions || []) {
+            if (func.global) {
+                this.writeFunction(writer, func, matchConstructor, matchConstructor);
+            }
+        }
         writer.writeLine("match ", matchConstructor.__rulesMatchPath, " {");
         writer.indentUp();
         writer.line();
         const matchInstance = new matchConstructor();
         for (const func of matchConstructor.__rulesMatchFunctions || []) {
-            this.writeFunction(writer, func, matchConstructor, matchInstance);
+            if (!func.global) {
+                this.writeFunction(writer, func, matchConstructor, matchInstance);
+            }
         }
         for (const allow of matchConstructor.__rulesMatchAllows || []) {
             this.writeAllow(writer, allow, matchConstructor, matchInstance);

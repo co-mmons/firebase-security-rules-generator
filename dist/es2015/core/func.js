@@ -4,10 +4,11 @@ exports.func = void 0;
 require("reflect-metadata");
 const RulesExpression_1 = require("./RulesExpression");
 const RulesValue_1 = require("./RulesValue");
-function func() {
+function func(options) {
     return function (targetClass, functionName, descriptor) {
-        const classConstructor = targetClass.constructor;
+        const classConstructor = targetClass.prototype ? targetClass : targetClass.constructor;
         const originalFunction = descriptor.value;
+        const exportedName = (options === null || options === void 0 ? void 0 : options.exportedName) || (!!targetClass.prototype ? `${classConstructor.name}_${functionName}` : functionName);
         const argsTypes = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
         const argsNames = (originalFunction.toString().match(`^${functionName}\\(\\s*([^)]+?)\\s*\\)`) || [])
             .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
@@ -31,7 +32,7 @@ function func() {
                     expression.push(RulesExpression_1.RulesExpression.l `${arguments[i].toString()}`);
                 }
             }
-            return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${functionName}(`, expression, RulesExpression_1.RulesExpression.l `)`);
+            return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${exportedName}(`, expression, RulesExpression_1.RulesExpression.l `)`);
         };
         const bodyArgs = argsTypes.map(arg => new arg());
         function body() {
@@ -43,7 +44,7 @@ function func() {
                     args.push(clone);
                 }
                 else {
-                    args.push(arguments[i]);
+                    args.push(RulesExpression_1.RulesExpression.l `${argsNames[i]}`);
                 }
             }
             return originalFunction.call(this, ...args);
@@ -53,8 +54,9 @@ function func() {
             classConstructor.__rulesMatchFunctions = [];
         }
         classConstructor.__rulesMatchFunctions.push({
-            name: functionName,
+            name: exportedName,
             args: argsNames,
+            global: !!targetClass.prototype,
             body: (thiz) => new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `return `, body.apply(thiz, bodyArgs))
         });
     };

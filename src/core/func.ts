@@ -3,12 +3,14 @@ import {InternalMatchConstructor, InternalRulesValue} from "../internal";
 import {RulesExpression} from "./RulesExpression";
 import {RulesValue} from "./RulesValue";
 
-export function func() {
+export function func(options?: {exportedName?: string}) {
 
     return function (targetClass: any, functionName: string, descriptor: PropertyDescriptor) {
 
-        const classConstructor: InternalMatchConstructor = targetClass.constructor;
+        const classConstructor: InternalMatchConstructor = targetClass.prototype ? targetClass : targetClass.constructor;
         const originalFunction: Function = descriptor.value;
+
+        const exportedName = options?.exportedName || (!!targetClass.prototype ? `${classConstructor.name}_${functionName}` : functionName);
 
         const argsTypes: any[] = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
         const argsNames = (originalFunction.toString().match(`^${functionName}\\(\\s*([^)]+?)\\s*\\)`) || [])
@@ -36,7 +38,7 @@ export function func() {
                 }
             }
 
-            return new RulesExpression(RulesExpression.l`${functionName}(`, expression, RulesExpression.l`)`);
+            return new RulesExpression(RulesExpression.l`${exportedName}(`, expression, RulesExpression.l`)`);
         }
 
         const bodyArgs = argsTypes.map(arg => new arg());
@@ -51,7 +53,7 @@ export function func() {
                     clone.__rulesAccessorName = argsNames[i];
                     args.push(clone);
                 } else {
-                    args.push(arguments[i]);
+                    args.push(RulesExpression.l`${argsNames[i]}`);
                 }
             }
 
@@ -65,8 +67,9 @@ export function func() {
         }
 
         classConstructor.__rulesMatchFunctions.push({
-            name: functionName,
+            name: exportedName,
             args: argsNames,
+            global: !!targetClass.prototype,
             body: (thiz) => new RulesExpression(RulesExpression.l`return `, body.apply(thiz, bodyArgs))
         });
     }

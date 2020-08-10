@@ -8,6 +8,13 @@ export class RulesService {
     }
 
     protected writeMatch(writer: StringWriter, matchConstructor: InternalMatchConstructor) {
+
+        for (const func of matchConstructor.__rulesMatchFunctions || []) {
+            if (func.global) {
+                this.writeFunction(writer, func, matchConstructor, matchConstructor);
+            }
+        }
+
         writer.writeLine("match ", matchConstructor.__rulesMatchPath, " {")
         writer.indentUp();
         writer.line();
@@ -15,7 +22,9 @@ export class RulesService {
         const matchInstance = new matchConstructor();
 
         for (const func of matchConstructor.__rulesMatchFunctions || []) {
-            this.writeFunction(writer, func, matchConstructor, matchInstance);
+            if (!func.global) {
+                this.writeFunction(writer, func, matchConstructor, matchInstance);
+            }
         }
 
         for (const allow of matchConstructor.__rulesMatchAllows || []) {

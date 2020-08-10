@@ -1,2 +1,4 @@
 import "reflect-metadata";
-export declare function func(): (targetClass: any, functionName: string, descriptor: PropertyDescriptor) => void;
+export declare function func(options?: {
+    exportedName?: string;
+}): (targetClass: any, functionName: string, descriptor: PropertyDescriptor) => void;

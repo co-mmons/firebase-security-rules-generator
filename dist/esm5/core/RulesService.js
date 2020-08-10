@@ -7,16 +7,24 @@ var RulesService = /** @class */ (function () {
         this.blocksAndDeclarations = blocksAndDeclarations;
     }
     RulesService.prototype.writeMatch = function (writer, matchConstructor) {
+        for (var _i = 0, _a = matchConstructor.__rulesMatchFunctions || []; _i < _a.length; _i++) {
+            var func = _a[_i];
+            if (func.global) {
+                this.writeFunction(writer, func, matchConstructor, matchConstructor);
+            }
+        }
         writer.writeLine("match ", matchConstructor.__rulesMatchPath, " {");
         writer.indentUp();
         writer.line();
         var matchInstance = new matchConstructor();
-        for (var _i = 0, _a = matchConstructor.__rulesMatchFunctions || []; _i < _a.length; _i++) {
-            var func = _a[_i];
-            this.writeFunction(writer, func, matchConstructor, matchInstance);
+        for (var _b = 0, _c = matchConstructor.__rulesMatchFunctions || []; _b < _c.length; _b++) {
+            var func = _c[_b];
+            if (!func.global) {
+                this.writeFunction(writer, func, matchConstructor, matchInstance);
+            }
         }
-        for (var _b = 0, _c = matchConstructor.__rulesMatchAllows || []; _b < _c.length; _b++) {
-            var allow = _c[_b];
+        for (var _d = 0, _e = matchConstructor.__rulesMatchAllows || []; _d < _e.length; _d++) {
+            var allow = _e[_d];
             this.writeAllow(writer, allow, matchConstructor, matchInstance);
         }
         writer.indentDown();

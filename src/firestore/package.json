@@ -1,8 +1,8 @@
 {
     "name": "firebase-security-rules-generator/firestore",
-    "main": "index.js",
-    "module": "../esm5/firestore/index.js",
-    "es5": "index.js",
+    "main": "../es2015/firestore/index.js",
+    "module": "../esm2015/firestore/index.js",
+    "es5": "../es5/firestore/index.js",
     "esm5": "../esm5/firestore/index.js",
     "es2015": "../es2015/firestore/index.js",
     "esm2015": "../esm2015/firestore/index.js",

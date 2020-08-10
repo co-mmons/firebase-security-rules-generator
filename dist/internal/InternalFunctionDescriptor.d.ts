@@ -3,4 +3,5 @@ export interface InternalFunctionDescriptor {
     name: string;
     args: string[];
     body: (thiz: any) => RulesExpression;
+    global: boolean;
 }

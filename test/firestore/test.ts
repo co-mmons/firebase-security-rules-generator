@@ -1,12 +1,11 @@
 import {firestore} from "firebase-security-rules-generator/firestore";
 import {Admin} from "./Admin";
 import {User} from "./User";
-import {standaloneFunctionTest} from "./standaloneFunctionTest";
+
 
 const start = Date.now();
 
 console.log(firestore(
-    standaloneFunctionTest,
     User,
     Admin
 ).toString());

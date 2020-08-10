@@ -2,10 +2,11 @@ import { __makeTemplateObject, __spreadArrays } from "tslib";
 import "reflect-metadata";
 import { RulesExpression } from "./RulesExpression";
 import { RulesValue } from "./RulesValue";
-export function func() {
+export function func(options) {
     return function (targetClass, functionName, descriptor) {
-        var classConstructor = targetClass.constructor;
+        var classConstructor = targetClass.prototype ? targetClass : targetClass.constructor;
         var originalFunction = descriptor.value;
+        var exportedName = (options === null || options === void 0 ? void 0 : options.exportedName) || (!!targetClass.prototype ? classConstructor.name + "_" + functionName : functionName);
         var argsTypes = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
         var argsNames = (originalFunction.toString().match("^" + functionName + "\\(\\s*([^)]+?)\\s*\\)") || [])
             .map(function (v, i) { return i === 1 ? v.split(",").map(function (v) { return v.trim(); }) : v; })
@@ -29,7 +30,7 @@ export function func() {
                     expression.push(RulesExpression.l(templateObject_3 || (templateObject_3 = __makeTemplateObject(["", ""], ["", ""])), arguments[i].toString()));
                 }
             }
-            return new RulesExpression(RulesExpression.l(templateObject_4 || (templateObject_4 = __makeTemplateObject(["", "("], ["", "("])), functionName), expression, RulesExpression.l(templateObject_5 || (templateObject_5 = __makeTemplateObject([")"], [")"]))));
+            return new RulesExpression(RulesExpression.l(templateObject_4 || (templateObject_4 = __makeTemplateObject(["", "("], ["", "("])), exportedName), expression, RulesExpression.l(templateObject_5 || (templateObject_5 = __makeTemplateObject([")"], [")"]))));
         };
         var bodyArgs = argsTypes.map(function (arg) { return new arg(); });
         function body() {
@@ -41,7 +42,7 @@ export function func() {
                     args.push(clone);
                 }
                 else {
-                    args.push(arguments[i]);
+                    args.push(RulesExpression.l(templateObject_6 || (templateObject_6 = __makeTemplateObject(["", ""], ["", ""])), argsNames[i]));
                 }
             }
             return originalFunction.call.apply(originalFunction, __spreadArrays([this], args));
@@ -51,11 +52,12 @@ export function func() {
             classConstructor.__rulesMatchFunctions = [];
         }
         classConstructor.__rulesMatchFunctions.push({
-            name: functionName,
+            name: exportedName,
             args: argsNames,
-            body: function (thiz) { return new RulesExpression(RulesExpression.l(templateObject_6 || (templateObject_6 = __makeTemplateObject(["return "], ["return "]))), body.apply(thiz, bodyArgs)); }
+            global: !!targetClass.prototype,
+            body: function (thiz) { return new RulesExpression(RulesExpression.l(templateObject_7 || (templateObject_7 = __makeTemplateObject(["return "], ["return "]))), body.apply(thiz, bodyArgs)); }
         });
     };
 }
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;
 //# sourceMappingURL=func.js.map
