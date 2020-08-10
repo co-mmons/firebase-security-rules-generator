@@ -29,6 +29,37 @@ exports.path = path;
         return path(stringPath);
     }
     RulesPath.value = value;
+    function l(strings) {
+        var expr = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            expr[_i - 1] = arguments[_i];
+        }
+        return new RulesPath(new /** @class */ (function (_super) {
+            tslib_1.__extends(class_1, _super);
+            function class_1() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            class_1.prototype.write = function (writer) {
+                writer.write("path(\"/databases/$(database)/documents");
+                for (var i = 0; i < strings.length; i++) {
+                    writer.write(strings[i]);
+                    if (expr.length > i) {
+                        if (expr[i] instanceof RulesValue_1.RulesValue || expr[i] instanceof RulesExpression_1.RulesExpression) {
+                            writer.write("\" + ");
+                            (expr[i] instanceof RulesValue_1.RulesValue ? expr[i].__rulesValueAsExpression() : expr[i]).write(writer);
+                            writer.write(" + \"");
+                        }
+                        else {
+                            writer.write(expr[i] || "");
+                        }
+                    }
+                }
+                writer.write("\")");
+            };
+            return class_1;
+        }(RulesExpression_1.RulesExpression)));
+    }
+    RulesPath.l = l;
 })(RulesPath = exports.RulesPath || (exports.RulesPath = {}));
 exports.RulesPath = RulesPath;
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5;

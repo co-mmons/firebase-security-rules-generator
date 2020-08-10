@@ -9,8 +9,12 @@ var RulesString = /** @class */ (function (_super) {
     function RulesString() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    RulesString.prototype.concat = function (otherString) {
-        return new RulesString(RulesString_1.concatExpression(this, otherString));
+    RulesString.prototype.concat = function () {
+        var strings = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            strings[_i] = arguments[_i];
+        }
+        return new RulesString(RulesString_1.concatExpression.apply(void 0, tslib_1.__spreadArrays([this], strings)));
     };
     RulesString.prototype.substring = function (start, end) {
         return new RulesString(RulesString_1.substringExpression(this, start, end));

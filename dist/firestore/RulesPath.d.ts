@@ -13,4 +13,5 @@ export declare class RulesPath extends RulesValue {
 export declare function path(path: string): RulesPath;
 export declare namespace RulesPath {
     function value(stringPath: string): RulesPath;
+    function l(strings: TemplateStringsArray, ...expr: any[]): RulesPath;
 }

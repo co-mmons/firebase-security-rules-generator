@@ -3,8 +3,8 @@ import {RulesValue} from "./RulesValue";
 
 export class RulesString extends RulesValue implements $RulesString {
 
-    concat(otherString: RulesString | string): RulesString {
-        return new RulesString(concatExpression(this, otherString));
+    concat(...strings: Array<RulesString | string>): RulesString {
+        return new RulesString(concatExpression(this, ...strings));
     }
 
     substring(start: number, end: number): RulesString {

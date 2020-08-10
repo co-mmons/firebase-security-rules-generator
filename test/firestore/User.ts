@@ -1,4 +1,16 @@
-import {allow, and, auth, equals, func, match, RulesMap, RulesPathVar, RulesResource, RulesString} from "firebase-security-rules-generator/firestore";
+import {
+    allow,
+    and,
+    auth,
+    equals,
+    func, get,
+    match,
+    RulesMap,
+    RulesPath,
+    RulesPathVar,
+    RulesResource,
+    RulesString
+} from "firebase-security-rules-generator/firestore";
 
 @match("users/{$id}")
 export class User extends RulesMap {
@@ -8,8 +20,9 @@ export class User extends RulesMap {
     private readonly $id = new RulesPathVar;
 
     @func()
-    testIfSuperuser(id: RulesString) {
-        return equals(id.substring(0, 4).substring(0, 1), "admin");
+    testIfSuperuser(id: RulesString, aa?: string) {
+        return get(RulesPath.l`/customersAdmins/${id}:${aa}`);
+        // return equals(id.substring(0, 4).substring(0, 1), "admin");
     }
 
     @allow("read", "write")

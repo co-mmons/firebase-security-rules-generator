@@ -1,8 +1,8 @@
 import { concatExpression, substringExpression } from "../core/RulesString";
 import { RulesValue } from "./RulesValue";
 export class RulesString extends RulesValue {
-    concat(otherString) {
-        return new RulesString(concatExpression(this, otherString));
+    concat(...strings) {
+        return new RulesString(concatExpression(this, ...strings));
     }
     substring(start, end) {
         return new RulesString(substringExpression(this, start, end));
