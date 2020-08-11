@@ -2,6 +2,7 @@ import { RulesExpression } from "./RulesExpression";
 export declare abstract class RulesValue {
     constructor(expression?: RulesExpression);
     private __rulesExpression?;
+    private __rulesVarId?;
     private __rulesAccessorName?;
     private __rulesAccessorContext?;
     private __rulesValueAsExpression;

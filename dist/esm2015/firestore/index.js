@@ -20,4 +20,5 @@ export { RulesPathVar } from "./RulesPathVar";
 export { RulesResource } from "./RulesResource";
 export { RulesString } from "./RulesString";
 export { RulesTimestamp } from "./RulesTimestamp";
+export { rulesVar } from "./rulesVar";
 //# sourceMappingURL=index.js.map

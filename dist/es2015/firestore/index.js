@@ -46,4 +46,6 @@ var RulesString_1 = require("./RulesString");
 Object.defineProperty(exports, "RulesString", { enumerable: true, get: function () { return RulesString_1.RulesString; } });
 var RulesTimestamp_1 = require("./RulesTimestamp");
 Object.defineProperty(exports, "RulesTimestamp", { enumerable: true, get: function () { return RulesTimestamp_1.RulesTimestamp; } });
+var rulesVar_1 = require("./rulesVar");
+Object.defineProperty(exports, "rulesVar", { enumerable: true, get: function () { return rulesVar_1.rulesVar; } });
 //# sourceMappingURL=index.js.map

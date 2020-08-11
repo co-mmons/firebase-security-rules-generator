@@ -7,7 +7,10 @@ export class RulesValue {
         }
     }
     __rulesValueAsExpression() {
-        if (this.__rulesExpression) {
+        if (this.__rulesVarId) {
+            return new RulesExpression(RulesExpression.l `${this.__rulesVarId}`);
+        }
+        else if (this.__rulesExpression) {
             return this.__rulesExpression;
         }
         else if (typeof this.__rulesAccessorContext === "string") {

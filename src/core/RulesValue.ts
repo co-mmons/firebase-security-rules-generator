@@ -13,12 +13,16 @@ export abstract class RulesValue {
     }
 
     private __rulesExpression?: RulesExpression;
+    private __rulesVarId?: string;
     private __rulesAccessorName?: string;
     private __rulesAccessorContext?: string | RulesValue;
 
     private __rulesValueAsExpression() {
 
-        if (this.__rulesExpression) {
+        if (this.__rulesVarId) {
+            return new RulesExpression(RulesExpression.l`${this.__rulesVarId}`);
+
+        } else if (this.__rulesExpression) {
             return this.__rulesExpression;
 
         } else if (typeof this.__rulesAccessorContext === "string") {

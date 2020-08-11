@@ -53,7 +53,18 @@ class RulesService {
         writer.write(") {");
         writer.indentUp();
         writer.line();
-        this.toExpression(func.body(matchInstance)).write(writer);
+        const result = func.body(matchInstance);
+        if (result.vars) {
+            for (const varName in result.vars) {
+                writer.write("let ", varName, " = ");
+                this.toExpression(result.vars[varName]).write(writer);
+                writer.write(";");
+                writer.line(2);
+            }
+        }
+        writer.write("return ");
+        this.toExpression(result.result).write(writer);
+        writer.write(";");
         writer.indentDown();
         writer.writeLine("}");
         writer.writeLine();

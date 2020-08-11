@@ -38,7 +38,16 @@ export function func(options?: {exportedName?: string}) {
                 }
             }
 
-            return new RulesExpression(RulesExpression.l`${exportedName}(`, expression, RulesExpression.l`)`);
+            const original = originalFunction.call(this, ...arguments);
+            const newExpression = new RulesExpression(RulesExpression.l`${exportedName}(`, expression, RulesExpression.l`)`);
+
+            if (original instanceof RulesValue) {
+                const cloned = (original as any as InternalRulesValue).__rulesClone();
+                (cloned as any as InternalRulesValue).__rulesExpression = newExpression;
+                return cloned;
+            }
+
+            return newExpression;
         }
 
         const bodyArgs = argsTypes.map(arg => new arg());
@@ -57,7 +66,20 @@ export function func(options?: {exportedName?: string}) {
                 }
             }
 
-            return originalFunction.call(this, ...args);
+            const varsStack: any[] = this.__rulesFunctionsVars = this.__rulesFunctionsVars || [];
+            varsStack.push({});
+
+            const vars = this.__rulesFunctionVars = varsStack[varsStack.length - 1];
+            const functionResult = originalFunction.call(this, ...args);
+
+            const result = {
+                vars: vars,
+                result: functionResult
+            };
+
+            varsStack.splice(varsStack.length - 1);
+
+            return result;
         }
 
         descriptor.value = newFunction;
@@ -70,7 +92,7 @@ export function func(options?: {exportedName?: string}) {
             name: exportedName,
             args: argsNames,
             global: !!targetClass.prototype,
-            body: (thiz) => new RulesExpression(RulesExpression.l`return `, body.apply(thiz, bodyArgs))
+            body: (thiz) => body.apply(thiz, bodyArgs)
         });
     }
 }

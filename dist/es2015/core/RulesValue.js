@@ -10,7 +10,10 @@ class RulesValue {
         }
     }
     __rulesValueAsExpression() {
-        if (this.__rulesExpression) {
+        if (this.__rulesVarId) {
+            return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${this.__rulesVarId}`);
+        }
+        else if (this.__rulesExpression) {
             return this.__rulesExpression;
         }
         else if (typeof this.__rulesAccessorContext === "string") {

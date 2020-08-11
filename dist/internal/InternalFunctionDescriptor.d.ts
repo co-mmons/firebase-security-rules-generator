@@ -1,7 +1,11 @@
-import { RulesExpression } from "../core/RulesExpression";
 export interface InternalFunctionDescriptor {
     name: string;
     args: string[];
-    body: (thiz: any) => RulesExpression;
+    body: (thiz: any) => {
+        vars: {
+            [varName: string]: any;
+        };
+        result: any;
+    };
     global: boolean;
 }

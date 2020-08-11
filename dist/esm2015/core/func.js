@@ -29,7 +29,14 @@ export function func(options) {
                     expression.push(arguments[i]);
                 }
             }
-            return new RulesExpression(RulesExpression.l `${exportedName}(`, expression, RulesExpression.l `)`);
+            const original = originalFunction.call(this, ...arguments);
+            const newExpression = new RulesExpression(RulesExpression.l `${exportedName}(`, expression, RulesExpression.l `)`);
+            if (original instanceof RulesValue) {
+                const cloned = original.__rulesClone();
+                cloned.__rulesExpression = newExpression;
+                return cloned;
+            }
+            return newExpression;
         };
         const bodyArgs = argsTypes.map(arg => new arg());
         function body() {
@@ -44,7 +51,16 @@ export function func(options) {
                     args.push(RulesExpression.l `${argsNames[i]}`);
                 }
             }
-            return originalFunction.call(this, ...args);
+            const varsStack = this.__rulesFunctionsVars = this.__rulesFunctionsVars || [];
+            varsStack.push({});
+            const vars = this.__rulesFunctionVars = varsStack[varsStack.length - 1];
+            const functionResult = originalFunction.call(this, ...args);
+            const result = {
+                vars: vars,
+                result: functionResult
+            };
+            varsStack.splice(varsStack.length - 1);
+            return result;
         }
         descriptor.value = newFunction;
         if (!classConstructor.__rulesMatchFunctions) {
@@ -54,7 +70,7 @@ export function func(options) {
             name: exportedName,
             args: argsNames,
             global: !!targetClass.prototype,
-            body: (thiz) => new RulesExpression(RulesExpression.l `return `, body.apply(thiz, bodyArgs))
+            body: (thiz) => body.apply(thiz, bodyArgs)
         });
     };
 }

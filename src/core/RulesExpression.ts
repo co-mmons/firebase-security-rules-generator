@@ -1,4 +1,3 @@
-import {type} from "os";
 import {InternalRulesValue} from "../internal";
 import {StringWriter} from "../utils";
 
