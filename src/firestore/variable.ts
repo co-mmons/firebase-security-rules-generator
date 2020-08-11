@@ -1,11 +1,10 @@
 import {RulesExpression} from "../core/RulesExpression";
 import {InternalRulesValue} from "../internal";
-import {RulesInteger} from "./RulesInteger";
 import {RulesValue} from "./RulesValue";
 
 let varCounter = 1;
 
-export function rulesVar<T extends RulesValue | RulesExpression | string | boolean | number>(thiz: any, value: T): T {
+export function variable<T extends RulesValue | RulesExpression | string | boolean | number>(thiz: any, value: T): T {
 
     const varId = "__var_" + (varCounter++);
 

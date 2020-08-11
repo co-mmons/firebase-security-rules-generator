@@ -1,7 +1,7 @@
 import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "./RulesValue";
 let varCounter = 1;
-export function rulesVar(thiz, value) {
+export function variable(thiz, value) {
     const varId = "__var_" + (varCounter++);
     if (value instanceof RulesValue) {
         thiz.__rulesFunctionVars[varId] = value.__rulesValueAsExpression();
@@ -11,4 +11,4 @@ export function rulesVar(thiz, value) {
     }
     return value;
 }
-//# sourceMappingURL=rulesVar.js.map
+//# sourceMappingURL=variable.js.map
