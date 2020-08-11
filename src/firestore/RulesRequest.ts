@@ -1,14 +1,14 @@
 import {RulesExpression} from "../core/RulesExpression";
 import {RulesRequest as $Request} from "../core/RulesRequest";
-import {RulesValue} from "./RulesValue";
 import {InternalRulesValue} from "../internal";
 import {RulesMap} from "./RulesMap";
 import {RulesRequestAuth} from "./RulesRequestAuth";
 import {RulesResource} from "./RulesResource";
 import {RulesString} from "./RulesString";
 import {RulesTimestamp} from "./RulesTimestamp";
+import {RulesValue} from "./RulesValue";
 
-export function request<D extends RulesMap>(resourceData?: D): RulesRequest & {resource: {data: D}} {
+export function request<D extends RulesMap>(resourceData?: D): {resource: {data: () => D}} & RulesRequest {
 
     if (!resourceData) {
         resourceData = new RulesMap() as any;

@@ -11,7 +11,8 @@ export class RulesResource extends RulesValue {
         this.__name__ = new RulesPath;
     }
     data(dataType) {
-        if (dataType) {
+        this.$data.__rulesAccessorName = "data";
+        if (!dataType) {
             return this.$data;
         }
         else {

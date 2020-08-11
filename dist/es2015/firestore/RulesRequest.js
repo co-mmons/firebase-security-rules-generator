@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.request = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
-const RulesValue_1 = require("./RulesValue");
 const RulesMap_1 = require("./RulesMap");
 const RulesRequestAuth_1 = require("./RulesRequestAuth");
 const RulesResource_1 = require("./RulesResource");
 const RulesString_1 = require("./RulesString");
 const RulesTimestamp_1 = require("./RulesTimestamp");
+const RulesValue_1 = require("./RulesValue");
 function request(resourceData) {
     if (!resourceData) {
         resourceData = new RulesMap_1.RulesMap();

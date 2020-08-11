@@ -9,7 +9,7 @@ import {RulesString} from "./RulesString";
 export class RulesResource extends RulesValue implements RulesResource {
 
     constructor(private readonly $data = new RulesMap) {
-        super()
+        super();
     }
 
     readonly id = new RulesString;
@@ -17,8 +17,9 @@ export class RulesResource extends RulesValue implements RulesResource {
     readonly __name__ = new RulesPath;
 
     data<T extends RulesMap = RulesMap>(dataType?: AssignableType<T>): T {
+        (this.$data as any as InternalRulesValue).__rulesAccessorName = "data";
 
-        if (dataType) {
+        if (!dataType) {
             return this.$data as T;
         } else {
             const data = new dataType();

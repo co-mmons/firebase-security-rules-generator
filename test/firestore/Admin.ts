@@ -59,10 +59,6 @@ export class Admin extends RulesMap {
 
     @allow("read")
     private readByUser() {
-        return or(
-            equals(this.user.id, Admin.isAdmin(123)),
-            equals(request(this).resource.data.customerId, this.customerId),
-            this.checkUserAlive(this.user, false)
-        );
+        return equals(request(this).resource.data().customerId, this.customerId)
     }
 }

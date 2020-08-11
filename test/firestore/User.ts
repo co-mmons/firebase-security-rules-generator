@@ -21,7 +21,8 @@ export class User extends RulesMap {
 
     @func()
     testA(id: RulesString) {
-        return id.isNotNull();
+        const costam = rulesVar(this, id);
+        return costam.isNotNull();
     }
 
     @func()

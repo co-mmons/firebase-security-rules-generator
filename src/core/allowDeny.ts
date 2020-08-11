@@ -17,6 +17,7 @@ export function deny(...operation: AllowDenyOperatation[]) {
 function allowImpl(targetClass: any, propertyKey: string, descriptor: PropertyDescriptor, operations: AllowDenyOperatation[], negate?: boolean) {
 
     const classConstructor: InternalMatchConstructor = targetClass.constructor;
+    const originalFunction: Function = descriptor.value;
 
     if (!classConstructor.hasOwnProperty("__rulesMatchAllows") && !classConstructor.__rulesMatchAllows) {
         classConstructor.__rulesMatchAllows = [];
@@ -25,6 +26,6 @@ function allowImpl(targetClass: any, propertyKey: string, descriptor: PropertyDe
     classConstructor.__rulesMatchAllows.push({
         operations,
         negate,
-        body: (thiz) => (descriptor.value as Function).apply(thiz)
+        body: (thiz) => originalFunction.apply(thiz)
     });
 }

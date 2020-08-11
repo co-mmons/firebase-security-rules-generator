@@ -14,7 +14,8 @@ class RulesResource extends RulesValue_1.RulesValue {
         this.__name__ = new RulesPath_1.RulesPath;
     }
     data(dataType) {
-        if (dataType) {
+        this.$data.__rulesAccessorName = "data";
+        if (!dataType) {
             return this.$data;
         }
         else {
