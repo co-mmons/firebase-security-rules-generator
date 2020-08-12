@@ -32,7 +32,11 @@ function func(options) {
                     expression.push(arguments[i]);
                 }
             }
+            const varsStack = this.__rulesFunctionsVars = this.__rulesFunctionsVars || [];
+            varsStack.push({});
+            const vars = this.__rulesFunctionVars = varsStack[varsStack.length - 1];
             const original = originalFunction.call(this, ...arguments);
+            varsStack.splice(varsStack.length - 1);
             const newExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${exportedName}(`, expression, RulesExpression_1.RulesExpression.l `)`);
             if (original instanceof RulesValue_1.RulesValue) {
                 const cloned = original.__rulesClone();

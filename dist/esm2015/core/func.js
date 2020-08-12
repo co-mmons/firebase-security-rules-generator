@@ -29,7 +29,11 @@ export function func(options) {
                     expression.push(arguments[i]);
                 }
             }
+            const varsStack = this.__rulesFunctionsVars = this.__rulesFunctionsVars || [];
+            varsStack.push({});
+            const vars = this.__rulesFunctionVars = varsStack[varsStack.length - 1];
             const original = originalFunction.call(this, ...arguments);
+            varsStack.splice(varsStack.length - 1);
             const newExpression = new RulesExpression(RulesExpression.l `${exportedName}(`, expression, RulesExpression.l `)`);
             if (original instanceof RulesValue) {
                 const cloned = original.__rulesClone();

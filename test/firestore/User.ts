@@ -27,8 +27,7 @@ export class User extends RulesMap {
     }
 
     @func()
-    testIfSuperuser(id: RulesString, aa?: number) {
-        const costam = variable(this, this.id);
+    static testIfSuperuser(id: RulesString, aa?: number) {
         const costam2 = variable(this, equals(aa, 222));
         return get(RulesPath.l`/customersAdmins/${id}:${costam2}`);
         // return equals(id.substring(0, 4).substring(0, 1), "admin");
@@ -38,7 +37,7 @@ export class User extends RulesMap {
     allowUser() {
         return and(
             this.$id.equals(auth().uid),
-            this.testIfSuperuser(this.id.concat("argh"), 112)
+            User.testIfSuperuser(this.id.concat("argh"), 112)
         )
     }
 
