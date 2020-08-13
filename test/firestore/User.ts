@@ -31,7 +31,7 @@ export class User extends RulesMap {
     @func()
     static testIfSuperuser(id: RulesString, aa?: number) {
         const costam2 = variable(this, equals(aa, 222));
-        const costam3 = whenTrue(costam2.isNotNull(), costam2);
+        const costam3 = variable(this, RulesString.l`cośtam${costam2}`);
         return get(RulesPath.l`/customersAdmins/${id}:${costam3}`);
         // return equals(id.substring(0, 4).substring(0, 1), "admin");
     }

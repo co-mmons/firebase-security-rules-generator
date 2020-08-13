@@ -9,3 +9,6 @@ export declare class RulesString extends RulesValue implements $RulesString {
     concat(...strings: Array<RulesString | string>): RulesString;
     substring(start: number, end: number): RulesString;
 }
+export declare namespace RulesString {
+    function l(strings: TemplateStringsArray, ...expr: any[]): RulesString;
+}

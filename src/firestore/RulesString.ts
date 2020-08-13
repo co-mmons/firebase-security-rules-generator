@@ -1,3 +1,4 @@
+import {RulesExpression} from "../core/RulesExpression";
 import {
     concatExpression,
     RulesString as $RulesString,
@@ -6,8 +7,10 @@ import {
     trimExpression
 } from "../core/RulesString";
 import {matchesExpression} from "../core/RulesString/matchesExpression";
+import {InternalRulesValue} from "../internal";
 import {RulesBoolean} from "./RulesBoolean";
 import {RulesInteger} from "./RulesInteger";
+import {RulesPath} from "./RulesPath";
 import {RulesValue} from "./RulesValue";
 
 export class RulesString extends RulesValue implements $RulesString {
@@ -33,4 +36,31 @@ export class RulesString extends RulesValue implements $RulesString {
     }
 
 
+}
+
+export namespace RulesString {
+
+    export function l(strings: TemplateStringsArray, ...expr: any[]): RulesString {
+        return new RulesString(new class extends RulesExpression {
+            write(writer) {
+
+                writer.write("\"");
+
+                for (let i = 0; i < strings.length; i++) {
+                    writer.write(strings[i]);
+                    if (expr.length > i) {
+                        if (expr[i] instanceof RulesValue || expr[i] instanceof RulesExpression) {
+                            writer.write(`" + `);
+                            ((expr[i] instanceof RulesValue ? (expr[i] as InternalRulesValue).__rulesValueAsExpression() : expr[i]) as RulesExpression).write(writer);
+                            writer.write(` + "`);
+                        } else {
+                            writer.write(expr[i] + "");
+                        }
+                    }
+                }
+
+                writer.write("\"");
+            }
+        });
+    }
 }
