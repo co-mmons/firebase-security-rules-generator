@@ -1,4 +1,4 @@
-import {RulesInteger} from "../RulesInteger";
+import {RulesInteger} from "../RulesNumber/RulesInteger";
 
 export interface RulesString {
 

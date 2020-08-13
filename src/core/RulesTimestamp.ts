@@ -1,4 +1,4 @@
-import {RulesInteger} from "./RulesInteger";
+import {RulesInteger} from "./RulesNumber/RulesInteger";
 
 /**
  * @see https://firebase.google.com/docs/reference/rules/rules.Timestamp
@@ -59,5 +59,5 @@ export interface RulesTimestamp {
      * @see https://firebase.google.com/docs/reference/rules/rules.Timestamp#year
      */
     year(): RulesInteger;
-    
+
 }

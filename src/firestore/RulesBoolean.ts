@@ -1,3 +1,4 @@
+import {RulesBoolean as $RulesBoolean} from "../core/RulesBoolean";
 import {RulesExpression} from "../core/RulesExpression";
 import {not} from "./not";
 import {RulesValue} from "./RulesValue";
@@ -7,7 +8,7 @@ import {RulesValue} from "./RulesValue";
  *
  *  @link https://firebase.google.com/docs/reference/rules/rules.Boolean
  */
-export class RulesBoolean extends RulesValue {
+export class RulesBoolean extends RulesValue implements $RulesBoolean {
 
     /**
      * Negative value of this boolean.
