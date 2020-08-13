@@ -1,5 +1,7 @@
 export interface RulesString {
 
+    trim(): RulesString;
+
     concat(...strings: Array<RulesString | string>): RulesString;
 
     /**
