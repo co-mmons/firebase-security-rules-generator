@@ -1,6 +1,6 @@
 import {RulesExpression} from "../RulesExpression";
 import {RulesString} from "./RulesString";
 
-export function trimExpression(baseString: RulesString | string) {
-    return new RulesExpression(baseString, RulesExpression.l`.trim()`);
+export function trimExpression(str: RulesString | string) {
+    return new RulesExpression(str, RulesExpression.l`.trim()`);
 }

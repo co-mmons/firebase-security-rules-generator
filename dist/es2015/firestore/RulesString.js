@@ -2,11 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesString = void 0;
 const RulesString_1 = require("../core/RulesString");
-const trimExpression_1 = require("../core/RulesString/trimExpression");
+const RulesInteger_1 = require("./RulesInteger");
 const RulesValue_1 = require("./RulesValue");
 class RulesString extends RulesValue_1.RulesValue {
     trim() {
-        return new RulesString(trimExpression_1.trimExpression(this));
+        return new RulesString(RulesString_1.trimExpression(this));
+    }
+    size() {
+        return new RulesInteger_1.RulesInteger(RulesString_1.sizeExpression(this));
     }
     concat(...strings) {
         return new RulesString(RulesString_1.concatExpression(this, ...strings));

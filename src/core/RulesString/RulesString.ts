@@ -1,6 +1,10 @@
+import {RulesInteger} from "../RulesInteger";
+
 export interface RulesString {
 
     trim(): RulesString;
+
+    size(): RulesInteger;
 
     concat(...strings: Array<RulesString | string>): RulesString;
 
