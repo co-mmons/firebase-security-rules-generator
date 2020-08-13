@@ -10,7 +10,7 @@ import {
     RulesPathVar,
     RulesResource,
     RulesString,
-    variable
+    variable, whenTrue
 } from "firebase-security-rules-generator/firestore";
 
 @match("users/{$id}")
@@ -18,18 +18,21 @@ export class User extends RulesMap {
 
     id = new RulesString;
 
+    map = new RulesMap;
+
     private readonly $id = new RulesPathVar;
 
     @func()
-    testA(id: RulesString) {
-        const costam = variable(this, id);
-        return costam.isNotNull();
+    static testA(user: User) {
+        const costam = variable(this, user);
+        return costam.map.get("test").isNotNull();
     }
 
     @func()
     static testIfSuperuser(id: RulesString, aa?: number) {
         const costam2 = variable(this, equals(aa, 222));
-        return get(RulesPath.l`/customersAdmins/${id}:${costam2}`);
+        const costam3 = whenTrue(costam2.isNotNull(), costam2);
+        return get(RulesPath.l`/customersAdmins/${id}:${costam3}`);
         // return equals(id.substring(0, 4).substring(0, 1), "admin");
     }
 

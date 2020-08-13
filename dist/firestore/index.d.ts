@@ -21,3 +21,4 @@ export { RulesResource } from "./RulesResource";
 export { RulesString } from "./RulesString";
 export { RulesTimestamp } from "./RulesTimestamp";
 export { variable } from "./variable";
+export { whenTrue } from "../core/whenTrue";

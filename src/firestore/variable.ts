@@ -10,6 +10,7 @@ export function variable<T extends RulesValue | RulesExpression | string | boole
 
     if (value instanceof RulesValue) {
         thiz.__rulesFunctionVars[varId] = (value as any as InternalRulesValue).__rulesValueAsExpression();
+        value = (value as any as InternalRulesValue).__rulesClone();
         (value as any as InternalRulesValue).__rulesVarId = varId;
     } else if (value instanceof RulesExpression) {
 
