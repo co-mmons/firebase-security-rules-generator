@@ -5,11 +5,11 @@ import {RulesValue} from "./RulesValue";
 
 export class RulesInteger extends RulesValue implements $RulesInteger {
 
-    gt(other: RulesNumber): RulesBoolean {
+    gt(other: RulesNumber | number): RulesBoolean {
         return new RulesBoolean(gtExpression(this, other));
     }
 
-    gte(other: RulesNumber): RulesBoolean {
+    gte(other: RulesNumber | number): RulesBoolean {
         return new RulesBoolean(gteExpression(this, other));
     }
 

@@ -1,6 +1,6 @@
 import {RulesExpression} from "../RulesExpression";
-import {RulesInteger} from "./RulesInteger";
+import {RulesNumber} from "./RulesNumber";
 
-export function gteExpression<T extends RulesInteger>(left: T, right) {
+export function gteExpression(left: RulesNumber | number, right: RulesNumber | number) {
     return new RulesExpression(left, RulesExpression.l` >= `, right);
 }

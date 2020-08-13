@@ -1,3 +1,3 @@
 import { RulesExpression } from "../RulesExpression";
-import { RulesInteger } from "./RulesInteger";
-export declare function gtExpression<T extends RulesInteger>(left: T, right: any): RulesExpression;
+import { RulesNumber } from "./RulesNumber";
+export declare function gtExpression(left: RulesNumber | number, right: RulesNumber | number): RulesExpression;
