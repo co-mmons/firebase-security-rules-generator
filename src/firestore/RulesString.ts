@@ -10,11 +10,11 @@ import {RulesValue} from "./RulesValue";
 
 export class RulesString extends RulesValue implements $RulesString {
 
-    trim() {
+    trim(): RulesString {
         return new RulesString(trimExpression(this));
     }
 
-    size() {
+    size(): RulesInteger {
         return new RulesInteger(sizeExpression(this));
     }
 
