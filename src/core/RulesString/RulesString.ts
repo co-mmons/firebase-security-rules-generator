@@ -1,3 +1,4 @@
+import {RulesBoolean} from "../RulesBoolean";
 import {RulesInteger} from "../RulesNumber/RulesInteger";
 
 export interface RulesString {
@@ -5,6 +6,16 @@ export interface RulesString {
     trim(): RulesString;
 
     size(): RulesInteger;
+
+    /**
+     * Performs a regular expression match on the whole string.
+     *
+     * @param re A regular expression using Google RE2 syntax. Value must not be null.
+     * @return Non-null RulesBoolean true if the whole string matches, false otherwise.
+     *
+     * @see https://firebase.google.com/docs/reference/rules/rules.String#matches
+     */
+    matches(re: RulesString | string): RulesBoolean;
 
     concat(...strings: Array<RulesString | string>): RulesString;
 

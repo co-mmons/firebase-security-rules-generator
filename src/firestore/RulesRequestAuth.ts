@@ -1,6 +1,7 @@
 import {InternalRulesValue} from "../internal";
 import {RulesExpression} from "../core/RulesExpression";
 import {RulesRequestAuth as $RequestAuth} from "../core/RulesRequestAuth";
+import {RulesMap} from "./RulesMap";
 import {RulesValue} from "./RulesValue";
 import {RulesString} from "./RulesString";
 
@@ -20,4 +21,10 @@ export class RulesRequestAuth extends RulesValue implements $RequestAuth {
     }
 
     readonly uid = new RulesString;
+
+    /**
+     * A map of JWT token claims.
+     * @see https://firebase.google.com/docs/reference/rules/rules.firestore.Request#auth
+     */
+    readonly token = new RulesMap;
 }
