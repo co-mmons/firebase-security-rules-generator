@@ -37,7 +37,7 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
                 expression.push(list[i]);
             }
 
-            expression.push(RulesExpression.l`[`);
+            expression.push(RulesExpression.l`]`);
         }
 
         expression.push(RulesExpression.l`)`);
