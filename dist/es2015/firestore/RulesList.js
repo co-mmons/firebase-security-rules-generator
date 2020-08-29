@@ -21,7 +21,19 @@ class RulesList extends RulesValue_1.RulesValue {
      * Determine whether all elements in the list are present in another list.
      */
     hasOnly(list) {
-        return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l `.hasOnly(`, list, RulesExpression_1.RulesExpression.l `)`));
+        const expression = [this, RulesExpression_1.RulesExpression.l `.hasOnly(`];
+        if (list instanceof Array) {
+            expression.push(RulesExpression_1.RulesExpression.l `[`);
+            for (let i = 0; i < list.length; i++) {
+                if (i > 0) {
+                    expression.push(RulesExpression_1.RulesExpression.l `, `);
+                }
+                expression.push(list[i]);
+            }
+            expression.push(RulesExpression_1.RulesExpression.l `[`);
+        }
+        expression.push(RulesExpression_1.RulesExpression.l `)`);
+        return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(expression));
     }
 }
 exports.RulesList = RulesList;

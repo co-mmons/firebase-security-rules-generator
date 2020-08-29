@@ -22,7 +22,27 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
      * Determine whether all elements in the list are present in another list.
      */
     hasOnly(list: RulesList | Array<RulesValue | string | number | boolean>) {
-        return new RulesBoolean(new RulesExpression(this, RulesExpression.l`.hasOnly(`, list, RulesExpression.l`)`));
+
+        const expression: any[] = [this, RulesExpression.l`.hasOnly(`];
+
+        if (list instanceof Array) {
+            expression.push(RulesExpression.l`[`);
+
+            for (let i = 0; i < list.length; i++) {
+
+                if (i > 0) {
+                    expression.push(RulesExpression.l`, `);
+                }
+
+                expression.push(list[i]);
+            }
+
+            expression.push(RulesExpression.l`[`);
+        }
+
+        expression.push(RulesExpression.l`)`);
+
+        return new RulesBoolean(new RulesExpression(expression));
     }
 
 }
