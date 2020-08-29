@@ -33,4 +33,9 @@ export class RulesMap extends RulesValue implements $Map {
         return type as T;
     }
 
+    keys(): RulesList {
+        return new RulesList(new RulesExpression(this, RulesExpression.l`.keys()`));
+    }
+
+
 }

@@ -1,4 +1,5 @@
 import { RulesExpression } from "../core/RulesExpression";
+import { RulesList } from "./RulesList";
 import { RulesValue } from "./RulesValue";
 /**
  * Map type, used for simple key-value mappings.
@@ -24,6 +25,9 @@ export class RulesMap extends RulesValue {
         const type = new (valueType || RulesValue);
         type.__rulesExpression = new RulesExpression(RulesExpression.l `(`, this, RulesExpression.l `)`, RulesExpression.l `.get(`, key, RulesExpression.l `)`);
         return type;
+    }
+    keys() {
+        return new RulesList(new RulesExpression(this, RulesExpression.l `.keys()`));
     }
 }
 //# sourceMappingURL=RulesMap.js.map

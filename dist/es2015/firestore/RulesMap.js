@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesMap = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
+const RulesList_1 = require("./RulesList");
 const RulesValue_1 = require("./RulesValue");
 /**
  * Map type, used for simple key-value mappings.
@@ -27,6 +28,9 @@ class RulesMap extends RulesValue_1.RulesValue {
         const type = new (valueType || RulesValue_1.RulesValue);
         type.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, this, RulesExpression_1.RulesExpression.l `)`, RulesExpression_1.RulesExpression.l `.get(`, key, RulesExpression_1.RulesExpression.l `)`);
         return type;
+    }
+    keys() {
+        return new RulesList_1.RulesList(new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l `.keys()`));
     }
 }
 exports.RulesMap = RulesMap;

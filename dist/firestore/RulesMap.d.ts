@@ -24,4 +24,5 @@ export declare class RulesMap extends RulesValue implements $Map {
      * @param defaultValue Value to return if the map does not contain the given search key.
      */
     get<T extends RulesValue = RulesValue>(key: RulesString | string | RulesList<RulesString>, valueType?: AssignableType<T>, defaultValue?: T): T;
+    keys(): RulesList;
 }
