@@ -30,7 +30,7 @@ class RulesList extends RulesValue_1.RulesValue {
                 }
                 expression.push(list[i]);
             }
-            expression.push(RulesExpression_1.RulesExpression.l `[`);
+            expression.push(RulesExpression_1.RulesExpression.l `]`);
         }
         expression.push(RulesExpression_1.RulesExpression.l `)`);
         return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(expression));

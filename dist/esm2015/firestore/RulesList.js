@@ -27,7 +27,7 @@ export class RulesList extends RulesValue {
                 }
                 expression.push(list[i]);
             }
-            expression.push(RulesExpression.l `[`);
+            expression.push(RulesExpression.l `]`);
         }
         expression.push(RulesExpression.l `)`);
         return new RulesBoolean(new RulesExpression(expression));
