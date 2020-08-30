@@ -26,10 +26,19 @@ exports.path = path;
     function l(strings, ...expr) {
         return new RulesPath(new class extends RulesExpression_1.RulesExpression {
             write(writer) {
-                writer.write("path(\"/databases/$(database)/documents");
+                writer.write("/databases/$(database)/documents");
+                let braceOpened = false;
                 for (let i = 0; i < strings.length; i++) {
+                    if (strings[i].includes("/") && braceOpened) {
+                        writer.write("\")");
+                        braceOpened = false;
+                    }
                     writer.write(strings[i]);
                     if (expr.length > i) {
+                        if (!braceOpened) {
+                            writer.write("$(\"");
+                            braceOpened = true;
+                        }
                         if (expr[i] instanceof RulesValue_1.RulesValue || expr[i] instanceof RulesExpression_1.RulesExpression) {
                             writer.write(`" + `);
                             (expr[i] instanceof RulesValue_1.RulesValue ? expr[i].__rulesValueAsExpression() : expr[i]).write(writer);
@@ -40,7 +49,9 @@ exports.path = path;
                         }
                     }
                 }
-                writer.write("\")");
+                if (braceOpened) {
+                    writer.write("\")");
+                }
             }
         });
     }
