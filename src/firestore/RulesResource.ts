@@ -6,9 +6,36 @@ import {RulesMap} from "./RulesMap";
 import {RulesPath} from "./RulesPath";
 import {RulesString} from "./RulesString";
 
-export class RulesResource extends RulesValue implements RulesResource {
+export interface RulesResource {
+    readonly id: RulesString;
+    readonly __name__: RulesPath;
+    data(): RulesMap;
+}
 
-    constructor(private readonly $data = new RulesMap) {
+export class RulesResourceKnownData<D extends RulesMap> extends RulesValue {
+
+    constructor(data: D) {
+        super();
+        this.$data = (data as unknown as InternalRulesValue).__rulesClone();
+        (this.$data as any as InternalRulesValue).__rulesAccessorName = "data";
+        (this.$data as any as InternalRulesValue).__rulesExpression = new RulesExpression(this, RulesExpression.l`.data`);
+    }
+
+    private readonly $data: D;
+
+    readonly id = new RulesString;
+
+    readonly __name__ = new RulesPath;
+
+    data(): D {
+        return this.$data;
+    }
+
+}
+
+export class RulesResourceUnknownData extends RulesValue {
+
+    constructor() {
         super();
     }
 
@@ -17,15 +44,11 @@ export class RulesResource extends RulesValue implements RulesResource {
     readonly __name__ = new RulesPath;
 
     data<T extends RulesMap = RulesMap>(dataType?: AssignableType<T>): T {
-        (this.$data as any as InternalRulesValue).__rulesAccessorName = "data";
-
-        if (!dataType) {
-            return this.$data as T;
-        } else {
-            const data = new dataType();
-            (data as any as InternalRulesValue).__rulesExpression = new RulesExpression(this, RulesExpression.l`.data`);
-            return data;
-        }
+        const data = dataType ? new dataType() : new RulesMap;
+        (data as any as InternalRulesValue).__rulesAccessorName = "data";
+        (data as any as InternalRulesValue).__rulesExpression = new RulesExpression(this, RulesExpression.l`.data`);
+        (data as any as InternalRulesValue).__rulesInitProperties();
+        return data as T;
     }
 
 }

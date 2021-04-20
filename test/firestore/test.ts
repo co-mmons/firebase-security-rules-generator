@@ -5,9 +5,11 @@ import {User} from "./User";
 
 const start = Date.now();
 
-console.log(firestore(
+const output = firestore(
     User,
     Admin
-).toString());
+).toString();
+
+console.log(output);
 
 console.log("\x1b[32mFinished in", `${Date.now() - start}ms`);

@@ -1,17 +1,4 @@
-import {
-    allow,
-    and,
-    auth,
-    equals,
-    func, get,
-    match,
-    RulesMap,
-    RulesPath,
-    RulesPathVar,
-    RulesResource,
-    RulesString,
-    variable, whenTrue
-} from "firebase-security-rules-generator/firestore";
+import {allow, and, auth, equals, func, get, match, RulesMap, RulesPath, RulesPathVar, RulesResourceKnownData, RulesString, variable} from "firebase-security-rules-generator/firestore";
 
 @match("users/{$id}")
 export class User extends RulesMap {
@@ -47,7 +34,7 @@ export class User extends RulesMap {
 }
 
 export namespace User {
-    export class Resource extends RulesResource {
+    export class Resource extends RulesResourceKnownData<User> {
         constructor() {
             super(new User);
         }

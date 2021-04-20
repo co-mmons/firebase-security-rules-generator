@@ -10,7 +10,7 @@ const RulesResource_1 = require("./RulesResource");
  * @see https://firebase.google.com/docs/reference/rules/rules.firestore#.get
  */
 function get(path) {
-    const resource = new RulesResource_1.RulesResource();
+    const resource = new RulesResource_1.RulesResourceUnknownData();
     resource.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `get(`, typeof path === "string" ? RulesPath_1.RulesPath.value(path) : path, RulesExpression_1.RulesExpression.l `)`);
     return resource;
 }

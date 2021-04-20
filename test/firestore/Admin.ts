@@ -1,16 +1,4 @@
-import {
-    allow,
-    equals,
-    func,
-    get,
-    getData,
-    match,
-    or,
-    request,
-    RulesMap,
-    RulesResource,
-    RulesString
-} from "firebase-security-rules-generator/firestore";
+import {allow, equals, func, get, getData, match, or, request, resource, RulesMap, RulesResource, RulesResourceUnknownData, RulesString} from "firebase-security-rules-generator/firestore";
 import {User} from "./User";
 
 @match("admins/{$id}")
@@ -25,27 +13,27 @@ export class Admin extends RulesMap {
     customerId = new RulesString;
 
     @func()
-    passResource(user: RulesResource) {
+    private passResource(user: RulesResourceUnknownData) {
         return user.data(User).id;
     }
 
     @func()
-    getResource() {
+    private getResource() {
         return this.passResource(get("users"));
     }
 
     @func()
-    passResourceData(user: User) {
+    private passResourceData(user: User) {
         return user.get("test");
     }
 
     @func()
-    getResourceData() {
+    private getResourceData() {
         return this.passResourceData(getData("users", User));
     }
 
     @func()
-    getResourceTimestamp() {
+    private getResourceTimestamp() {
         return request(this).time.date();
     }
 
@@ -59,6 +47,6 @@ export class Admin extends RulesMap {
 
     @allow("read")
     private readByUser() {
-        return equals(request(this).resource.data().customerId, this.customerId)
+        return equals(resource(this).data(), this.customerId);
     }
 }

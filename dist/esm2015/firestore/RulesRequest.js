@@ -1,20 +1,12 @@
 import { RulesExpression } from "../core/RulesExpression";
-import { RulesMap } from "./RulesMap";
 import { RulesRequestAuth } from "./RulesRequestAuth";
-import { RulesResource } from "./RulesResource";
 import { RulesString } from "./RulesString";
 import { RulesTimestamp } from "./RulesTimestamp";
 import { RulesValue } from "./RulesValue";
-export function request(resourceData) {
-    if (!resourceData) {
-        resourceData = new RulesMap();
-    }
-    // @ts-ignore
-    return new RulesRequestImpl(resourceData.__rulesClone());
-}
-class RulesRequestImpl extends RulesValue {
-    constructor(data) {
+export class RulesRequestImpl extends RulesValue {
+    constructor(resource) {
         super();
+        this.resource = resource;
         // @ts-ignore
         this.auth = new RulesRequestAuth;
         this.time = new RulesTimestamp;
@@ -29,7 +21,6 @@ class RulesRequestImpl extends RulesValue {
          * @see https://firebase.google.com/docs/reference/rules/rules.firestore.Request#method
          */
         this.method = new RulesString;
-        this.resource = new RulesResource(data);
         this.__rulesInitProperties();
         this.__rulesExpression = RulesExpression.l `request`;
     }

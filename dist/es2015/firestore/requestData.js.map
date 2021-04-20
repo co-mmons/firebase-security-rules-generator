@@ -1,0 +1,1 @@
+{"version":3,"file":"requestData.js","sourceRoot":"","sources":["../../../src/firestore/requestData.ts"],"names":[],"mappings":";;;AACA,uCAAkC;AASlC,SAAgB,WAAW,CAAqB,YAAgB;IAC5D,IAAI,YAAY,EAAE;QACd,OAAO,iBAAO,CAAC,YAAY,CAAC,CAAC,QAAQ,CAAC,IAAI,EAAE,CAAC;KAChD;SAAM;QACH,OAAO,iBAAO,EAAE,CAAC,QAAQ,CAAC,IAAI,EAAE,CAAC;KACpC;AACL,CAAC;AAND,kCAMC"}

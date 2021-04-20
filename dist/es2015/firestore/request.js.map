@@ -1,0 +1,1 @@
+{"version":3,"file":"request.js","sourceRoot":"","sources":["../../../src/firestore/request.ts"],"names":[],"mappings":";;;AACA,yCAAoC;AACpC,iDAA8H;AAM9H,SAAgB,OAAO,CAAqB,YAAgB;IAExD,IAAI,CAAC,YAAY,EAAE;QACf,YAAY,GAAG,IAAI,mBAAQ,EAAS,CAAC;KACxC;IAED,aAAa;IACb,OAAO,IAAI,+BAAgB,CAAE,YAA0C,CAAC,YAAY,EAAS,CAAC,CAAC;AACnG,CAAC;AARD,0BAQC"}

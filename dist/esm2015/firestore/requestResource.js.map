@@ -1,0 +1,1 @@
+{"version":3,"file":"requestResource.js","sourceRoot":"","sources":["../../../src/firestore/requestResource.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,EAAC,MAAM,WAAW,CAAC;AAQlC,MAAM,UAAU,eAAe,CAAqB,YAAgB;IAChE,OAAO,OAAO,CAAC,YAAY,CAAC,CAAC,QAAQ,CAAC;AAC1C,CAAC"}
