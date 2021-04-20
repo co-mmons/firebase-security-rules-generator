@@ -15,6 +15,7 @@ const get_1 = require("./get");
 function getData(path, dataType) {
     const data = new dataType();
     data.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `__getResourceData(`, get_1.get(path), RulesExpression_1.RulesExpression.l `)`);
+    data.__rulesInitProperties();
     return data;
 }
 exports.getData = getData;

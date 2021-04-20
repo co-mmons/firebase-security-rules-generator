@@ -17,5 +17,6 @@ import {RulesPath} from "./RulesPath";
 export function getData<D extends RulesMap>(path: RulesPath | string, dataType: AssignableType<D>): D {
     const data: D = new dataType();
     (data as any as InternalRulesValue).__rulesExpression = new RulesExpression(RulesExpression.l`__getResourceData(`, get(path), RulesExpression.l`)`);
+    (data as any as InternalRulesValue).__rulesInitProperties();
     return data;
 }

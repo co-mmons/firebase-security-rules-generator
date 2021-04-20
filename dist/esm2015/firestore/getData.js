@@ -12,6 +12,7 @@ import { get } from "./get";
 export function getData(path, dataType) {
     const data = new dataType();
     data.__rulesExpression = new RulesExpression(RulesExpression.l `__getResourceData(`, get(path), RulesExpression.l `)`);
+    data.__rulesInitProperties();
     return data;
 }
 //# sourceMappingURL=getData.js.map
