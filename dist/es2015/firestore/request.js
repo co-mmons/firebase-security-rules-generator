@@ -1,14 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.request = void 0;
-const RulesMap_1 = require("./RulesMap");
 const RulesRequest_1 = require("./RulesRequest");
+const RulesResource_1 = require("./RulesResource");
 function request(resourceData) {
-    if (!resourceData) {
-        resourceData = new RulesMap_1.RulesMap();
+    let resource;
+    if (resourceData) {
+        resource = new RulesResource_1.RulesResourceKnownData(resourceData);
     }
-    // @ts-ignore
-    return new RulesRequest_1.RulesRequestImpl(resourceData.__rulesClone());
+    else {
+        resource = new RulesResource_1.RulesResourceUnknownData();
+    }
+    return new RulesRequest_1.RulesRequestImpl(resource);
 }
 exports.request = request;
 //# sourceMappingURL=request.js.map

@@ -1,10 +1,13 @@
-import { RulesMap } from "./RulesMap";
 import { RulesRequestImpl } from "./RulesRequest";
+import { RulesResourceKnownData, RulesResourceUnknownData } from "./RulesResource";
 export function request(resourceData) {
-    if (!resourceData) {
-        resourceData = new RulesMap();
+    let resource;
+    if (resourceData) {
+        resource = new RulesResourceKnownData(resourceData);
     }
-    // @ts-ignore
-    return new RulesRequestImpl(resourceData.__rulesClone());
+    else {
+        resource = new RulesResourceUnknownData();
+    }
+    return new RulesRequestImpl(resource);
 }
 //# sourceMappingURL=request.js.map

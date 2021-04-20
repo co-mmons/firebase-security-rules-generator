@@ -1,6 +1,6 @@
-import {InternalRulesValue} from "../internal";
 import {RulesMap} from "./RulesMap";
 import {RulesRequest, RulesRequestImpl, RulesRequestKnownResourceData, RulesRequestUnknownResourceData} from "./RulesRequest";
+import {RulesResource, RulesResourceKnownData, RulesResourceUnknownData} from "./RulesResource";
 
 export function request<D extends RulesMap>(resourceData: D): RulesRequestKnownResourceData<D>;
 
@@ -8,10 +8,12 @@ export function request(): RulesRequestUnknownResourceData;
 
 export function request<D extends RulesMap>(resourceData?: D): RulesRequest {
 
-    if (!resourceData) {
-        resourceData = new RulesMap() as any;
+    let resource: RulesResource;
+    if (resourceData) {
+        resource = new RulesResourceKnownData(resourceData);
+    } else {
+        resource = new RulesResourceUnknownData();
     }
 
-    // @ts-ignore
-    return new RulesRequestImpl((resourceData as any as InternalRulesValue).__rulesClone() as any);
+    return new RulesRequestImpl(resource);
 }

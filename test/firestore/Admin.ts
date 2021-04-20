@@ -47,6 +47,6 @@ export class Admin extends RulesMap {
 
     @allow("read")
     private readByUser() {
-        return equals(resource(this).data(), this.customerId);
+        return equals(resource(this).data().customerId, request(this).resource.data().customerId);
     }
 }
