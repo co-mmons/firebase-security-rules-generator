@@ -2,10 +2,10 @@ import {InternalRulesValue} from "../internal";
 import {RulesExpression} from "./RulesExpression";
 import {RulesValue} from "./RulesValue";
 
-export function whenTrue<T extends RulesValue | RulesExpression | string | number | boolean>(trueExpression: RulesValue | RulesExpression, whenTrueValue: T): T {
+export function whenTrue<T = RulesValue | RulesExpression | string | number | boolean>(trueExpression: RulesValue | RulesExpression, whenTrueValue: T): T {
 
     if (whenTrueValue instanceof RulesExpression) {
-        return new RulesExpression(RulesExpression.l`(`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : null`) as T;
+        return new RulesExpression(RulesExpression.l`(`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : null`) as unknown as T;
     } else if (whenTrueValue instanceof RulesValue) {
         const clone = (whenTrueValue as any as InternalRulesValue).__rulesClone();
         const internal = whenTrueValue as any as InternalRulesValue;
