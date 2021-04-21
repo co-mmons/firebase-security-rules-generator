@@ -16,7 +16,7 @@ export function ifElse(trueExpression, whenTrueValue, elseValue) {
         elseValue = new RulesBoolean(new RulesExpression(elseValue));
     }
     const expression = new RulesExpression(RulesExpression.l `(`, trueExpression, RulesExpression.l `) ? (`, whenTrueValue, RulesExpression.l `) : (`, elseValue || RulesExpression.l `null`, RulesExpression.l `)`);
-    if (arguments.length === 2 && whenTrueValue instanceof RulesValue) {
+    if ((arguments.length === 2 && whenTrueValue instanceof RulesValue) || (elseValue && whenTrueValue.constructor === elseValue.constructor)) {
         const valueType = whenTrueValue.constructor;
         return new valueType(expression);
     }

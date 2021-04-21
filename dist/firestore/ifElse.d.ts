@@ -1,6 +1,10 @@
 import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "./RulesValue";
+declare type Value = RulesValue | string | boolean;
 declare type TrueExpression = RulesValue | RulesExpression;
 export declare function ifElse<T = RulesValue>(trueExpression: TrueExpression, whenTrueValue: T): T;
+export declare function ifElse<T = RulesValue>(trueExpression: TrueExpression, whenTrueValue: T, elseValue: T): T;
 export declare function ifElse(trueExpression: TrueExpression, whenTrueValue: string | boolean): RulesValue;
+export declare function ifElse(trueExpression: TrueExpression, whenTrueValue: Value): RulesValue;
+export declare function ifElse(trueExpression: TrueExpression, whenTrueValue: Value, elseValue: Value): RulesValue;
 export {};
