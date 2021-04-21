@@ -1,7 +1,8 @@
 import { RulesExpression } from "../core/RulesExpression";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesString } from "./RulesString";
-export function ifElse(trueExpression, whenTrueValue, elseValue = null) {
+import { RulesValue } from "./RulesValue";
+export function ifElse(trueExpression, whenTrueValue, elseValue) {
     if (typeof whenTrueValue === "string") {
         whenTrueValue = new RulesString(new RulesExpression(whenTrueValue));
     }
@@ -14,6 +15,13 @@ export function ifElse(trueExpression, whenTrueValue, elseValue = null) {
     else if (typeof elseValue === "boolean") {
         elseValue = new RulesBoolean(new RulesExpression(elseValue));
     }
-    return new RulesExpression(RulesExpression.l `(`, trueExpression, RulesExpression.l `) ? (`, whenTrueValue, RulesExpression.l `) : (`, elseValue || RulesExpression.l `null`, RulesExpression.l `)`);
+    const expression = new RulesExpression(RulesExpression.l `(`, trueExpression, RulesExpression.l `) ? (`, whenTrueValue, RulesExpression.l `) : (`, elseValue || RulesExpression.l `null`, RulesExpression.l `)`);
+    if (arguments.length === 2 && whenTrueValue instanceof RulesValue) {
+        const valueType = whenTrueValue.constructor;
+        return new valueType(expression);
+    }
+    else {
+        return new RulesValue(expression);
+    }
 }
 //# sourceMappingURL=ifElse.js.map

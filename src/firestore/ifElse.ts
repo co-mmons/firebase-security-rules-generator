@@ -1,11 +1,17 @@
 import {RulesExpression} from "../core/RulesExpression";
+import {AssignableType} from "../utils/Type";
 import {RulesBoolean} from "./RulesBoolean";
 import {RulesString} from "./RulesString";
 import {RulesValue} from "./RulesValue";
 
-type Value = RulesValue | RulesExpression | string | boolean;
+type Value = RulesValue | string | boolean;
+type TrueExpression = RulesValue | RulesExpression;
 
-export function ifElse(trueExpression: RulesValue | RulesExpression, whenTrueValue: Value, elseValue: Value = null) {
+export function ifElse<T = RulesValue>(trueExpression: TrueExpression, whenTrueValue: T): T;
+
+export function ifElse(trueExpression: TrueExpression, whenTrueValue: string | boolean): RulesValue;
+
+export function ifElse(trueExpression: TrueExpression, whenTrueValue: Value, elseValue?: Value) {
 
     if (typeof whenTrueValue === "string") {
         whenTrueValue = new RulesString(new RulesExpression(whenTrueValue));
@@ -19,5 +25,12 @@ export function ifElse(trueExpression: RulesValue | RulesExpression, whenTrueVal
         elseValue = new RulesBoolean(new RulesExpression(elseValue));
     }
 
-    return new RulesExpression(RulesExpression.l`(`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : (`, elseValue || RulesExpression.l`null`, RulesExpression.l`)`);
+    const expression = new RulesExpression(RulesExpression.l`(`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : (`, elseValue || RulesExpression.l`null`, RulesExpression.l`)`);
+
+    if (arguments.length === 2 && whenTrueValue instanceof RulesValue) {
+        const valueType: AssignableType<RulesValue> = whenTrueValue.constructor as any;
+        return new valueType(expression);
+    } else {
+        return new RulesValue(expression);
+    }
 }

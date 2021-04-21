@@ -8,6 +8,8 @@ export { func } from "../core/func";
 export { getData } from "./getData";
 export { get } from "./get";
 export { ifElse } from "./ifElse";
+export { isNotNull } from "./isNotNull";
+export { isNull } from "./isNull";
 export { match } from "../core/match";
 export { or } from "./or";
 export { requestData } from "./requestData";
@@ -24,7 +26,6 @@ export { RulesPathVar } from "./RulesPathVar";
 export { RulesResourceKnownData, RulesResourceUnknownData } from "./RulesResource";
 export { RulesString } from "./RulesString";
 export { RulesTimestamp } from "./RulesTimestamp";
+export { RulesValue } from "./RulesValue";
 export { variable } from "./variable";
-export { isNull } from "./isNull";
-export { isNotNull } from "./isNotNull";
 //# sourceMappingURL=index.js.map
