@@ -1,5 +1,5 @@
 import { RulesExpression } from "./RulesExpression";
-export declare abstract class RulesValue {
+export declare class RulesValue {
     constructor(expression?: RulesExpression);
     private __rulesExpression?;
     private __rulesVarId?;

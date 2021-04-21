@@ -1,8 +1,7 @@
-import {equals} from "../core/equals";
 import {InternalRulesValue} from "../internal";
 import {RulesExpression} from "./RulesExpression";
 
-export abstract class RulesValue {
+export class RulesValue {
 
     constructor(expression?: RulesExpression) {
         (this as any as InternalRulesValue).__rulesValue = true;
