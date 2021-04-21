@@ -33,7 +33,7 @@ export function ifElse(trueExpression: TrueExpression, whenTrueValue: Value, els
 
     const expression = new RulesExpression(RulesExpression.l`(`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : (`, elseValue || RulesExpression.l`null`, RulesExpression.l`)`);
 
-    if ((arguments.length === 2 && whenTrueValue instanceof RulesValue) || (elseValue && whenTrueValue.constructor === elseValue.constructor)) {
+    if ((elseValue === undefined && whenTrueValue instanceof RulesValue) || (elseValue && whenTrueValue.constructor === elseValue.constructor)) {
         const valueType: AssignableType<RulesValue> = whenTrueValue.constructor as any;
         return new valueType(expression);
 
