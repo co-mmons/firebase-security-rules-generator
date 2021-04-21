@@ -1,0 +1,1 @@
+{"version":3,"file":"isNull.js","sourceRoot":"","sources":["../../../src/firestore/isNull.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,eAAe,EAAC,MAAM,yBAAyB,CAAC;AAGxD,MAAM,UAAU,MAAM,CAAC,KAA+D;IAClF,OAAO,IAAI,eAAe,CAAC,eAAe,CAAC,CAAC,CAAA,GAAG,EAAE,KAAK,EAAE,eAAe,CAAC,CAAC,CAAA,UAAU,EAAE,eAAe,CAAC,CAAC,CAAA,GAAG,CAAC,CAAC;AAC/G,CAAC"}

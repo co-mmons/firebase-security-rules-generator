@@ -25,3 +25,5 @@ export {RulesResource, RulesResourceKnownData, RulesResourceUnknownData} from ".
 export {RulesString} from "./RulesString";
 export {RulesTimestamp} from "./RulesTimestamp";
 export {variable} from "./variable";
+export {isNull} from "./isNull";
+export {isNotNull} from "./isNotNull";

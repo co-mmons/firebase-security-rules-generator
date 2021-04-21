@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.variable = exports.RulesTimestamp = exports.RulesString = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesMap = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.ifElse = exports.get = exports.getData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = void 0;
+exports.isNotNull = exports.isNull = exports.variable = exports.RulesTimestamp = exports.RulesString = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesMap = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.ifElse = exports.get = exports.getData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = void 0;
 var allowDeny_1 = require("../core/allowDeny");
 Object.defineProperty(exports, "allow", { enumerable: true, get: function () { return allowDeny_1.allow; } });
 Object.defineProperty(exports, "deny", { enumerable: true, get: function () { return allowDeny_1.deny; } });
@@ -58,4 +58,8 @@ var RulesTimestamp_1 = require("./RulesTimestamp");
 Object.defineProperty(exports, "RulesTimestamp", { enumerable: true, get: function () { return RulesTimestamp_1.RulesTimestamp; } });
 var variable_1 = require("./variable");
 Object.defineProperty(exports, "variable", { enumerable: true, get: function () { return variable_1.variable; } });
+var isNull_1 = require("./isNull");
+Object.defineProperty(exports, "isNull", { enumerable: true, get: function () { return isNull_1.isNull; } });
+var isNotNull_1 = require("./isNotNull");
+Object.defineProperty(exports, "isNotNull", { enumerable: true, get: function () { return isNotNull_1.isNotNull; } });
 //# sourceMappingURL=index.js.map
