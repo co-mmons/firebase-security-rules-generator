@@ -2,6 +2,16 @@ import {InternalRulesValue} from "../internal";
 import {RulesExpression} from "./RulesExpression";
 import {RulesValue} from "./RulesValue";
 
+export function whenTrue(trueExpression: RulesValue | RulesExpression, whenTrueValue: RulesValue): RulesValue;
+
+export function whenTrue(trueExpression: RulesValue | RulesExpression, whenTrueValue: RulesExpression): RulesExpression;
+
+export function whenTrue(trueExpression: RulesValue | RulesExpression, whenTrueValue: string): string;
+
+export function whenTrue(trueExpression: RulesValue | RulesExpression, whenTrueValue: number): number;
+
+export function whenTrue(trueExpression: RulesValue | RulesExpression, whenTrueValue: boolean): boolean;
+
 export function whenTrue<T = RulesValue | RulesExpression | string | number | boolean>(trueExpression: RulesValue | RulesExpression, whenTrueValue: T): T {
 
     if (whenTrueValue instanceof RulesExpression) {
