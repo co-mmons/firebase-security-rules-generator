@@ -6,6 +6,17 @@ import { RulesValue } from "./RulesValue";
  * List type. Items are not necessarily homogenous.
  */
 export class RulesList extends RulesValue {
+    constructor(arrayOrExpression) {
+        if (Array.isArray(arrayOrExpression)) {
+            super(new RulesExpression(arrayOrExpression));
+        }
+        else if (arrayOrExpression) {
+            super(arrayOrExpression);
+        }
+        else {
+            super();
+        }
+    }
     /**
      * Get the number of values in the list.
      *

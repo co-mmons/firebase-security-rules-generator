@@ -9,6 +9,22 @@ import {RulesValue} from "./RulesValue";
  */
 export class RulesList<T = any> extends RulesValue implements $RulesList {
 
+    constructor();
+
+    constructor(array: Array<string | number>);
+
+    constructor(expression: RulesExpression);
+
+    constructor(arrayOrExpression?: Array<string | number> | RulesExpression) {
+        if (Array.isArray(arrayOrExpression)) {
+            super(new RulesExpression(arrayOrExpression));
+        } else if (arrayOrExpression) {
+            super(arrayOrExpression);
+        } else {
+            super();
+        }
+    }
+
     /**
      * Get the number of values in the list.
      *

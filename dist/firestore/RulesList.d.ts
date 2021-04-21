@@ -1,3 +1,4 @@
+import { RulesExpression } from "../core/RulesExpression";
 import { RulesList as $RulesList } from "../core/RulesList";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesInteger } from "./RulesInteger";
@@ -6,6 +7,9 @@ import { RulesValue } from "./RulesValue";
  * List type. Items are not necessarily homogenous.
  */
 export declare class RulesList<T = any> extends RulesValue implements $RulesList {
+    constructor();
+    constructor(array: Array<string | number>);
+    constructor(expression: RulesExpression);
     /**
      * Get the number of values in the list.
      *

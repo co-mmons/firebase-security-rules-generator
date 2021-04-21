@@ -9,6 +9,17 @@ const RulesValue_1 = require("./RulesValue");
  * List type. Items are not necessarily homogenous.
  */
 class RulesList extends RulesValue_1.RulesValue {
+    constructor(arrayOrExpression) {
+        if (Array.isArray(arrayOrExpression)) {
+            super(new RulesExpression_1.RulesExpression(arrayOrExpression));
+        }
+        else if (arrayOrExpression) {
+            super(arrayOrExpression);
+        }
+        else {
+            super();
+        }
+    }
     /**
      * Get the number of values in the list.
      *
