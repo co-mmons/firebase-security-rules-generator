@@ -4,6 +4,8 @@ import { RulesInteger } from "./RulesInteger";
 import { RulesValue } from "./RulesValue";
 /**
  * List type. Items are not necessarily homogenous.
+ *
+ * {@link https://firebase.google.com/docs/reference/rules/rules.List}
  */
 export class RulesList extends RulesValue {
     constructor(arrayOrExpression) {
@@ -19,17 +21,30 @@ export class RulesList extends RulesValue {
     }
     /**
      * Get the number of values in the list.
-     *
-     * {@link https://firebase.google.com/docs/reference/rules/rules.List#size}
      */
     size() {
         return new RulesInteger(new RulesExpression(this, RulesExpression.l `.size()`));
     }
     /**
+     * Determine whether the list contains all elements in another list.
+     */
+    hasAll(list) {
+        return this.buildHasExpression("hasAny", list);
+    }
+    /**
+     * Determine whether the list contains any element in another list.
+     */
+    hasAny(list) {
+        return this.buildHasExpression("hasAny", list);
+    }
+    /**
      * Determine whether all elements in the list are present in another list.
      */
     hasOnly(list) {
-        const expression = [this, RulesExpression.l `.hasOnly(`];
+        return this.buildHasExpression("hasOnly", list);
+    }
+    buildHasExpression(method, list) {
+        const expression = [this, RulesExpression.l `.${method}(`];
         if (list instanceof Array) {
             expression.push(RulesExpression.l `[`);
             for (let i = 0; i < list.length; i++) {

@@ -6,6 +6,8 @@ import {RulesValue} from "./RulesValue";
 
 /**
  * List type. Items are not necessarily homogenous.
+ *
+ * {@link https://firebase.google.com/docs/reference/rules/rules.List}
  */
 export class RulesList<T = any> extends RulesValue implements $RulesList {
 
@@ -27,19 +29,35 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
 
     /**
      * Get the number of values in the list.
-     *
-     * {@link https://firebase.google.com/docs/reference/rules/rules.List#size}
      */
     size() {
         return new RulesInteger(new RulesExpression(this, RulesExpression.l`.size()`));
     }
 
     /**
+     * Determine whether the list contains all elements in another list.
+     */
+    hasAll(list: RulesList | Array<RulesValue | string | number | boolean>) {
+        return this.buildHasExpression("hasAny", list);
+    }
+
+    /**
+     * Determine whether the list contains any element in another list.
+     */
+    hasAny(list: RulesList | Array<RulesValue | string | number | boolean>) {
+        return this.buildHasExpression("hasAny", list);
+    }
+
+    /**
      * Determine whether all elements in the list are present in another list.
      */
     hasOnly(list: RulesList | Array<RulesValue | string | number | boolean>) {
+        return this.buildHasExpression("hasOnly", list);
+    }
 
-        const expression: any[] = [this, RulesExpression.l`.hasOnly(`];
+    private buildHasExpression(method: "hasOnly" | "hasAny" | "hasAll", list: RulesList | Array<RulesValue | string | number | boolean>) {
+
+        const expression: any[] = [this, RulesExpression.l`.${method}(`];
 
         if (list instanceof Array) {
             expression.push(RulesExpression.l`[`);

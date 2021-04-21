@@ -23,7 +23,7 @@ export class RulesExpression {
         } else if (expression instanceof RulesExpression) {
             return expression.write(writer);
 
-        } else if ((expression as any as InternalRulesValue).__rulesValue ) {
+        } else if ((expression as any as InternalRulesValue).__rulesValue) {
             return this.writeImpl(writer, (expression as any as InternalRulesValue).__rulesValueAsExpression());
 
         } else if (typeof expression === "string") {
