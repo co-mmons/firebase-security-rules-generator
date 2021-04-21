@@ -13,6 +13,9 @@ function whenTrue(trueExpression, whenTrueValue) {
         clone.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, RulesExpression_1.RulesExpression.l `(`, trueExpression, RulesExpression_1.RulesExpression.l `) ? (`, internal.__rulesValueAsExpression(), RulesExpression_1.RulesExpression.l `) : null`, RulesExpression_1.RulesExpression.l `)`);
         return clone;
     }
+    else if (typeof whenTrueValue === "string" || typeof whenTrueValue === "number" || typeof whenTrueValue === "boolean") {
+        return whenTrueValue;
+    }
     else {
         throw new Error("Invalid expression: whenTrue only accepts RulesValue or RulesExpression");
     }

@@ -10,6 +10,9 @@ export function whenTrue(trueExpression, whenTrueValue) {
         clone.__rulesExpression = new RulesExpression(RulesExpression.l `(`, RulesExpression.l `(`, trueExpression, RulesExpression.l `) ? (`, internal.__rulesValueAsExpression(), RulesExpression.l `) : null`, RulesExpression.l `)`);
         return clone;
     }
+    else if (typeof whenTrueValue === "string" || typeof whenTrueValue === "number" || typeof whenTrueValue === "boolean") {
+        return whenTrueValue;
+    }
     else {
         throw new Error("Invalid expression: whenTrue only accepts RulesValue or RulesExpression");
     }
