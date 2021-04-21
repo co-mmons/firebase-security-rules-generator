@@ -7,7 +7,7 @@ export { firestore } from "./firestore";
 export { func } from "../core/func";
 export { getData } from "./getData";
 export { get } from "./get";
-export { ifElse } from "../core/ifElse";
+export { ifElse } from "./ifElse";
 export { match } from "../core/match";
 export { or } from "./or";
 export { requestData } from "./requestData";
@@ -25,5 +25,4 @@ export { RulesResourceKnownData, RulesResourceUnknownData } from "./RulesResourc
 export { RulesString } from "./RulesString";
 export { RulesTimestamp } from "./RulesTimestamp";
 export { variable } from "./variable";
-export { whenTrue } from "../core/whenTrue";
 //# sourceMappingURL=index.js.map

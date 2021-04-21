@@ -1,16 +1,9 @@
 import {RulesExpression} from "../core/RulesExpression";
-import {
-    concatExpression,
-    RulesString as $RulesString,
-    sizeExpression,
-    substringExpression,
-    trimExpression
-} from "../core/RulesString";
+import {concatExpression, RulesString as $RulesString, sizeExpression, substringExpression, trimExpression} from "../core/RulesString";
 import {matchesExpression} from "../core/RulesString/matchesExpression";
 import {InternalRulesValue} from "../internal";
 import {RulesBoolean} from "./RulesBoolean";
 import {RulesInteger} from "./RulesInteger";
-import {RulesPath} from "./RulesPath";
 import {RulesValue} from "./RulesValue";
 
 export class RulesString extends RulesValue implements $RulesString {

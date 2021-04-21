@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.whenTrue = exports.variable = exports.RulesTimestamp = exports.RulesString = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesMap = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.ifElse = exports.get = exports.getData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = void 0;
+exports.variable = exports.RulesTimestamp = exports.RulesString = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesMap = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.ifElse = exports.get = exports.getData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = void 0;
 var allowDeny_1 = require("../core/allowDeny");
 Object.defineProperty(exports, "allow", { enumerable: true, get: function () { return allowDeny_1.allow; } });
 Object.defineProperty(exports, "deny", { enumerable: true, get: function () { return allowDeny_1.deny; } });
@@ -20,7 +20,7 @@ var getData_1 = require("./getData");
 Object.defineProperty(exports, "getData", { enumerable: true, get: function () { return getData_1.getData; } });
 var get_1 = require("./get");
 Object.defineProperty(exports, "get", { enumerable: true, get: function () { return get_1.get; } });
-var ifElse_1 = require("../core/ifElse");
+var ifElse_1 = require("./ifElse");
 Object.defineProperty(exports, "ifElse", { enumerable: true, get: function () { return ifElse_1.ifElse; } });
 var match_1 = require("../core/match");
 Object.defineProperty(exports, "match", { enumerable: true, get: function () { return match_1.match; } });
@@ -58,6 +58,4 @@ var RulesTimestamp_1 = require("./RulesTimestamp");
 Object.defineProperty(exports, "RulesTimestamp", { enumerable: true, get: function () { return RulesTimestamp_1.RulesTimestamp; } });
 var variable_1 = require("./variable");
 Object.defineProperty(exports, "variable", { enumerable: true, get: function () { return variable_1.variable; } });
-var whenTrue_1 = require("../core/whenTrue");
-Object.defineProperty(exports, "whenTrue", { enumerable: true, get: function () { return whenTrue_1.whenTrue; } });
 //# sourceMappingURL=index.js.map
