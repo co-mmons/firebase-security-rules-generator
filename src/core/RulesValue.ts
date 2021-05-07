@@ -25,9 +25,9 @@ export class RulesValue {
             return this.__rulesExpression;
 
         } else if (typeof this.__rulesAccessorContext === "string") {
-            return RulesExpression.l`${this.__rulesAccessorContext}.${this.__rulesAccessorName}`;
+            return RulesExpression.l`${this.__rulesAccessorContext}${accessorExpression(this.__rulesAccessorName)}`;
         } else if (this.__rulesAccessorContext) {
-            return new RulesExpression(this.__rulesAccessorContext, RulesExpression.l`.${this.__rulesAccessorName}`);
+            return new RulesExpression(this.__rulesAccessorContext, RulesExpression.l`${accessorExpression(this.__rulesAccessorName)}`);
         } else {
             return new RulesExpression(RulesExpression.l`${this.__rulesAccessorName}`);
         }
@@ -52,5 +52,13 @@ export class RulesValue {
         const niu = new (this["constructor"] as any as {new(): RulesValue});
         niu.__rulesInitProperties();
         return niu;
+    }
+}
+
+function accessorExpression(name: string) {
+    if (name.match(/^(?![0-9])[a-zA-Z0-9$_]+$/)) {
+        return `.${name}`;
+    } else {
+        return `["${name}"]`
     }
 }

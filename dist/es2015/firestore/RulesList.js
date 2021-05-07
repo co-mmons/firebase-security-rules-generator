@@ -13,7 +13,7 @@ const RulesValue_1 = require("./RulesValue");
 class RulesList extends RulesValue_1.RulesValue {
     constructor(arrayOrExpression) {
         if (Array.isArray(arrayOrExpression)) {
-            super(new RulesExpression_1.RulesExpression(arrayOrExpression));
+            super(new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `[`, arrayOrExpression, RulesExpression_1.RulesExpression.l `]`));
         }
         else if (arrayOrExpression) {
             super(arrayOrExpression);

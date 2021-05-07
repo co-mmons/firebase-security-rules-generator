@@ -17,10 +17,10 @@ class RulesValue {
             return this.__rulesExpression;
         }
         else if (typeof this.__rulesAccessorContext === "string") {
-            return RulesExpression_1.RulesExpression.l `${this.__rulesAccessorContext}.${this.__rulesAccessorName}`;
+            return RulesExpression_1.RulesExpression.l `${this.__rulesAccessorContext}${accessorExpression(this.__rulesAccessorName)}`;
         }
         else if (this.__rulesAccessorContext) {
-            return new RulesExpression_1.RulesExpression(this.__rulesAccessorContext, RulesExpression_1.RulesExpression.l `.${this.__rulesAccessorName}`);
+            return new RulesExpression_1.RulesExpression(this.__rulesAccessorContext, RulesExpression_1.RulesExpression.l `${accessorExpression(this.__rulesAccessorName)}`);
         }
         else {
             return new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `${this.__rulesAccessorName}`);
@@ -43,4 +43,12 @@ class RulesValue {
     }
 }
 exports.RulesValue = RulesValue;
+function accessorExpression(name) {
+    if (name.match(/^(?![0-9])[a-zA-Z0-9$_]+$/)) {
+        return `.${name}`;
+    }
+    else {
+        return `["${name}"]`;
+    }
+}
 //# sourceMappingURL=RulesValue.js.map

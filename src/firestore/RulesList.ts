@@ -19,7 +19,7 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
 
     constructor(arrayOrExpression?: Array<string | number> | RulesExpression) {
         if (Array.isArray(arrayOrExpression)) {
-            super(new RulesExpression(arrayOrExpression));
+            super(new RulesExpression(RulesExpression.l`[`,arrayOrExpression, RulesExpression.l`]`));
         } else if (arrayOrExpression) {
             super(arrayOrExpression);
         } else {

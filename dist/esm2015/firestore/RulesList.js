@@ -10,7 +10,7 @@ import { RulesValue } from "./RulesValue";
 export class RulesList extends RulesValue {
     constructor(arrayOrExpression) {
         if (Array.isArray(arrayOrExpression)) {
-            super(new RulesExpression(arrayOrExpression));
+            super(new RulesExpression(RulesExpression.l `[`, arrayOrExpression, RulesExpression.l `]`));
         }
         else if (arrayOrExpression) {
             super(arrayOrExpression);
