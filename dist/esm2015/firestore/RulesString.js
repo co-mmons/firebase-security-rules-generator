@@ -5,6 +5,9 @@ import { RulesBoolean } from "./RulesBoolean";
 import { RulesInteger } from "./RulesInteger";
 import { RulesValue } from "./RulesValue";
 export class RulesString extends RulesValue {
+    static is(value) {
+        return new RulesBoolean(new RulesExpression(value, RulesExpression.l ` is string`));
+    }
     matches(re) {
         return new RulesBoolean(matchesExpression(this, re));
     }

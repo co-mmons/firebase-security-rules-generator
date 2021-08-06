@@ -72,6 +72,8 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
             }
 
             expression.push(RulesExpression.l`]`);
+        } else {
+            expression.push(list);
         }
 
         expression.push(RulesExpression.l`)`);

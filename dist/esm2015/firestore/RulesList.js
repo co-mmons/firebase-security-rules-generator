@@ -55,6 +55,9 @@ export class RulesList extends RulesValue {
             }
             expression.push(RulesExpression.l `]`);
         }
+        else {
+            expression.push(list);
+        }
         expression.push(RulesExpression.l `)`);
         return new RulesBoolean(new RulesExpression(expression));
     }

@@ -15,20 +15,30 @@ class RulesService {
                 this.writeFunction(writer, func, matchConstructor, matchConstructor);
             }
         }
-        writer.writeLine("match ", matchConstructor.__rulesMatchPath, " {");
-        writer.indentUp();
-        writer.line();
+        let hasInner = false;
+        function writeMatchStart() {
+            if (!hasInner) {
+                writer.writeLine("match ", matchConstructor.__rulesMatchPath, " {");
+                writer.indentUp();
+                writer.line();
+                hasInner = true;
+            }
+        }
         const matchInstance = new matchConstructor();
         for (const func of matchConstructor.__rulesMatchFunctions || []) {
             if (!func.global) {
+                writeMatchStart();
                 this.writeFunction(writer, func, matchConstructor, matchInstance);
             }
         }
         for (const allow of matchConstructor.__rulesMatchAllows || []) {
+            writeMatchStart();
             this.writeAllow(writer, allow, matchConstructor, matchInstance);
         }
-        writer.indentDown();
-        writer.writeLine("}");
+        if (hasInner) {
+            writer.indentDown();
+            writer.writeLine("}");
+        }
     }
     writeAllow(writer, allow, matchConstructor, matchInstance) {
         writer.writeLine("allow ", allow.operations.join(", "), ": if ");

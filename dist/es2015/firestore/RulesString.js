@@ -8,6 +8,9 @@ const RulesBoolean_1 = require("./RulesBoolean");
 const RulesInteger_1 = require("./RulesInteger");
 const RulesValue_1 = require("./RulesValue");
 class RulesString extends RulesValue_1.RulesValue {
+    static is(value) {
+        return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(value, RulesExpression_1.RulesExpression.l ` is string`));
+    }
     matches(re) {
         return new RulesBoolean_1.RulesBoolean(matchesExpression_1.matchesExpression(this, re));
     }

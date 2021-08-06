@@ -8,6 +8,10 @@ import {RulesValue} from "./RulesValue";
 
 export class RulesString extends RulesValue implements $RulesString {
 
+    static is(value: RulesValue) {
+        return new RulesBoolean(new RulesExpression(value, RulesExpression.l` is string`))
+    }
+
     matches(re: RulesString | string): RulesBoolean {
         return new RulesBoolean(matchesExpression(this, re));
     }

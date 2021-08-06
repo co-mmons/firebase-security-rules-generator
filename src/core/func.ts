@@ -12,7 +12,7 @@ export function func(options?: {exportedName?: string}) {
 
         const exportedName = options?.exportedName || (!!targetClass.prototype ? `${classConstructor.name}_${functionName}` : functionName);
 
-        const argsTypes: any[] = Reflect.getMetadata("design:paramtypes", targetClass, functionName);
+        const argsTypes: any[] = Reflect.getMetadata("design:paramtypes", targetClass, functionName) as any[];
         const argsNames = (originalFunction.toString().match(`^${functionName}\\(\\s*([^)]+?)\\s*\\)`) || [])
             .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
             .find((value, index) => index === 1) as string[];
@@ -56,6 +56,13 @@ export function func(options?: {exportedName?: string}) {
             }
 
             return newExpression;
+        }
+
+        // verify types and check for circular deps
+        for (let i = 0; i < argsTypes.length; i++) {
+            if (argsTypes[i] === undefined) {
+                throw new Error(`Argument's ${i} type cannot be identified for func ${classConstructor.name}.${functionName}, maybe circular dependency?`);
+            }
         }
 
         const bodyArgs = argsTypes.map(arg => new arg());

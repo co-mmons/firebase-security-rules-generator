@@ -3,6 +3,7 @@ import { RulesBoolean } from "./RulesBoolean";
 import { RulesInteger } from "./RulesInteger";
 import { RulesValue } from "./RulesValue";
 export declare class RulesString extends RulesValue implements $RulesString {
+    static is(value: RulesValue): RulesBoolean;
     matches(re: RulesString | string): RulesBoolean;
     trim(): RulesString;
     size(): RulesInteger;
