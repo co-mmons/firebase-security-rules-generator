@@ -23,7 +23,7 @@ export class RulesMap extends RulesValue {
      */
     get(key, valueType, defaultValue) {
         const type = new (valueType || RulesValue);
-        type.__rulesExpression = new RulesExpression(RulesExpression.l `(`, this, RulesExpression.l `)`, RulesExpression.l `.get(`, key, RulesExpression.l `)`);
+        type.__rulesExpression = new RulesExpression(RulesExpression.l `(`, this, RulesExpression.l `)`, RulesExpression.l `.get(`, key, RulesExpression.l `, `, (defaultValue !== undefined ? defaultValue : RulesExpression.l `null`), RulesExpression.l `)`);
         return type;
     }
     keys() {

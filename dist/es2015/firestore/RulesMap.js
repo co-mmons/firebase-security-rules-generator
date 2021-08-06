@@ -26,7 +26,7 @@ class RulesMap extends RulesValue_1.RulesValue {
      */
     get(key, valueType, defaultValue) {
         const type = new (valueType || RulesValue_1.RulesValue);
-        type.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, this, RulesExpression_1.RulesExpression.l `)`, RulesExpression_1.RulesExpression.l `.get(`, key, RulesExpression_1.RulesExpression.l `)`);
+        type.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, this, RulesExpression_1.RulesExpression.l `)`, RulesExpression_1.RulesExpression.l `.get(`, key, RulesExpression_1.RulesExpression.l `, `, (defaultValue !== undefined ? defaultValue : RulesExpression_1.RulesExpression.l `null`), RulesExpression_1.RulesExpression.l `)`);
         return type;
     }
     keys() {

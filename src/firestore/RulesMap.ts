@@ -29,7 +29,7 @@ export class RulesMap extends RulesValue implements $Map {
      */
     get<T extends RulesValue = RulesValue>(key: RulesString | string | RulesList<RulesString>, valueType?: AssignableType<T>, defaultValue?: T): T {
         const type = new (valueType || RulesValue);
-        (type as any as InternalRulesValue).__rulesExpression = new RulesExpression(RulesExpression.l`(`, this, RulesExpression.l`)`, RulesExpression.l`.get(`, key, RulesExpression.l`)`);
+        (type as any as InternalRulesValue).__rulesExpression = new RulesExpression(RulesExpression.l`(`, this, RulesExpression.l`)`, RulesExpression.l`.get(`, key, RulesExpression.l`, `, (defaultValue !== undefined ? defaultValue : RulesExpression.l`null`), RulesExpression.l`)`);
         return type as T;
     }
 

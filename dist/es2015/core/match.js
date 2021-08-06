@@ -10,6 +10,7 @@ function match(path) {
             constructor(...args) {
                 super();
                 const thiz = this;
+                thiz.__rulesAccessorName = "resource.data";
                 for (const propertyName in thiz) {
                     const propertyValue = thiz[propertyName];
                     if (!propertyValue) {

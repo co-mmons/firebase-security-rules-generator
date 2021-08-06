@@ -13,7 +13,8 @@ export function match<C extends {new(...args:any[]): {}}>(path: string) {
             constructor(...args: any[]) {
                 super();
 
-                const thiz: any = this;
+                const thiz: Partial<InternalRulesValue> = this;
+                thiz.__rulesAccessorName = "resource.data";
 
                 for (const propertyName in thiz) {
 
