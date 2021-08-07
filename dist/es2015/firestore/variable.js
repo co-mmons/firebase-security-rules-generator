@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.variable = void 0;
-const RulesExpression_1 = require("../core/RulesExpression");
 const RulesValue_1 = require("./RulesValue");
 let varCounter = 1;
 function variable(thiz, value) {
@@ -10,8 +9,6 @@ function variable(thiz, value) {
         thiz.__rulesFunctionVars[varId] = value.__rulesValueAsExpression();
         value = value.__rulesClone();
         value.__rulesVarId = varId;
-    }
-    else if (value instanceof RulesExpression_1.RulesExpression) {
     }
     return value;
 }

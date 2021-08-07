@@ -3,6 +3,9 @@ import {InternalMatchConstructor, InternalRulesValue} from "../internal";
 import {RulesExpression} from "./RulesExpression";
 import {RulesValue} from "./RulesValue";
 
+/**
+ * A function within match block.
+ */
 export function func(options?: {exportedName?: string}) {
 
     return function (targetClass: any, functionName: string, descriptor: PropertyDescriptor) {
@@ -17,6 +20,8 @@ export function func(options?: {exportedName?: string}) {
             .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
             .find((value, index) => index === 1) as string[];
 
+        // new function will be executed whenever original was referenced/called and when executed it builds
+        // a rules expression that calls rules function which was defined by func()
         const newFunction = function () {
 
             const expression = [];
@@ -43,9 +48,10 @@ export function func(options?: {exportedName?: string}) {
 
             const vars = this.__rulesFunctionVars = varsStack[varsStack.length - 1];
 
-            const original = originalFunction.call(this, ...arguments);
+            const original = originalFunction.apply(this, arguments);
 
             varsStack.splice(varsStack.length - 1);
+            this.__rulesFunctionVars = varsStack.length > 0 ? varsStack[varsStack.length - 1] : undefined;
 
             const newExpression = new RulesExpression(RulesExpression.l`${exportedName}(`, expression, RulesExpression.l`)`);
 
@@ -67,6 +73,7 @@ export function func(options?: {exportedName?: string}) {
 
         const bodyArgs = argsTypes.map(arg => new arg());
 
+        // a function that produces expression with body of a rules function
         function body() {
 
             const args = [];
@@ -93,6 +100,7 @@ export function func(options?: {exportedName?: string}) {
             };
 
             varsStack.splice(varsStack.length - 1);
+            this.__rulesFunctionVars = varsStack.length > 0 ? varsStack[varsStack.length - 1] : undefined;
 
             return result;
         }

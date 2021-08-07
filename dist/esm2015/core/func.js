@@ -1,6 +1,9 @@
 import "reflect-metadata";
 import { RulesExpression } from "./RulesExpression";
 import { RulesValue } from "./RulesValue";
+/**
+ * A function within match block.
+ */
 export function func(options) {
     return function (targetClass, functionName, descriptor) {
         const classConstructor = targetClass.prototype ? targetClass : targetClass.constructor;
@@ -10,6 +13,8 @@ export function func(options) {
         const argsNames = (originalFunction.toString().match(`^${functionName}\\(\\s*([^)]+?)\\s*\\)`) || [])
             .map((v, i) => i === 1 ? v.split(",").map(v => v.trim()) : v)
             .find((value, index) => index === 1);
+        // new function will be executed whenever original was referenced/called and when executed it builds
+        // a rules expression that calls rules function which was defined by func()
         const newFunction = function () {
             const expression = [];
             for (let i = 0; i < arguments.length; i++) {
@@ -32,8 +37,9 @@ export function func(options) {
             const varsStack = this.__rulesFunctionsVars = this.__rulesFunctionsVars || [];
             varsStack.push({});
             const vars = this.__rulesFunctionVars = varsStack[varsStack.length - 1];
-            const original = originalFunction.call(this, ...arguments);
+            const original = originalFunction.apply(this, arguments);
             varsStack.splice(varsStack.length - 1);
+            this.__rulesFunctionVars = varsStack.length > 0 ? varsStack[varsStack.length - 1] : undefined;
             const newExpression = new RulesExpression(RulesExpression.l `${exportedName}(`, expression, RulesExpression.l `)`);
             if (original instanceof RulesValue) {
                 const cloned = original.__rulesClone();
@@ -49,6 +55,7 @@ export function func(options) {
             }
         }
         const bodyArgs = argsTypes.map(arg => new arg());
+        // a function that produces expression with body of a rules function
         function body() {
             const args = [];
             for (let i = 0; i < arguments.length; i++) {
@@ -70,6 +77,7 @@ export function func(options) {
                 result: functionResult
             };
             varsStack.splice(varsStack.length - 1);
+            this.__rulesFunctionVars = varsStack.length > 0 ? varsStack[varsStack.length - 1] : undefined;
             return result;
         }
         descriptor.value = newFunction;

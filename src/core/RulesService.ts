@@ -80,7 +80,6 @@ export class RulesService {
         writer.line();
 
         const result = func.body(matchInstance);
-
         if (result.vars) {
             for (const varName in result.vars) {
                 writer.write("let ", varName, " = ");

@@ -1,4 +1,4 @@
-import {allow, equals, func, get, getData, match, or, request, resource, RulesMap, RulesResource, RulesResourceUnknownData, RulesString} from "firebase-security-rules-generator/firestore";
+import {allow, equals, func, get, getData, match, or, request, resource, RulesMap, RulesResource, RulesResourceUnknownData, RulesString, variable} from "firebase-security-rules-generator/firestore";
 import {User} from "./User";
 
 @match("admins/{$id}")
@@ -29,7 +29,8 @@ export class Admin extends RulesMap {
 
     @func()
     private getResourceData() {
-        return this.passResourceData(getData("users", User));
+        const variableTest = variable(this, this.passResourceData(getData("users", User)));
+        return variableTest;
     }
 
     @func()

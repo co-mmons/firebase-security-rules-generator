@@ -38,6 +38,12 @@ export class RulesExpression {
         this.writeImpl(writer, this.expression);
     }
 
+    toString() {
+        const writer = new StringWriter();
+        this.write(writer);
+        return `RulesExpression(${writer.toString()})`
+    }
+
 }
 
 export namespace RulesExpression {

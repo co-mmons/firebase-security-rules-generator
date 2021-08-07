@@ -1,4 +1,3 @@
-import { RulesExpression } from "../core/RulesExpression";
 import { RulesValue } from "./RulesValue";
 let varCounter = 1;
 export function variable(thiz, value) {
@@ -7,8 +6,6 @@ export function variable(thiz, value) {
         thiz.__rulesFunctionVars[varId] = value.__rulesValueAsExpression();
         value = value.__rulesClone();
         value.__rulesVarId = varId;
-    }
-    else if (value instanceof RulesExpression) {
     }
     return value;
 }

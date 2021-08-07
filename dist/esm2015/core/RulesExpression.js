@@ -1,3 +1,4 @@
+import { StringWriter } from "../utils";
 export class RulesExpression {
     constructor(...expression) {
         this.expression = expression;
@@ -26,6 +27,11 @@ export class RulesExpression {
     }
     write(writer) {
         this.writeImpl(writer, this.expression);
+    }
+    toString() {
+        const writer = new StringWriter();
+        this.write(writer);
+        return `RulesExpression(${writer.toString()})`;
     }
 }
 (function (RulesExpression) {

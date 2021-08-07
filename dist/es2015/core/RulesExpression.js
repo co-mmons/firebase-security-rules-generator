@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesExpression = void 0;
+const utils_1 = require("../utils");
 class RulesExpression {
     constructor(...expression) {
         this.expression = expression;
@@ -29,6 +30,11 @@ class RulesExpression {
     }
     write(writer) {
         this.writeImpl(writer, this.expression);
+    }
+    toString() {
+        const writer = new utils_1.StringWriter();
+        this.write(writer);
+        return `RulesExpression(${writer.toString()})`;
     }
 }
 exports.RulesExpression = RulesExpression;
