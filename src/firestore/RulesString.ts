@@ -1,15 +1,20 @@
 import {RulesExpression} from "../core/RulesExpression";
-import {concatExpression, RulesString as $RulesString, sizeExpression, substringExpression, trimExpression} from "../core/RulesString";
+import {concatExpression, RulesString as $RulesString, sizeExpression, splitExpression, substringExpression, trimExpression} from "../core/RulesString";
 import {matchesExpression} from "../core/RulesString/matchesExpression";
 import {InternalRulesValue} from "../internal";
 import {RulesBoolean} from "./RulesBoolean";
 import {RulesInteger} from "./RulesInteger";
+import {RulesList} from "./RulesList";
 import {RulesValue} from "./RulesValue";
 
 export class RulesString extends RulesValue implements $RulesString {
 
     static is(value: RulesValue) {
         return new RulesBoolean(new RulesExpression(value, RulesExpression.l` is string`))
+    }
+
+    split(re: RulesString | string): RulesList<string> {
+        return new RulesList<string>(splitExpression(this, re));
     }
 
     matches(re: RulesString | string): RulesBoolean {

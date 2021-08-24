@@ -1,12 +1,16 @@
 import { RulesExpression } from "../core/RulesExpression";
-import { concatExpression, sizeExpression, substringExpression, trimExpression } from "../core/RulesString";
+import { concatExpression, sizeExpression, splitExpression, substringExpression, trimExpression } from "../core/RulesString";
 import { matchesExpression } from "../core/RulesString/matchesExpression";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesInteger } from "./RulesInteger";
+import { RulesList } from "./RulesList";
 import { RulesValue } from "./RulesValue";
 export class RulesString extends RulesValue {
     static is(value) {
         return new RulesBoolean(new RulesExpression(value, RulesExpression.l ` is string`));
+    }
+    split(re) {
+        return new RulesList(splitExpression(this, re));
     }
     matches(re) {
         return new RulesBoolean(matchesExpression(this, re));

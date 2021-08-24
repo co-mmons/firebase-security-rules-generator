@@ -1,8 +1,13 @@
 import { RulesBoolean } from "../RulesBoolean";
-import { RulesInteger } from "../RulesNumber/RulesInteger";
+import { RulesList } from "../RulesList";
+import { RulesInteger } from "../RulesNumber";
 export interface RulesString {
     trim(): RulesString;
     size(): RulesInteger;
+    /**
+     * @see https://firebase.google.com/docs/reference/rules/rules.String?hl=en#split
+     */
+    split(re: RulesString | string): RulesList;
     /**
      * Performs a regular expression match on the whole string.
      *
