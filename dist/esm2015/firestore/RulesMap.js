@@ -1,4 +1,5 @@
 import { RulesExpression } from "../core/RulesExpression";
+import { RulesBoolean } from "./RulesBoolean";
 import { RulesList } from "./RulesList";
 import { RulesValue } from "./RulesValue";
 /**
@@ -28,6 +29,9 @@ export class RulesMap extends RulesValue {
     }
     keys() {
         return new RulesList(new RulesExpression(this, RulesExpression.l `.keys()`));
+    }
+    hasKey(key) {
+        return new RulesBoolean(new RulesExpression(RulesExpression.l `(`, key, RulesExpression.l ` in `, this, RulesExpression.l `)`));
     }
 }
 //# sourceMappingURL=RulesMap.js.map

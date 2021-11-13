@@ -2,6 +2,7 @@ import {RulesExpression} from "../core/RulesExpression";
 import {RulesMap as $Map} from "../core/RulesMap";
 import {InternalRulesValue} from "../internal";
 import {AssignableType} from "../utils/Type";
+import {RulesBoolean} from "./RulesBoolean";
 import {RulesList} from "./RulesList";
 import {RulesString} from "./RulesString";
 import {RulesValue} from "./RulesValue";
@@ -37,5 +38,8 @@ export class RulesMap extends RulesValue implements $Map {
         return new RulesList(new RulesExpression(this, RulesExpression.l`.keys()`));
     }
 
+    hasKey(key: string) {
+        return new RulesBoolean(new RulesExpression(RulesExpression.l`(`, key, RulesExpression.l` in `, this, RulesExpression.l`)`));
+    }
 
 }

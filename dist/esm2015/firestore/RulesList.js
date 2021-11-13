@@ -19,6 +19,11 @@ export class RulesList extends RulesValue {
             super();
         }
     }
+    get(index, valueType) {
+        const type = new (valueType || RulesValue);
+        type.__rulesExpression = new RulesExpression(RulesExpression.l `(`, this, RulesExpression.l `)`, RulesExpression.l `[`, index, RulesExpression.l `]`);
+        return type;
+    }
     /**
      * Get the number of values in the list.
      */

@@ -1,5 +1,7 @@
 import {RulesExpression} from "../core/RulesExpression";
 import {RulesList as $RulesList} from "../core/RulesList";
+import {InternalRulesValue} from "../internal";
+import {AssignableType} from "../utils/Type";
 import {RulesBoolean} from "./RulesBoolean";
 import {RulesInteger} from "./RulesInteger";
 import {RulesValue} from "./RulesValue";
@@ -25,6 +27,12 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
         } else {
             super();
         }
+    }
+
+    get<T extends RulesValue = RulesValue>(index: number, valueType?: AssignableType<T>) {
+        const type = new (valueType || RulesValue);
+        (type as any as InternalRulesValue).__rulesExpression = new RulesExpression(RulesExpression.l`(`, this, RulesExpression.l`)`, RulesExpression.l`[`, index, RulesExpression.l`]`);
+        return type as T;
     }
 
     /**

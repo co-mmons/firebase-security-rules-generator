@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RulesMap = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
+const RulesBoolean_1 = require("./RulesBoolean");
 const RulesList_1 = require("./RulesList");
 const RulesValue_1 = require("./RulesValue");
 /**
@@ -31,6 +32,9 @@ class RulesMap extends RulesValue_1.RulesValue {
     }
     keys() {
         return new RulesList_1.RulesList(new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l `.keys()`));
+    }
+    hasKey(key) {
+        return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, key, RulesExpression_1.RulesExpression.l ` in `, this, RulesExpression_1.RulesExpression.l `)`));
     }
 }
 exports.RulesMap = RulesMap;

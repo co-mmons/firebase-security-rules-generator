@@ -1,5 +1,6 @@
 import { RulesMap as $Map } from "../core/RulesMap";
 import { AssignableType } from "../utils/Type";
+import { RulesBoolean } from "./RulesBoolean";
 import { RulesList } from "./RulesList";
 import { RulesString } from "./RulesString";
 import { RulesValue } from "./RulesValue";
@@ -25,4 +26,5 @@ export declare class RulesMap extends RulesValue implements $Map {
      */
     get<T extends RulesValue = RulesValue>(key: RulesString | string | RulesList<RulesString>, valueType?: AssignableType<T>, defaultValue?: T): T;
     keys(): RulesList;
+    hasKey(key: string): RulesBoolean;
 }

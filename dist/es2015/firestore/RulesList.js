@@ -22,6 +22,11 @@ class RulesList extends RulesValue_1.RulesValue {
             super();
         }
     }
+    get(index, valueType) {
+        const type = new (valueType || RulesValue_1.RulesValue);
+        type.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, this, RulesExpression_1.RulesExpression.l `)`, RulesExpression_1.RulesExpression.l `[`, index, RulesExpression_1.RulesExpression.l `]`);
+        return type;
+    }
     /**
      * Get the number of values in the list.
      */

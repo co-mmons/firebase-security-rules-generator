@@ -1,5 +1,6 @@
 import { RulesExpression } from "../core/RulesExpression";
 import { RulesList as $RulesList } from "../core/RulesList";
+import { AssignableType } from "../utils/Type";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesInteger } from "./RulesInteger";
 import { RulesValue } from "./RulesValue";
@@ -12,6 +13,7 @@ export declare class RulesList<T = any> extends RulesValue implements $RulesList
     constructor();
     constructor(array: Array<string | number>);
     constructor(expression: RulesExpression);
+    get<T extends RulesValue = RulesValue>(index: number, valueType?: AssignableType<T>): T;
     /**
      * Get the number of values in the list.
      */
