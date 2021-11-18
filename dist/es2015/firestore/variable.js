@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.variable = void 0;
 const RulesValue_1 = require("./RulesValue");
-let varCounter = 1;
 function variable(thiz, value) {
-    const varId = "__var_" + (varCounter++);
     if (value instanceof RulesValue_1.RulesValue) {
+        const varId = "__var_" + (Object.keys(thiz.__rulesFunctionVars).length + 1);
         thiz.__rulesFunctionVars[varId] = value.__rulesValueAsExpression();
         value = value.__rulesClone();
         value.__rulesVarId = varId;

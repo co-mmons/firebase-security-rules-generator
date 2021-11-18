@@ -1,4 +1,4 @@
-import {allow, and, auth, equals, func, get, match, RulesMap, RulesPath, RulesPathVar, RulesResourceKnownData, RulesString, variable} from "firebase-security-rules-generator/firestore";
+import {allow, and, auth, equals, func, get, match, request, RulesMap, RulesPath, RulesPathVar, RulesResourceKnownData, RulesString, variable} from "firebase-security-rules-generator/firestore";
 
 @match("users/{$id}")
 export class User extends RulesMap {

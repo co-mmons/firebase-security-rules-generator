@@ -1,8 +1,7 @@
 import { RulesValue } from "./RulesValue";
-let varCounter = 1;
 export function variable(thiz, value) {
-    const varId = "__var_" + (varCounter++);
     if (value instanceof RulesValue) {
+        const varId = "__var_" + (Object.keys(thiz.__rulesFunctionVars).length + 1);
         thiz.__rulesFunctionVars[varId] = value.__rulesValueAsExpression();
         value = value.__rulesClone();
         value.__rulesVarId = varId;
