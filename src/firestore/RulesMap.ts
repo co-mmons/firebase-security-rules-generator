@@ -4,6 +4,7 @@ import {InternalRulesValue} from "../internal";
 import {AssignableType} from "../utils/Type";
 import {RulesBoolean} from "./RulesBoolean";
 import {RulesList} from "./RulesList";
+import {RulesMapDiff} from "./RulesMapDiff";
 import {RulesString} from "./RulesString";
 import {RulesValue} from "./RulesValue";
 
@@ -32,6 +33,10 @@ export class RulesMap extends RulesValue implements $Map {
         const type = new (valueType || RulesValue);
         (type as any as InternalRulesValue).__rulesExpression = new RulesExpression(RulesExpression.l`(`, this, RulesExpression.l`)`, RulesExpression.l`.get(`, key, RulesExpression.l`, `, (defaultValue !== undefined ? defaultValue : RulesExpression.l`null`), RulesExpression.l`)`);
         return type as T;
+    }
+
+    diff(map: RulesMap): RulesMapDiff {
+        return new RulesMapDiff(new RulesExpression(this, RulesExpression.l`.diff(`, map, RulesExpression.l`)`));
     }
 
     keys(): RulesList {

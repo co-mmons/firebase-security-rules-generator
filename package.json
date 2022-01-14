@@ -15,15 +15,15 @@
     "@co.mmons/node-utils": "git+https://github.com/co-mmons/node-utils.git"
   },
   "peerDependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@co.mmons/node-utils": "git+https://github.com/co-mmons/node-utils.git",
     "@types/node": "^14.0.13",
     "reflect-metadata": "^0.1.13",
-    "tsconfig-paths": "^3.9.0",
-    "tslib": "^2.0.0",
-    "typescript": "^4.2.4"
+    "tsconfig-paths": "^3.12.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4"
   },
   "sideEffects": false
 }

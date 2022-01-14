@@ -1,6 +1,7 @@
 import { RulesExpression } from "../core/RulesExpression";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesList } from "./RulesList";
+import { RulesMapDiff } from "./RulesMapDiff";
 import { RulesValue } from "./RulesValue";
 /**
  * Map type, used for simple key-value mappings.
@@ -26,6 +27,9 @@ export class RulesMap extends RulesValue {
         const type = new (valueType || RulesValue);
         type.__rulesExpression = new RulesExpression(RulesExpression.l `(`, this, RulesExpression.l `)`, RulesExpression.l `.get(`, key, RulesExpression.l `, `, (defaultValue !== undefined ? defaultValue : RulesExpression.l `null`), RulesExpression.l `)`);
         return type;
+    }
+    diff(map) {
+        return new RulesMapDiff(new RulesExpression(this, RulesExpression.l `.diff(`, map, RulesExpression.l `)`));
     }
     keys() {
         return new RulesList(new RulesExpression(this, RulesExpression.l `.keys()`));

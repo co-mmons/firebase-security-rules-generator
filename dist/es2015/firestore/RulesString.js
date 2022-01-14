@@ -13,22 +13,22 @@ class RulesString extends RulesValue_1.RulesValue {
         return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(value, RulesExpression_1.RulesExpression.l ` is string`));
     }
     split(re) {
-        return new RulesList_1.RulesList(RulesString_1.splitExpression(this, re));
+        return new RulesList_1.RulesList((0, RulesString_1.splitExpression)(this, re));
     }
     matches(re) {
-        return new RulesBoolean_1.RulesBoolean(matchesExpression_1.matchesExpression(this, re));
+        return new RulesBoolean_1.RulesBoolean((0, matchesExpression_1.matchesExpression)(this, re));
     }
     trim() {
-        return new RulesString(RulesString_1.trimExpression(this));
+        return new RulesString((0, RulesString_1.trimExpression)(this));
     }
     size() {
-        return new RulesInteger_1.RulesInteger(RulesString_1.sizeExpression(this));
+        return new RulesInteger_1.RulesInteger((0, RulesString_1.sizeExpression)(this));
     }
     concat(...strings) {
-        return new RulesString(RulesString_1.concatExpression(this, ...strings));
+        return new RulesString((0, RulesString_1.concatExpression)(this, ...strings));
     }
     substring(start, end) {
-        return new RulesString(RulesString_1.substringExpression(this, start, end));
+        return new RulesString((0, RulesString_1.substringExpression)(this, start, end));
     }
 }
 exports.RulesString = RulesString;

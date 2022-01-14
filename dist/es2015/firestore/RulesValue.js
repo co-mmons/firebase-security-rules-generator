@@ -13,7 +13,7 @@ class RulesValue extends RulesValue_1.RulesValue {
         return new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l ` == null`));
     }
     equals(other, not) {
-        return equals_1.equals(this, other, not);
+        return (0, equals_1.equals)(this, other, not);
     }
 }
 exports.RulesValue = RulesValue;

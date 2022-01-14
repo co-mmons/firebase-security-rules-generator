@@ -2,6 +2,7 @@ import { RulesMap as $Map } from "../core/RulesMap";
 import { AssignableType } from "../utils/Type";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesList } from "./RulesList";
+import { RulesMapDiff } from "./RulesMapDiff";
 import { RulesString } from "./RulesString";
 import { RulesValue } from "./RulesValue";
 /**
@@ -25,6 +26,7 @@ export declare class RulesMap extends RulesValue implements $Map {
      * @param defaultValue Value to return if the map does not contain the given search key.
      */
     get<T extends RulesValue = RulesValue>(key: RulesString | string | RulesList<RulesString>, valueType?: AssignableType<T>, defaultValue?: T): T;
+    diff(map: RulesMap): RulesMapDiff;
     keys(): RulesList;
     hasKey(key: string): RulesBoolean;
 }

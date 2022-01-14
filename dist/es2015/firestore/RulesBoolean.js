@@ -14,7 +14,7 @@ class RulesBoolean extends RulesValue_1.RulesValue {
      * Negative value of this boolean.
      */
     not() {
-        return not_1.not(this);
+        return (0, not_1.not)(this);
     }
 }
 exports.RulesBoolean = RulesBoolean;

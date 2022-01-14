@@ -4,6 +4,7 @@ exports.RulesMap = void 0;
 const RulesExpression_1 = require("../core/RulesExpression");
 const RulesBoolean_1 = require("./RulesBoolean");
 const RulesList_1 = require("./RulesList");
+const RulesMapDiff_1 = require("./RulesMapDiff");
 const RulesValue_1 = require("./RulesValue");
 /**
  * Map type, used for simple key-value mappings.
@@ -29,6 +30,9 @@ class RulesMap extends RulesValue_1.RulesValue {
         const type = new (valueType || RulesValue_1.RulesValue);
         type.__rulesExpression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, this, RulesExpression_1.RulesExpression.l `)`, RulesExpression_1.RulesExpression.l `.get(`, key, RulesExpression_1.RulesExpression.l `, `, (defaultValue !== undefined ? defaultValue : RulesExpression_1.RulesExpression.l `null`), RulesExpression_1.RulesExpression.l `)`);
         return type;
+    }
+    diff(map) {
+        return new RulesMapDiff_1.RulesMapDiff(new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l `.diff(`, map, RulesExpression_1.RulesExpression.l `)`));
     }
     keys() {
         return new RulesList_1.RulesList(new RulesExpression_1.RulesExpression(this, RulesExpression_1.RulesExpression.l `.keys()`));
