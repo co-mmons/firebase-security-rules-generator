@@ -8,5 +8,11 @@ export class RulesInteger extends RulesValue {
     gte(other) {
         return new RulesBoolean(gteExpression(this, other));
     }
+    lt(other) {
+        return new RulesBoolean(gtExpression(this, other));
+    }
+    lte(other) {
+        return new RulesBoolean(gteExpression(this, other));
+    }
 }
 //# sourceMappingURL=RulesInteger.js.map

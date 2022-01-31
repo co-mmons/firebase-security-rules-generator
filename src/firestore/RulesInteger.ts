@@ -13,4 +13,12 @@ export class RulesInteger extends RulesValue implements $RulesInteger {
         return new RulesBoolean(gteExpression(this, other));
     }
 
+    lt(other: RulesNumber | number): RulesBoolean {
+        return new RulesBoolean(gtExpression(this, other));
+    }
+
+    lte(other: RulesNumber | number): RulesBoolean {
+        return new RulesBoolean(gteExpression(this, other));
+    }
+
 }

@@ -6,4 +6,8 @@ export interface RulesNumber {
 
     gte(other: RulesNumber): RulesBoolean;
 
+    lt(other: RulesNumber): RulesBoolean;
+
+    lte(other: RulesNumber): RulesBoolean;
+
 }

@@ -5,4 +5,6 @@ import { RulesValue } from "./RulesValue";
 export declare class RulesInteger extends RulesValue implements $RulesInteger {
     gt(other: RulesNumber | number): RulesBoolean;
     gte(other: RulesNumber | number): RulesBoolean;
+    lt(other: RulesNumber | number): RulesBoolean;
+    lte(other: RulesNumber | number): RulesBoolean;
 }

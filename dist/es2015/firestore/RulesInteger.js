@@ -11,6 +11,12 @@ class RulesInteger extends RulesValue_1.RulesValue {
     gte(other) {
         return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.gteExpression)(this, other));
     }
+    lt(other) {
+        return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.gtExpression)(this, other));
+    }
+    lte(other) {
+        return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.gteExpression)(this, other));
+    }
 }
 exports.RulesInteger = RulesInteger;
 //# sourceMappingURL=RulesInteger.js.map
