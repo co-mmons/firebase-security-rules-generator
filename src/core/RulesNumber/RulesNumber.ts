@@ -2,12 +2,16 @@ import {RulesBoolean} from "../RulesBoolean";
 
 export interface RulesNumber {
 
-    gt(other: RulesNumber): RulesBoolean;
+    plus(other: RulesNumber | number): RulesNumber;
 
-    gte(other: RulesNumber): RulesBoolean;
+    minus(other: RulesNumber | number): RulesNumber;
 
-    lt(other: RulesNumber): RulesBoolean;
+    gt(other: RulesNumber | number): RulesBoolean;
 
-    lte(other: RulesNumber): RulesBoolean;
+    gte(other: RulesNumber | number): RulesBoolean;
+
+    lt(other: RulesNumber | number): RulesBoolean;
+
+    lte(other: RulesNumber | number): RulesBoolean;
 
 }

@@ -1,18 +1,4 @@
-import { gteExpression, gtExpression } from "../core/RulesNumber";
-import { RulesBoolean } from "./RulesBoolean";
-import { RulesValue } from "./RulesValue";
-export class RulesInteger extends RulesValue {
-    gt(other) {
-        return new RulesBoolean(gtExpression(this, other));
-    }
-    gte(other) {
-        return new RulesBoolean(gteExpression(this, other));
-    }
-    lt(other) {
-        return new RulesBoolean(gtExpression(this, other));
-    }
-    lte(other) {
-        return new RulesBoolean(gteExpression(this, other));
-    }
+import { RulesNumber } from "./RulesNumber";
+export class RulesInteger extends RulesNumber {
 }
 //# sourceMappingURL=RulesInteger.js.map

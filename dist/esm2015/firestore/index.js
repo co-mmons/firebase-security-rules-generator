@@ -4,6 +4,7 @@ export { RulesInteger } from "./RulesInteger";
 export { RulesList } from "./RulesList";
 export { RulesMapDiff } from "./RulesMapDiff";
 export { RulesMap } from "./RulesMap";
+export { RulesNumber } from "./RulesNumber";
 export { RulesPath, path } from "./RulesPath";
 export { RulesPathVar } from "./RulesPathVar";
 export { RulesResourceKnownData, RulesResourceUnknownData } from "./RulesResource";

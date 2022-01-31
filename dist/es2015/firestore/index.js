@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.variable = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.isNull = exports.isNotNull = exports.ifElse = exports.get = exports.getData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = exports.RulesValue = exports.RulesTimestamp = exports.RulesString = exports.RulesSet = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesMap = exports.RulesMapDiff = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = void 0;
+exports.variable = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.isNull = exports.isNotNull = exports.ifElse = exports.get = exports.getData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = exports.RulesValue = exports.RulesTimestamp = exports.RulesString = exports.RulesSet = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesNumber = exports.RulesMap = exports.RulesMapDiff = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = void 0;
 var RulesBoolean_1 = require("./RulesBoolean");
 Object.defineProperty(exports, "RulesBoolean", { enumerable: true, get: function () { return RulesBoolean_1.RulesBoolean; } });
 var RulesExpression_1 = require("../core/RulesExpression");
@@ -13,6 +13,8 @@ var RulesMapDiff_1 = require("./RulesMapDiff");
 Object.defineProperty(exports, "RulesMapDiff", { enumerable: true, get: function () { return RulesMapDiff_1.RulesMapDiff; } });
 var RulesMap_1 = require("./RulesMap");
 Object.defineProperty(exports, "RulesMap", { enumerable: true, get: function () { return RulesMap_1.RulesMap; } });
+var RulesNumber_1 = require("./RulesNumber");
+Object.defineProperty(exports, "RulesNumber", { enumerable: true, get: function () { return RulesNumber_1.RulesNumber; } });
 var RulesPath_1 = require("./RulesPath");
 Object.defineProperty(exports, "RulesPath", { enumerable: true, get: function () { return RulesPath_1.RulesPath; } });
 Object.defineProperty(exports, "path", { enumerable: true, get: function () { return RulesPath_1.path; } });
