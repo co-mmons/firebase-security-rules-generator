@@ -19,6 +19,8 @@ export { equals } from "./equals";
 export { exists } from "./exists";
 export { firestore } from "./firestore";
 export { func } from "../core/func";
+export { getAfterData } from "./getAfterData";
+export { getAfter } from "./getAfter";
 export { getData } from "./getData";
 export { get } from "./get";
 export { ifElse } from "./ifElse";
