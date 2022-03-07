@@ -16,4 +16,8 @@ export class RulesValue extends $RulesValue {
     equals(other: any, not?: boolean): RulesBoolean {
         return equals(this, other, not);
     }
+
+    notEquals(other: any): RulesBoolean {
+        return equals(this, other, true);
+    }
 }

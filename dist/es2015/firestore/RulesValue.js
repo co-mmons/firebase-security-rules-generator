@@ -15,6 +15,9 @@ class RulesValue extends RulesValue_1.RulesValue {
     equals(other, not) {
         return (0, equals_1.equals)(this, other, not);
     }
+    notEquals(other) {
+        return (0, equals_1.equals)(this, other, true);
+    }
 }
 exports.RulesValue = RulesValue;
 //# sourceMappingURL=RulesValue.js.map

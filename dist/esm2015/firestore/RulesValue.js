@@ -12,5 +12,8 @@ export class RulesValue extends $RulesValue {
     equals(other, not) {
         return equals(this, other, not);
     }
+    notEquals(other) {
+        return equals(this, other, true);
+    }
 }
 //# sourceMappingURL=RulesValue.js.map

@@ -4,4 +4,5 @@ export declare class RulesValue extends $RulesValue {
     isNotNull(): RulesBoolean;
     isNull(): RulesBoolean;
     equals(other: any, not?: boolean): RulesBoolean;
+    notEquals(other: any): RulesBoolean;
 }
