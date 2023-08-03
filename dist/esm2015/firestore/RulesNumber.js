@@ -1,3 +1,4 @@
+import { RulesExpression } from "../core/RulesExpression";
 import { gteExpression, gtExpression, minusExpression, plusExpression } from "../core/RulesNumber";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesValue } from "./RulesValue";
@@ -19,6 +20,9 @@ export class RulesNumber extends RulesValue {
     }
     plus(other) {
         return new RulesNumber(plusExpression(this, other));
+    }
+    abs() {
+        return new RulesNumber(new RulesExpression(RulesExpression.l `math.abs(`, this, RulesExpression.l `)`));
     }
 }
 //# sourceMappingURL=RulesNumber.js.map

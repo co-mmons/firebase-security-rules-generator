@@ -11,7 +11,7 @@ import {RulesValue} from "./RulesValue";
  *
  * {@link https://firebase.google.com/docs/reference/rules/rules.List}
  */
-export class RulesList<T = any> extends RulesValue implements $RulesList {
+export class RulesList<T extends RulesValue = RulesValue> extends RulesValue implements $RulesList {
 
     constructor();
 
@@ -29,10 +29,10 @@ export class RulesList<T = any> extends RulesValue implements $RulesList {
         }
     }
 
-    get<T extends RulesValue = RulesValue>(index: number, valueType?: AssignableType<T>) {
+    get<V extends RulesValue = RulesValue>(index: number, valueType?: AssignableType<V>) {
         const type = new (valueType || RulesValue);
         (type as any as InternalRulesValue).__rulesExpression = new RulesExpression(RulesExpression.l`(`, this, RulesExpression.l`)`, RulesExpression.l`[`, index, RulesExpression.l`]`);
-        return type as T;
+        return type as V;
     }
 
     /**

@@ -8,4 +8,5 @@ export declare class RulesNumber extends RulesValue implements $RulesNumber {
     lte(other: RulesNumber | number): RulesBoolean;
     minus(other: RulesNumber | number): RulesNumber;
     plus(other: RulesNumber | number): RulesNumber;
+    abs(): RulesNumber;
 }

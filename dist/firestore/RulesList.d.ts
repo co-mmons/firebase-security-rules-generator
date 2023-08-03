@@ -9,11 +9,11 @@ import { RulesValue } from "./RulesValue";
  *
  * {@link https://firebase.google.com/docs/reference/rules/rules.List}
  */
-export declare class RulesList<T = any> extends RulesValue implements $RulesList {
+export declare class RulesList<T extends RulesValue = RulesValue> extends RulesValue implements $RulesList {
     constructor();
     constructor(array: Array<string | number>);
     constructor(expression: RulesExpression);
-    get<T extends RulesValue = RulesValue>(index: number, valueType?: AssignableType<T>): T;
+    get<V extends RulesValue = RulesValue>(index: number, valueType?: AssignableType<V>): V;
     /**
      * Get the number of values in the list.
      */

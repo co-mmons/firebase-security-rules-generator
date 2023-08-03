@@ -1,3 +1,4 @@
+import {RulesExpression} from "../core/RulesExpression";
 import {
     gteExpression,
     gtExpression,
@@ -34,6 +35,8 @@ export class RulesNumber extends RulesValue implements $RulesNumber {
         return new RulesNumber(plusExpression(this, other));
     }
 
-
+    abs(): RulesNumber {
+        return new RulesNumber(new RulesExpression(RulesExpression.l`math.abs(`, this, RulesExpression.l`)`))
+    }
 
 }

@@ -13,8 +13,8 @@ export class RulesString extends RulesValue implements $RulesString {
         return new RulesBoolean(new RulesExpression(value, RulesExpression.l` is string`))
     }
 
-    split(re: RulesString | string): RulesList<string> {
-        return new RulesList<string>(splitExpression(this, re));
+    split(re: RulesString | string): RulesList<RulesString> {
+        return new RulesList<RulesString>(splitExpression(this, re));
     }
 
     matches(re: RulesString | string): RulesBoolean {
