@@ -17,6 +17,7 @@ export {and} from "./and";
 export {auth} from "./RulesRequestAuth";
 export {equals} from "./equals";
 export {exists} from "./exists";
+export {existsAfter} from "./existsAfter";
 export {firestore} from "./firestore";
 export {func} from "../core/func";
 export {getAfterData} from "./getAfterData";

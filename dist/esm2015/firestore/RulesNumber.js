@@ -1,5 +1,5 @@
 import { RulesExpression } from "../core/RulesExpression";
-import { gteExpression, gtExpression, minusExpression, plusExpression } from "../core/RulesNumber";
+import { gteExpression, gtExpression, lteExpression, ltExpression, minusExpression, plusExpression } from "../core/RulesNumber";
 import { RulesBoolean } from "./RulesBoolean";
 import { RulesValue } from "./RulesValue";
 export class RulesNumber extends RulesValue {
@@ -10,10 +10,10 @@ export class RulesNumber extends RulesValue {
         return new RulesBoolean(gteExpression(this, other));
     }
     lt(other) {
-        return new RulesBoolean(gtExpression(this, other));
+        return new RulesBoolean(ltExpression(this, other));
     }
     lte(other) {
-        return new RulesBoolean(gteExpression(this, other));
+        return new RulesBoolean(lteExpression(this, other));
     }
     minus(other) {
         return new RulesNumber(minusExpression(this, other));

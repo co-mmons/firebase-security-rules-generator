@@ -1,7 +1,7 @@
 import {RulesExpression} from "../core/RulesExpression";
 import {
     gteExpression,
-    gtExpression,
+    gtExpression, lteExpression, ltExpression,
     minusExpression,
     plusExpression,
     RulesNumber as $RulesNumber
@@ -20,11 +20,11 @@ export class RulesNumber extends RulesValue implements $RulesNumber {
     }
 
     lt(other: RulesNumber | number): RulesBoolean {
-        return new RulesBoolean(gtExpression(this, other));
+        return new RulesBoolean(ltExpression(this, other));
     }
 
     lte(other: RulesNumber | number): RulesBoolean {
-        return new RulesBoolean(gteExpression(this, other));
+        return new RulesBoolean(lteExpression(this, other));
     }
 
     minus(other: RulesNumber | number): RulesNumber {

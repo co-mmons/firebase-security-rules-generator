@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.variable = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.isNull = exports.isNotNull = exports.ifElse = exports.get = exports.getData = exports.getAfter = exports.getAfterData = exports.func = exports.firestore = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = exports.RulesValue = exports.RulesTimestamp = exports.RulesString = exports.RulesSet = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesNumber = exports.RulesMap = exports.RulesMapDiff = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = void 0;
+exports.variable = exports.resource = exports.request = exports.requestResource = exports.requestData = exports.or = exports.match = exports.isNull = exports.isNotNull = exports.ifElse = exports.get = exports.getData = exports.getAfter = exports.getAfterData = exports.func = exports.firestore = exports.existsAfter = exports.exists = exports.equals = exports.auth = exports.and = exports.deny = exports.allow = exports.RulesValue = exports.RulesTimestamp = exports.RulesString = exports.RulesSet = exports.RulesResourceUnknownData = exports.RulesResourceKnownData = exports.RulesPathVar = exports.path = exports.RulesPath = exports.RulesNumber = exports.RulesMap = exports.RulesMapDiff = exports.RulesList = exports.RulesInteger = exports.RulesExpression = exports.RulesBoolean = void 0;
 var RulesBoolean_1 = require("./RulesBoolean");
 Object.defineProperty(exports, "RulesBoolean", { enumerable: true, get: function () { return RulesBoolean_1.RulesBoolean; } });
 var RulesExpression_1 = require("../core/RulesExpression");
@@ -42,6 +42,8 @@ var equals_1 = require("./equals");
 Object.defineProperty(exports, "equals", { enumerable: true, get: function () { return equals_1.equals; } });
 var exists_1 = require("./exists");
 Object.defineProperty(exports, "exists", { enumerable: true, get: function () { return exists_1.exists; } });
+var existsAfter_1 = require("./existsAfter");
+Object.defineProperty(exports, "existsAfter", { enumerable: true, get: function () { return existsAfter_1.existsAfter; } });
 var firestore_1 = require("./firestore");
 Object.defineProperty(exports, "firestore", { enumerable: true, get: function () { return firestore_1.firestore; } });
 var func_1 = require("../core/func");

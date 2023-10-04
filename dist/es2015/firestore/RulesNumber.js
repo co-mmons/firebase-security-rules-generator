@@ -13,10 +13,10 @@ class RulesNumber extends RulesValue_1.RulesValue {
         return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.gteExpression)(this, other));
     }
     lt(other) {
-        return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.gtExpression)(this, other));
+        return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.ltExpression)(this, other));
     }
     lte(other) {
-        return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.gteExpression)(this, other));
+        return new RulesBoolean_1.RulesBoolean((0, RulesNumber_1.lteExpression)(this, other));
     }
     minus(other) {
         return new RulesNumber((0, RulesNumber_1.minusExpression)(this, other));
