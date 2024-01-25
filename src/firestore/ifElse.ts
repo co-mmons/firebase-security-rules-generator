@@ -31,7 +31,7 @@ export function ifElse(trueExpression: TrueExpression, whenTrueValue: Value, els
         elseValue = new RulesBoolean(new RulesExpression(elseValue));
     }
 
-    const expression = new RulesExpression(RulesExpression.l`(`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : (`, elseValue || RulesExpression.l`null`, RulesExpression.l`)`);
+    const expression = new RulesExpression(RulesExpression.l`((`, trueExpression, RulesExpression.l`) ? (`, whenTrueValue, RulesExpression.l`) : (`, elseValue || RulesExpression.l`null`, RulesExpression.l`))`);
 
     if ((elseValue === undefined && whenTrueValue instanceof RulesValue) || (whenTrueValue === undefined && elseValue instanceof RulesValue) || (elseValue && whenTrueValue && whenTrueValue.constructor === elseValue.constructor)) {
         const valueType: AssignableType<RulesValue> = (whenTrueValue || elseValue).constructor as any;

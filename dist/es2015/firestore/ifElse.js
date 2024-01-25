@@ -18,7 +18,7 @@ function ifElse(trueExpression, whenTrueValue, elseValue) {
     else if (typeof elseValue === "boolean") {
         elseValue = new RulesBoolean_1.RulesBoolean(new RulesExpression_1.RulesExpression(elseValue));
     }
-    const expression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `(`, trueExpression, RulesExpression_1.RulesExpression.l `) ? (`, whenTrueValue, RulesExpression_1.RulesExpression.l `) : (`, elseValue || RulesExpression_1.RulesExpression.l `null`, RulesExpression_1.RulesExpression.l `)`);
+    const expression = new RulesExpression_1.RulesExpression(RulesExpression_1.RulesExpression.l `((`, trueExpression, RulesExpression_1.RulesExpression.l `) ? (`, whenTrueValue, RulesExpression_1.RulesExpression.l `) : (`, elseValue || RulesExpression_1.RulesExpression.l `null`, RulesExpression_1.RulesExpression.l `))`);
     if ((elseValue === undefined && whenTrueValue instanceof RulesValue_1.RulesValue) || (whenTrueValue === undefined && elseValue instanceof RulesValue_1.RulesValue) || (elseValue && whenTrueValue && whenTrueValue.constructor === elseValue.constructor)) {
         const valueType = (whenTrueValue || elseValue).constructor;
         return new valueType(expression);
